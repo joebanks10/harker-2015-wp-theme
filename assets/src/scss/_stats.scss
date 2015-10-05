@@ -1,0 +1,36 @@
+// Stats
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.stat {
+    background-color: $white;
+    padding: 2em;
+    @include box-shadow($default-shadow);
+    text-align: center;
+}
+
+.stat-measure, .stat-desc {
+    display: block;
+    font-weight: bold;
+    a {
+        text-decoration: none;
+    }
+}
+
+.stat-measure {
+    font-size: rem-calc(64);
+    line-height: 1;
+    color: $green;
+    margin-bottom: 1rem;
+    a {
+        color: $green;
+    }
+    a:hover {
+        color: scale-color($green, $lightness: -14%);
+    }
+}
+
+.stat-desc {
+    font-size: rem-calc(24);
+    color: $gray;
+    line-height: 1.25;
+}

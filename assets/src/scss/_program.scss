@@ -1,0 +1,75 @@
+.feature-program {
+    @media #{$medium-up} {
+        @include circle;
+        @include vertical-align;
+        @include box-shadow($default-shadow);
+        position: absolute;
+        margin: 0 rem-calc(100) 0;
+        text-align: center;
+        width: rem-calc(250);
+        height:  rem-calc(250);
+    }
+    @media #{$large-up} {
+        width: rem-calc(360);
+        height:  rem-calc(360);
+    }
+}
+
+.feature-program-content {
+    padding: rem-calc(18) 1rem rem-calc(14);
+    :first-child {
+        margin-top: 0;
+    }
+    :last-child {
+        margin-bottom: 0;
+    }
+    .button {
+        display: none;
+        // padding: 1rem;
+        &:hover, &:focus {
+            color: $white;
+
+        }  
+    }
+    @media #{$medium-up} {
+        @include vertical-align;
+    }
+    @media #{$large-up} {
+        .button {
+            display: inline-block;
+        }
+    }
+}
+
+.feature-program-header {
+    font-size: $h3-font-size;
+    line-height: 1em;
+    margin: 0;
+    text-transform: none;
+    &, a {
+        font-weight: bold;
+        color: $white;
+    }
+    a {
+        text-decoration: none;
+    }
+    .word-chunk {
+        display: inline;
+    }
+    @media #{$medium-up} { 
+        font-size: $h2-font-size;
+        .word-chunk {
+            display: block;
+            &:after {
+                content: '-';
+            }
+            &.word-chunk-end:after {
+                content: '';
+            }
+        }
+    }
+    @media #{$large-up} {
+        font-size: $h1-font-size;
+        margin-bottom: $header-bottom-margin;
+    }
+}

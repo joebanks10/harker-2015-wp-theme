@@ -1,0 +1,100 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 2965960,
+  2015-02-04T13:48:10-0500
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: FF DIN Web Pro Medium Italic by FontFont
+ * URL: http://www.myfonts.com/fonts/fon$font-path + tff-din/pro-medium-italic/
+ * 
+ * Webfont: FF DIN Web Pro Black by FontFont
+ * URL: http://www.myfonts.com/fonts/fon$font-path + tff-din/pro-black/
+ * 
+ * Webfont: FF DIN Web Pro Bold by FontFont
+ * URL: http://www.myfonts.com/fonts/fon$font-path + tff-din/pro-bold/
+ * 
+ * Webfont: FF DIN Web Pro Light by FontFont
+ * URL: http://www.myfonts.com/fonts/fon$font-path + tff-din/pro-light/
+ * 
+ * Webfont: FF DIN Web Pro Medium by FontFont
+ * URL: http://www.myfonts.com/fonts/fon$font-path + tff-din/pro-medium/
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2965960
+ * Licensed pageviews: 500,
+    000
+ * Webfonts copyright: 2009 Albert-Jan Pool published by FSI FontShop International GmbH
+ * 
+ * © 2015 MyFonts Inc
+*/
+
+@font-face {
+  font-family: DINPro;
+  font-weight: 400;
+  src: url($font-path + '2D41C8_4_0.eot');
+  src: url($font-path + '2D41C8_4_0.eot?#iefix') format('embedded-opentype'),
+       url($font-path + '2D41C8_4_0.woff2') format('woff2'),
+       url($font-path + '2D41C8_4_0.woff') format('woff'),
+       url($font-path + '2D41C8_4_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: DINPro;
+  font-weight: 400;
+  font-style: italic;
+  src: url($font-path + '2D41C8_0_0.eot');
+  src: url($font-path + '2D41C8_0_0.eot?#iefix') format('embedded-opentype'),
+       url($font-path + '2D41C8_0_0.woff2') format('woff2'),
+       url($font-path + '2D41C8_0_0.woff') format('woff'),
+       url($font-path + '2D41C8_0_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: DINPro;
+  font-weight: 700;
+  src: url($font-path + '2D41C8_2_0.eot');
+  src: url($font-path + '2D41C8_2_0.eot?#iefix') format('embedded-opentype'),
+       url($font-path + '2D41C8_2_0.woff2') format('woff2'),
+       url($font-path + '2D41C8_2_0.woff') format('woff'),
+       url($font-path + '2D41C8_2_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: DINPro;
+  font-weight: 100;
+  src: url($font-path + '2D41C8_3_0.eot');
+  src: url($font-path + '2D41C8_3_0.eot?#iefix') format('embedded-opentype'),
+       url($font-path + '2D41C8_3_0.woff2') format('woff2'),
+       url($font-path + '2D41C8_3_0.woff') format('woff'),
+       url($font-path + '2D41C8_3_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: DINPro;
+  font-weight: 100;
+  font-style: italic;
+  src: url($font-path + '2F3075_0.eot');
+  src: url($font-path + '2F3075_0.eot?#iefix') format('embedded-opentype'),
+       url($font-path + '2F3075_0.woff2') format('woff2'),
+       url($font-path + '2F3075_0.woff') format('woff'),
+       url($font-path + '2F3075_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DINPro Black';
+  font-weight: 400;
+  src: url($font-path + '2D41C8_1_0.eot');
+  src: url($font-path + '2D41C8_1_0.eot?#iefix') format('embedded-opentype'),
+       url($font-path + '2D41C8_1_0.woff2') format('woff2'),
+       url($font-path + '2D41C8_1_0.woff') format('woff'),
+       url($font-path + '2D41C8_1_0.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'DINPro Condensed';
+    font-weight: 700;
+    src: url($font-path + '2F3625_0_0.eot');
+    src: url($font-path + '2F3625_0_0.eot?#iefix') format('embedded-opentype'),
+         url($font-path + '2F3625_0_0.woff2') format('woff2'),
+         url($font-path + '2F3625_0_0.woff') format('woff'),
+         url($font-path + '2F3625_0_0.ttf') format('truetype');
+}

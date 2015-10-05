@@ -1,0 +1,75 @@
+$harker-logo-stacked-width: 89px;
+$harker-logo-stacked-height: 63px;
+$header-menu-line-height: 16px;
+
+.header {
+    display: none;
+    margin-top: rhythm(1);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 50;
+    background: transparent;
+    &, a {
+        color: $white;
+    }
+    .feature-is-playing & {
+        visibility: hidden;
+    }
+    .has-hero & {
+        display: block;
+    }
+}
+
+.header .harker-logo {
+    float: left;
+}
+
+.header-nav-menu {
+    @include inline-list;
+    margin-bottom: 0;
+    > li {
+        margin-left: 1rem;
+    }
+    a {
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+}
+
+.header-nav-menu-sections {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    > li:not(.menu-item-hamburger) {
+        display: none;
+        @media #{$medium-up} { 
+            display: block;
+        }
+    }
+    > li {
+        margin-top: 21px;
+        line-height: 1rem;
+    }
+    > .menu-item-hamburger {
+        margin-top: 19px; // fix alignment issues
+    }
+    > .active {
+        border-bottom: 1px solid #fff;
+        padding-bottom: 2px;
+    }
+}
+
+.header-nav-menu-secondary {
+    float: right;
+    > li {
+        margin-top: 11px;
+        font-size: rem-calc(24);
+        line-height: 1em;
+    }
+    a:before {
+        @include fa-icon();
+        display: block;
+        line-height: 1em;
+    }
+}

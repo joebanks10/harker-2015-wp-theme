@@ -1,0 +1,110 @@
+.footer {
+    background: $harkergreen;
+    &, a {
+        color: $white;
+    }
+}
+
+.footer-overlay,
+.is-home .footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: transparent;
+    width: 100%;
+    padding: 0;
+    .feature-is-playing & {
+        display: none; 
+    }
+    @media #{$small-only-height} {
+        visibility: hidden;
+    }
+}
+
+.footer-invert {
+    background: $lightgray;
+    color: $gray;
+    a { 
+        color: $gray;
+        &:hover, &:focus {
+            color: $darkgray;
+        }
+    }
+    .footer-nav-menu > li > a,
+    .footer-nav-menu-social a {
+        color: $darkgray;
+        &:hover, &:focus {
+            color: $darkergray;
+        }
+    }
+    .harker-logo, .harker-logo.harker-logo-horiz {
+        a {
+            background-image: url(#{$img-path}harker-logo-green.png);
+        }
+    }
+}
+
+.footer-legal {
+    font-size: rem-calc(12);
+    text-align: center;
+    @media #{$medium-up} {
+        font-size: inherit;
+    }
+}
+
+.footer-nav {
+    clear: both;
+}
+
+.footer-nav-menu {
+    &, ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    > li {
+        margin-bottom: rhythm(1);
+    }
+    > li > a {
+        font-weight: bold;
+    }
+    ul li {
+        margin: 0.5rem 0;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+.footer .column.end ul li:first-child {
+    margin: 0;
+}
+
+.footer-nav-menu-social {
+    @include inline-list;
+    @include clearfix;
+    margin-left: 0;
+    li, a, a:before {
+        line-height: 1;
+    }
+    li {
+        margin-left: 0;
+    }
+    a {
+        // see navbar.scss
+        height: auto;
+        font-size: 1rem;
+        padding: 0;
+    }
+}
+
+.menu-item-followtext {
+    margin-right: 0.5rem;
+}
+
+.text-center {
+    .footer-nav-menu-social,
+    .harker-logo {
+        display: inline-block;
+    }
+}

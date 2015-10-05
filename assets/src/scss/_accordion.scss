@@ -1,0 +1,235 @@
+// Accordion
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin accordion-button() {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    background: $accordion-navigation-bg-color;
+    color: $accordion-navigation-font-color;
+    font-size: $accordion-navigation-font-size;
+    line-height: rhythm(1);
+    padding-top: rhythm(0.5) + rem-calc(2); // fix vertical alignment of text
+    padding-bottom: rhythm(0.5) - rem-calc(2);
+    padding-left: ($column-gutter/2);
+    padding-right: ($column-gutter/2);
+    margin: 0;
+    text-transform: uppercase;
+    word-break: break-word;
+    @include box-shadow($default-shadow);
+    @include transition(background-color 0.25s, color 0.25s);
+    &:hover, &:focus {
+        @include accordion-button-active;
+    }
+    &:before {
+        @include fa-icon;
+        content: $fa-var-ellipsis-v;
+        color: inherit;
+        float: right;
+        margin-left: 1rem;
+    }
+    .accordion-truncate & {
+        @include truncate;
+    }
+}
+@mixin accordion-button-active() {
+    background: $accordion-navigation-hover-bg-color;
+    color: $accordion-navigation-font-color;
+}
+
+@mixin accordion-content() {
+    padding: $accordion-content-padding;
+    background: $accordion-content-active-bg-color;
+    color: $body-font-color;
+    line-height: 1.375;
+    position: relative;
+    z-index: 1; // overlap .accordion-direct-link ;P
+    @include box-shadow($default-shadow);
+    h1, h2, h3, h4, h5, h6 {
+        :not(:first-child) {
+            margin-top: rhythm(1);
+        }   
+    }
+    h1, h2, h3, h4, h5, h6, strong, b {
+        color: $header-font-color;
+    }
+    h1, h2, h3, h4, h5, h6,
+    p, ul, ol, dl, .subheader {
+        margin-bottom: rhythm(0.5);
+    }
+    .subheader {
+        color: $subheader-font-color;
+    }
+    code {
+        color: $body-font-color;
+    }
+    a {
+        color: $anchor-font-color;
+        &:hover, &:focus {
+            color: $anchor-font-color-hover;
+        }
+    }
+    .button {
+        background: $secondary-color;
+        border: 1px solid $default-border-color;
+        display: block;
+        line-height: rhythm(1);
+        padding-top: rhythm(0.25);
+        padding-bottom: rhythm(0.25);
+        margin: 0;
+        @include transition(background-color 0.25s);
+        &, &:hover, &:focus {
+            color: $anchor-font-color;
+        }
+        &:hover, &:focus {
+            background-color: $secondary-button-bg-hover;
+        }
+    }
+}
+
+@mixin accordion-button-invert() {
+    background-color: $secondary-color;
+    color: $anchor-font-color;
+    &:hover, &:focus {
+        @include accordion-button-active-invert;
+    }
+}
+@mixin accordion-button-active-invert() {
+    background-color: $secondary-button-bg-hover;
+    color: $anchor-font-color-hover;
+}
+@mixin accordion-content-invert() {
+    border-top: 1px solid $default-border-color;
+}
+
+@mixin accordion-list() {
+    list-style: none;
+    line-height: inherit;
+    margin-left: -$accordion-content-padding;
+    margin-right: -$accordion-content-padding;
+    margin-top: 0;
+    margin-bottom: rhythm(1);
+    > li {
+        padding: $accordion-content-padding;
+        border-bottom: 1px solid $default-border-color;
+        &:first-child {
+            border-top: 1px solid $default-border-color;
+        }
+        > a {
+            margin: -$accordion-content-padding;
+        }
+    }
+}
+@mixin accordion-button-child() {
+    margin: 0;
+    text-transform: none;
+    font-size: 1rem;
+    @include box-shadow(none);
+    &:hover, &:focus {
+        color: $anchor-font-color-hover;
+    }
+    &:before {
+        content: $fa-var-chevron-down;
+    }
+    .active > a:before {
+        content: $fa-var-chevron-up;
+    }
+}
+@mixin accordion-content-child() {
+    @include box-shadow(none);
+}
+
+// standard accordion
+.accordion {
+    .accordion-navigation, dd {
+        position: relative;
+        > a {
+            @include accordion-button;
+        }
+        > .content {
+            @include accordion-content;
+            ul {
+                margin-bottom: $paragraph-margin-bottom;
+            }
+            > :first-child,
+            > :first-child > :first-child {
+                margin-top: 0;
+            }
+            > :last-child, 
+            > :last-child > :last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+// direct link
+.accordion-direct-link {
+    @include accordion-button;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0; // stretch height of parent container
+    z-index: 1;
+    width: rem-calc(48);
+    padding-left: 0;
+    padding-right: 0;
+    border-right: 1px solid rgba($white, 0.5);
+    text-align: center;
+    &:before {
+        content: $fa-var-link !important;
+        float: none;
+        margin-left: 0;
+    }
+    .accordion-invert & {
+        @include accordion-button-invert;
+        border-right: 1px solid $default-border-color;
+    }
+    // overwrite specificity
+    .accordion .accordion-navigation > & {
+        position: absolute;
+        padding-left: 0;
+        padding-right: 0;
+        & + a {
+            padding-left: rem-calc(48 + 12);
+        }
+        &:before {
+            float: none;
+        }
+    }
+    .accordion[class*="block-grid-"] > li & {
+        left: $block-grid-default-spacing / 2;
+        bottom: $block-grid-default-spacing;
+    }
+}
+
+// inverted colors
+.accordion-invert {
+    .accordion-navigation, dd {
+        > a, &.active > a {
+            @include accordion-button-invert;
+        }
+        > .content {
+            @include accordion-content-invert;
+        }
+    }
+}
+
+// child accordion list
+.accordion .accordion, 
+.accordion-list {
+    @include accordion-list;
+}
+
+.accordion .accordion {
+    @extend .accordion-invert;
+    .accordion-navigation, dd {
+        padding: 0;
+        > a {
+            @include accordion-button-child;
+        }
+        > .content {
+            @include accordion-content-child;
+        }
+    }
+}

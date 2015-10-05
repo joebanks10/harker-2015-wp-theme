@@ -1,0 +1,93 @@
+// Fade in when in view
+
+$fade-duration: 0.5s;
+$fade-delay: 0.75s;
+$seq-factor: 0.1;
+
+.fade-in-init {
+    opacity: 0;
+    @include transform(translate(0,50px));
+    @include transition(all $fade-duration ease-out $fade-delay);
+    &.top-to-bottom {
+        @include transform(translate(0,-50px));
+    }
+    &.left-to-right {
+        @include transform(translate(-50px,0));
+    }
+    &.right-to-left {
+        @include transform(translate(50px,0));
+    }
+    @for $i from 0 through 11 {
+        &.seq-#{$i+1} {
+            @include transition-delay(#{$fade-delay + $seq-factor*$i});
+        }
+    }
+}
+
+.fade-in.fade-in-start {
+    opacity: 1;
+    @include transform(translate(0,0));
+}
+
+// Fade in when page loads (no javascript required)
+
+.frame-1 {
+    @include animation-duration(1.5s);
+    @include animation-name(fadeIn1);
+}
+.frame-2 {
+    @include animation-duration(3s);
+    @include animation-name(fadeIn2);
+}
+.frame-3 {
+    @include animation-duration(4.5s);
+    @include animation-name(fadeIn3);
+}
+.frame-4 {
+    @include animation-duration(6s);
+    @include animation-name(fadeIn4);
+}
+
+@include keyframes(fadeIn1) {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@include keyframes(fadeIn2) {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@include keyframes(fadeIn3) {
+    0% {
+        opacity: 0;
+    }
+    66% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@include keyframes(fadeIn4) {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

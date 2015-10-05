@@ -1,0 +1,71 @@
+// Placeholders
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// CSS3 Columns
+@mixin css3-columns($columns: false) {
+    @if $columns {
+        @include column-width(grid-calc($columns, $total-columns));
+        @include column-count($columns);
+        @include column-gap($column-gutter);
+    }
+}
+
+@mixin css3-columns-html-class($size) {
+    @for $i from 1 through $total-columns {
+        .#{$size}-text-columns-#{$i} {
+            @include css3-columns($i);
+        }
+    }
+}
+
+@media #{$small-up} {
+    @include css3-columns-html-class($size: small);
+}
+
+@media #{$medium-up} {
+    .csscolumns {
+        @include css3-columns-html-class($size: medium);
+    }
+}
+
+@media #{$large-up} {
+    .csscolumns {
+        @include css3-columns-html-class($size: large);
+    }
+}
+
+// Vertically Align
+%vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin vertical-align() {
+    position: relative;
+    top: 50%; bottom: auto;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin truncate() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin circle() {
+    @include border-radius(50%);
+}
+
+@mixin admin-banner-element() {
+    .fsComposeMode & {
+        display: none;
+    }
+    .fsComposeMode .fsBannerEdit & {
+        display: block;
+    }
+}

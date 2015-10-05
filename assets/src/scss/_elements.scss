@@ -1,0 +1,134 @@
+// HTML, Body 
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@include establish-baseline; // overrides Foundation
+
+html {
+    // @include debug-vertical-alignment;
+}
+
+html, body {
+    height: auto;
+    line-height: 1.5; // overrides Foundation
+    -webkit-font-smoothing: antialiased;
+}
+
+// Headers
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    a {
+        font-weight: $font-weight-light;
+        text-decoration: none;
+        text-transform: none;
+    }
+    &:first-child {
+        margin-top: 0;
+    }
+}
+h4, h5, h6 {
+    font-weight: normal;
+    margin-bottom: $paragraph-margin-bottom;
+    line-height: $default-line-height;
+}
+h5, h6 {
+    text-transform: none;
+}
+
+.h1 { @extend h1; }
+.h2 { @extend h2; }
+.h3 { @extend h3; }
+.h4 { @extend h4; }
+.h5 { @extend h5; }
+.h6 { @extend h6; }
+
+.subheader {
+    text-transform: none;
+    &:first-child {
+        margin-top: 0;
+    }
+}
+.subheader-invert {
+    color: $white;
+}
+p.subheader {
+    font-size: $h3-font-size - $h3-font-reduction;
+    @media #{$large-up} {
+        font-size: $h3-font-size;
+    }
+}
+
+.intro .subheader, .subheader-intro, p.subheader-intro {
+    font-size: $h2-font-size - $h2-font-reduction;
+    font-weight: $subheader-font-weight;
+    color: $header-font-color;
+    @media #{$large-up} {
+        font-size: $h2-font-size;
+    }
+}
+
+// Block Elements
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+p {
+    aside {
+        font-weight: $font-weight-light;
+    }
+}
+
+pre {
+    margin: $default-margin 0;
+    background: $white;
+    @include box-shadow($default-shadow);
+}
+
+blockquote {
+    p {
+        margin: 0;
+    }
+}
+
+// p, ul, ol, dl {
+//     &:last-child {
+//         margin-bottom: rhythm(1);
+//     }
+// }
+
+// Inline Elements
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+small {
+    font-size: 80%;
+}
+
+strong, b {
+    color: $header-font-color;
+}
+
+// Images
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+p > img {
+    margin-bottom: rhythm(0.5);
+}
+
+// Hyperlinks
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+a {
+    @include transition(color 0.25s);
+}
+
+// Forms
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$button-small-padding: rem-calc(11) 2rem rem-calc(10);
+
+input[type="submit"], input[type="button"] {
+    @include button;
+    padding: $button-small-padding;
+}
+
+select {
+    display: block;
+}

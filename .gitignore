@@ -1,0 +1,12 @@
+*.DS_Store
+.sass-cache
+/backup
+/design
+/assets/dist
+/doc
+/node_modules
+/assets/src/bower_components
+/assets/src/css
+/assets/src/js/vendor/bower.js
+/test
+/tmp

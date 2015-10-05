@@ -1,0 +1,42 @@
+// Picnic
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.picnic-page {
+    .fsElement, .section, main,
+    .current-page-bar {
+        background-color: $harvest-cream;
+    }
+
+    .header {
+        background-color: transparent;
+    }
+
+    .harvest-red-bg {
+        background-color: $harvest-red;
+    }
+    .harvest-orange-bg {
+        background-color: $harvest-orange;
+    }
+    .harvest-yellow-bg {
+        background-color: $harvest-yellow;
+    }
+    .harvest-gold-bg {
+        background-color: $harvest-gold;
+    }
+    .harvest-brown-bg {
+        background-color: $harvest-brown;
+    }
+
+    .subheader {
+        color: $harvest-red;
+    }
+
+    .footer {
+        background-color: $harkergreen;
+    }
+
+    .menu-item-more .f-dropdown {
+        background-color: rgba($harvest-cream, 0.9);
+    }
+}
+ 

@@ -1,0 +1,389 @@
+// Nav Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$brand-bar-height: rem-calc(48);
+$current-page-bar-height: $brand-bar-height;
+$harker-logo-square-width: 65px; // 16px left/right padding
+$harker-logo-width: 215px; // 16px left/right padding
+
+@mixin nav-bar-icon($content) {
+    @include fa-icon();
+    content: $content;
+    line-height: inherit;
+    display: block;
+    width: rhythm(1);
+    text-align: center;
+}
+
+@mixin is-stuck() {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+@mixin trigger-gpu() {
+    // @include transform( translateZ(0) );
+    // @include backface-visibility(hidden);
+    // @include perspective(1000);
+}
+
+.nav-bar, .nav-bar-wrapper {
+    position: relative;
+    background-color: $body-bg;
+}
+
+.nav-bar {
+    display: none;
+    z-index: 100;
+    .has-nav-bar & {
+        display: block;
+    }
+    &.is-stuck {
+        @include is-stuck();
+        // @include transition(top 0.25s);
+        @include transition(transform 0.25s);
+        @include trigger-gpu();
+    }
+    &.is-stuck.is-collapsed {
+        // top: -$brand-bar-height;
+        @include transform( translateY(-$brand-bar-height) );
+    }
+}
+
+.brand-bar, .current-page-bar {
+    position: relative;
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    a, span {
+        display: block;
+        text-decoration: none;
+    }
+}
+.primary-nav, .current-page-nav {
+    @include grid-row();
+}
+.primary-nav-menu, .current-page-menu {
+    @include inline-list;
+    @include clearfix;
+    margin: 0;
+    li {
+        margin: 0;
+    }
+    ul, ul li {
+        float: left;
+    }
+    ul[data-dropdown-content], ul[data-dropdown-content] li {
+        float: none;
+    }
+}
+
+// Brand Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.brand-bar {
+    z-index: 2;
+    background-color: $darkharkergreen;
+    a, span, & {
+        color: $lightgray;
+    }
+    a, span {
+        padding: rem-calc(14) 0.5rem rem-calc(10);
+        background-color: $darkharkergreen;
+        @include transition(background-color 0.5s);
+        &:hover { 
+            background-color: $darkerharkergreen; 
+        }
+        span {
+            padding: 0;
+        }
+    }
+    ul[data-dropdown-content] a,
+    ul[data-dropdown-content] a:hover {
+        background-color: transparent;
+    }
+}
+
+.primary-nav-menu-home {
+    float: left;
+}
+.primary-nav-menu-secondary {
+    float: right;
+}
+.brand-bar .primary-nav-menu-secondary {
+    margin-right: 0.5rem;
+}
+.brand-bar .primary-nav-menu-sections {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+} 
+
+.primary-nav-menu-home {
+    width: $harker-logo-square-width;
+    height: $brand-bar-height;
+    @media #{$large-up} {
+        width: $harker-logo-width;
+    }
+}
+
+.nav-bar .harker-logo {
+    a {
+        width: $harker-logo-square-width;
+        border-right: 4px solid $darkerharkergreen;
+        background-color: $harkergreen;
+        &:hover {
+            background-color: $darkharkergreen;
+        }
+        @media #{$large-up} { 
+            width: $harker-logo-width;
+            border-left: 4px solid $darkerharkergreen;
+        }
+    }
+}
+
+.nav-bar.is-stuck .harker-logo {
+    position: absolute;
+    @include transition( transform 0.25s );
+    @include transform( translateY(0) );
+    @include trigger-gpu();
+}
+.nav-bar.is-stuck.is-collapsed .harker-logo {
+    @include transform( translateY($brand-bar-height) );
+}
+
+.primary-nav-menu-sections a {
+    text-transform: uppercase;
+}
+
+.primary-nav-menu-secondary a,
+.footer-nav-menu-social a {
+    display: block;
+    font-size: rem-calc(24);
+    line-height: rem-calc(24);
+    height: rem-calc(48);
+    padding-right: 0.5rem; 
+    padding-left: 0.5rem; 
+    &:before {
+        @include fa-icon();
+        line-height: rhythm(1);
+        display: inline-block;
+        width: rhythm(1);
+        text-align: center;
+        position: relative;
+        top: -2px; // correct bottom text alignment with text links
+    }
+}
+
+.menu-item-instagram a:before { content: $fa-var-instagram; }
+.menu-item-youtube a:before { content: $fa-var-youtube-square; }
+.menu-item-twitter a:before { content: $fa-var-twitter-square; }
+.menu-item-facebook a:before { content: $fa-var-facebook-square; }
+.menu-item-search a:before { content: $fa-var-search; }
+.menu-item-login a:before { content: $fa-var-user; }
+
+.primary-nav-menu-secondary .menu-item-social {
+    display: none;
+    @media #{$large-up} { 
+        display: block;
+        visibility: hidden;
+        .nav-bar.is-social & {
+            visibility: visible;
+        }
+    }
+}
+
+.primary-nav-menu-sections {
+    li:not(.menu-item-hamburger) {
+        display: none;
+        @media #{$medium-up} { 
+            display: block;
+        }
+    }
+    li.active a {
+        background-image: url(#{$img-path}active-menu-item.png);
+        background-position: bottom center;
+        background-repeat: no-repeat;
+    }
+}
+
+// Current Page Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.current-page-bar {
+    z-index: 1;
+    background-color: rgba($lightgray, 0.9);
+    color: $gray;
+    font-size: rem-calc(14);
+    line-height: rhythm(1);
+    @include box-shadow( $default-shadow );
+    a, span {
+        height: rem-calc(48); // restrict height from increasing on active state (border is added)
+        padding: 0.75rem 0.5rem;
+        @media #{$large-up} {
+            // padding: 1rem 0.5rem 0.5rem;
+            margin-bottom: 0;
+        }
+    }
+    &.is-stuck {
+        @include is-stuck();
+    }
+}
+
+$transform-nav-distance: $harker-logo-square-width;
+$transform-nav-distance-large: $harker-logo-width;
+.current-page-nav {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    @include transform( translateX(0) );
+    @include transition(transform 0.25s ease-out);
+    @include trigger-gpu();
+    .nav-bar.is-stuck.is-collapsed & {
+        @include transform( translateX($transform-nav-distance) );
+        @media #{$large-up} { 
+            @include transform( translateX($transform-nav-distance-large) );
+        }
+    }
+}
+.nav-bar.is-stuck.is-collapsed .f-dropdown {
+    @include transform( translateX(-$transform-nav-distance) );
+    @media #{$large-up} {
+        @include transform( translateX(-$transform-nav-distance-large) );
+    }
+}
+
+.current-page-menu-meta {
+    float: left;
+    a {
+        color: $darkergray;
+    }
+}
+
+.current-page-title {
+    text-transform: uppercase;
+    a, span, &:after {
+        display: inline-block;
+    }
+    @media #{$medium-up} {
+        &:after {
+            content: "|";
+        }
+    }
+    @media #{$large-up} {
+        // font-size: rem-calc(24);
+        font-size: 1rem;
+        &:after {
+            // display: none;
+        }
+    }
+}
+.current-page-bar .current-page-tagline {
+    display: none;
+    font-size: 1rem;
+    @media #{$large-up} {
+        // display: block; // tagline not needed
+    }
+    .nav-bar.is-stuck & {
+        display: none;
+    }
+}
+
+.current-page-menu-bookmarks {
+    li {
+        &.active {
+            a {
+                color: $darkergray;
+                border-bottom: 3px solid $blue;
+            }
+        }
+    }
+    a {
+        color: $gray;
+        border-bottom: 3px solid transparent;
+        @include truncate;
+        @include transition(color 0.5s, border-bottom 0.5s);
+        &:hover, &:focus {
+            color: $darkergray;
+        }
+        @media #{$large-up} {
+            font-size: 1rem;
+        }
+    }
+    > li > a {
+        max-width: 160px;
+    }
+    .nav-bar.is-stuck.is-collapsed & {
+        // menu has tranlated right
+        // so decrease to appropriate width for truncation
+        padding-right: $harker-logo-square-width;
+        @media #{$large-up} {
+            padding-right: $harker-logo-width;
+        }
+    }
+}
+.current-page-bar .current-page-menu-bookmarks {
+    @media #{$large-up} {
+        margin-left: 0.5rem;
+    }
+    .f-dropdown a {
+        font-size: 0.875rem;
+    }
+}
+
+// mmenu (drawer menu)
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$mm_backgroundColor: $white;
+$mm_borderColor: $default-border-color;
+$mm_textColor: $gray;
+$mm_highlightedBackgroundColor: $f-dropdown-list-hover-bg;
+$mm_fontSize: 16px;
+$mm_btnSize: 48px;
+// $mm_padding: 8px;
+// $mm_listitemIndent: 0;
+@import "jquery.mmenu.all";
+
+.mm-menu.mm-front {
+    @include box-shadow(2px 0 10px -2px rgba(black, 0.3));
+    z-index: 1000;
+}
+
+#mm-blocker {
+    background: rgba( 0, 0, 0, 0 );
+    transition: background 0.25s ease;
+    z-index: 999 !important;
+}
+.mm-opening #mm-blocker {
+    background: rgba( 0, 0, 0, 0.3 );
+}
+
+.mm-listview > li {
+    border-bottom: 1px solid $default-border-color;
+}
+
+.mm-listview > li:not(.mm-divider):after {
+    border-bottom: none;
+}
+
+.mm-menu .mm-listview > li.mm-selected > a:not(.mm-next), 
+.mm-menu .mm-listview > li.mm-selected > span {
+    color: $darkergray;
+    background: $f-dropdown-list-hover-bg;
+}
+.mm-listview > li > a, 
+.mm-listview > li > span {
+    &:hover {
+        color: $darkergray;
+        background: $f-dropdown-list-hover-bg;
+    }
+}
+
+.mm-prev:before, .mm-next:after, .mm-arrow:after {
+    right: 26px;
+}
+
+.mm-menu .mm-navbar > a {
+    color: $darkgray;
+}

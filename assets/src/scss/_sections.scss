@@ -1,0 +1,23 @@
+// Sections
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.section {
+    position: relative;
+    background-color: $lightgray;
+    padding: rhythm(2) 0;
+    // &:first-child {
+    //     padding-top: rhythm(3);
+    // }
+    // &:last-child {
+    //     padding-bottom: rhythm(3);
+    // }
+}
+
+// .green-bg, .blue-bg, .purple-bg,
+// .red-bg, .orange-bg, .gold-bg,
+// .section-feature {
+//     & + :not(&) {
+//         padding-top: rhythm(3);
+//         padding-bottom: rhythm(3);
+//     }
+// }

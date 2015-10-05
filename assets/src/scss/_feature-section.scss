@@ -1,0 +1,40 @@
+// Feature
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.section-feature {
+    @extend .section-collapse;
+    overflow: hidden;
+    background-color: $darkergray;
+    > .row {
+        @extend .row-wide;
+        position: relative;
+        > .column, > .columns {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+.feature-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: $white;
+    @include text-shadow($default-shadow);
+    &.position-left {
+        left: 0;
+        right: auto;
+    }
+    &.position-right {
+        right: 0;
+        left: auto;
+    }
+    &.position-top {
+        top: 0;
+        bottom: auto;
+    }
+    &.position-bottom {
+        top: auto;
+        bottom: 0;
+    }
+}

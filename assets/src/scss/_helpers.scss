@@ -1,0 +1,396 @@
+// Section Helpers
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.section-expand {
+    padding: rhythm(3) 0;
+}
+.section-expand-top {
+    padding-top: rhythm(3);
+}
+.section-expand-bottom {
+    padding-bottom: rhythm(3);
+}
+.section-collapse {
+    padding: 0;
+    img {
+        margin-bottom: 0;
+    }
+}
+.section-collapse-top {
+    padding-top: 0;
+}
+.section-collapse-bottom {
+    padding-bottom: 0;
+}
+.section-collapse-y {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+// Photo Cover
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.backgroundsize .photo-cover-active {
+    background-repeat: no-repeat;
+    background-position: center center;
+    @include background-size(cover);
+    img {
+        visibility: hidden;
+    }
+}
+
+// List Helpers
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.list-expand {
+    > li {
+        margin-bottom: rhythm(0.25);
+    }
+}
+
+.list-table {
+    margin: 0 0 rhythm(1);
+    padding: 0;
+    list-style: none;
+    background: $white;
+    @include box-shadow($default-shadow);
+    > li {
+        padding: rhythm(0.25) 1rem;
+        border-top: 1px solid $gainsboro;
+        &:first-child {
+            border-top: none;
+        }
+    }
+}
+
+// Grid Helpers
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.column, .columns {
+    &.column-collapse, &.columns-collapse {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    &.column-expand, &.columns-expand {
+        padding-top: rhythm(2);
+        padding-bottom: rhythm(1);
+    }
+    &.column-expand-2, &.columns-expand-2 {
+        padding-top: rhythm(3);
+        padding-bottom: rhythm(2);
+    }
+}
+
+.row-wide {
+    @include grid-row;
+    max-width: 90rem;
+}
+
+.row-fill, .row-full {
+    @include grid-row;
+    max-width: none;
+}
+
+@media #{$small-only} {
+    [class*=block-grid-] > li {
+        width: 100%;
+        padding-bottom: 0;
+    }
+}
+
+// Vertical Rhythm Helpers
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@for $i from 0 through 4 {
+    .rhythm-padding-#{$i} {
+        padding-top: rhythm($i);
+        padding-bottom: rhythm($i);
+    }
+    .rhythm-margin-#{$i} {
+        margin-top: rhythm($i);
+        margin-bottom: rhythm($i);
+    }
+}
+
+.rhythm-padding-1-5 {
+    padding-top: rhythm(1.5);
+    padding-bottom: rhythm(1.5);
+}
+
+.rhythm-margin-1-5 {
+    margin-top: rhythm(1.5);
+    margin-bottom: rhythm(1.5); 
+}
+
+// Menu Modules
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+a .menu-item-text {
+    display: inline-block;
+    margin-left: 0.5rem;
+    @media #{$medium-up} {
+        text-indent: -9999px;
+        margin-left: 0;
+    }
+}
+
+.menu-item-hamburger {
+    display: block; 
+    a {
+        display: block;
+        &:before {
+            @include fa-icon();
+            content: $fa-var-bars; 
+        }
+        &:before, span {
+            line-height: 1;
+        }
+    }
+}
+
+.menu-item-more > a {
+    position: relative;
+    overflow: hidden;
+    span {
+        position: absolute;
+        top: 0;
+        left: 100%;
+    }
+    &:after {
+        @include nav-bar-icon($fa-var-ellipsis-h); // $fa-var-angle-down;
+        position: relative;
+        top: -2px;
+    }
+}
+.menu-item-more .f-dropdown {
+    background-color: rgba($white,0.95);
+    margin-top: 0;
+    width: 200px;
+    @include box-shadow( 0 2px 2px -1px rgba(black, 0.2) );
+    li {
+        border-top: 1px solid $default-border-color;
+        &:hover, &:focus {
+            background-color: $white;
+        }
+        &:first-child {
+            border-top: none;
+        }
+        &.active {
+            a {
+                color: $darkergray;
+                border-bottom: 3px solid $blue;
+            }
+        }
+    }
+    a {
+        color: $gray;
+        font-size: inherit;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        &:hover, &:focus {
+            color: $darkergray; 
+        }
+    }
+}
+
+// Menu Modules
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.harker-logo {
+    text-indent: -9999px;
+    overflow: hidden;
+    a {
+        display: block;
+        width: 33px;
+        height: rhythm(2);
+        background: url(#{$img-path}harker-logo-square.png) no-repeat center center;
+        @media #{$large-up} { 
+            width: 183px;
+            background-image: url(#{$img-path}harker-logo.png);
+        }
+    }
+    &.harker-logo-true-height a {
+        height: 32px;
+    }
+}
+
+.harker-logo.harker-logo-square {
+    width: 33px;
+    &, a {
+        background: url(#{$img-path}harker-logo-square.png) no-repeat center center;
+    }
+}
+
+.harker-logo.harker-logo-horiz {
+    a {
+        width: 183px;
+        background-image: url(#{$img-path}harker-logo.png);
+    }
+}
+
+.harker-logo-stacked {
+    text-indent: -9999px;
+    overflow: hidden;
+    a {
+        display: block;
+        width: $harker-logo-stacked-width;
+        height: $harker-logo-stacked-height;
+        background: url(#{$img-path}harker-logo-stacked.png) no-repeat center center;
+    }
+}
+
+// General Helpers
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Hide
+.hide { 
+    display: none !important; 
+    .fsComposeMode &.fsElement {
+        display: block !important;
+    }
+}
+
+
+// Truncate
+.truncate {
+    @include truncate;
+}
+
+// Borders
+.border-bottom {
+    border-bottom: 1px solid $default-border-color;
+}
+
+// Padding
+.padding-top { padding-top: rhythm(2) !important; }
+.padding-bottom { padding-bottom: rhythm(2) !important; }
+.padding-left { padding-left: ($column-gutter/2) !important; }
+.padding-right { padding-right: ($column-gutter/2) !important; }
+
+.padding-top-none { padding-top: 0 !important; }
+.padding-bottom-none { padding-bottom: 0 !important; }
+.padding-top-small { padding-top: rhythm(1) !important; }
+.padding-bottom-small { padding-bottom: rhythm(1) !important; }
+.padding-top-large { padding-top: rhythm(3) !important; }
+.padding-bottom-large { padding-bottom: rhythm(3) !important; }
+
+// Margins
+.margin-top { margin-top: rhythm(1) !important; }
+.margin-bottom { margin-bottom: rhythm(1) !important; }
+.margin-left { margin-left: ($column-gutter/2) !important; }
+.margin-right { margin-right: ($column-gutter/2) !important; }
+
+.margin-top-none { margin-top: 0 !important; }
+.margin-bottom-none { margin-bottom: 0 !important; }
+.margin-top-small { margin-top: rhythm(0.5) !important; }
+.margin-bottom-small { margin-bottom: rhythm(0.5) !important; }
+.margin-top-large { margin-top: rhythm(2) !important; }
+.margin-bottom-large { margin-bottom: rhythm(2) !important; }
+
+.margin-centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+// Background Colors
+.green-bg {
+    background-color: $green;
+}
+.blue-bg {
+    background-color: $blue;
+}
+.purple-bg {
+    background-color: $purple;
+}
+.red-bg {
+    background-color: $red;
+}
+.orange-bg {
+    background-color: $orange;
+}
+.gold-bg {
+    background-color: $gold;
+}
+.gray-bg {
+    background-color: $darkergray;
+}
+
+.green-transparent-bg {
+    background-color: rgba($green, 0.8);
+}
+.blue-transparent-bg {
+    background-color: rgba($blue, 0.8);
+}
+.purple-transparent-bg {
+    background-color: rgba($purple, 0.8);
+}
+.red-transparent-bg {
+    background-color: rgba($red, 0.8);
+}
+.orange-transparent-bg {
+    background-color: rgba($orange, 0.8);
+}
+.gold-transparent-bg {
+    background-color: rgba($gold, 0.8);
+}
+
+[class*="-bg"], .section-feature {
+    color: $white;
+    h1, h2, h3, h4, h5, h6, code, a, strong, b {
+        color: $white;
+    }
+    a:hover, a:focus {
+        color: scale-color($white, $lightness: -3%);
+    }
+    a.button.secondary, a.button.info {
+        color: $oil;
+    }
+    .subheader {
+        @extend .subheader-invert;
+    }
+    .button-outline {
+        @extend .button-outline-invert;
+    }
+}
+
+// Text Colors
+.header-text {
+    color: $header-font-color !important;
+}
+.body-text {
+    color: $body-font-color !important;
+}
+
+.green-text {
+    color: $green !important;
+}
+.blue-text {
+    color: $blue !important;
+}
+.purple-text {
+    color: $purple !important;
+}
+.red-text {
+    color: $red !important;
+}
+.orange-text {
+    color: $orange !important;
+}
+.gold-text {
+    color: $gold !important;
+}
+
+// Circles
+.circle {
+    @include border-radius(50%);
+}
+
+// Floaters
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}

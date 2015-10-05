@@ -1,0 +1,13 @@
+// Main
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+main {
+    background-color: $lightgray;
+    &:before, &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+}
