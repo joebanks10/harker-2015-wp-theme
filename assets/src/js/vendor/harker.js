@@ -1,6 +1,8 @@
 // Set up scope
 var hkr = {};
 
+(function($){
+
 // Google Analytics functions
 hkr.ga = {
     init: function() {
@@ -746,3 +748,5 @@ hkr.helpers = {
         });
     }
 };
+
+})(jQuery);
