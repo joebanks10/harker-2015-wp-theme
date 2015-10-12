@@ -50,7 +50,7 @@ $harker-logo-width: 215px; // 16px left/right padding
     }
 }
 
-.brand-bar, .current-page-bar {
+.brand-bar, .current-page-bar, .current-site-bar  {
     position: relative;
     ul {
         padding: 0;
@@ -62,10 +62,10 @@ $harker-logo-width: 215px; // 16px left/right padding
         text-decoration: none;
     }
 }
-.primary-nav, .current-page-nav {
+.primary-nav, .current-page-nav, .current-site-nav {
     @include grid-row();
 }
-.primary-nav-menu, .current-page-menu {
+.primary-nav-menu, .current-page-menu, .current-site-menu {
     @include inline-list;
     @include clearfix;
     margin: 0;
@@ -211,7 +211,7 @@ $harker-logo-width: 215px; // 16px left/right padding
 // Current Page Bar
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-.current-page-bar {
+.current-page-bar, .current-site-bar {
     z-index: 1;
     background-color: rgba($lightgray, 0.9);
     color: $gray;
@@ -220,10 +220,14 @@ $harker-logo-width: 215px; // 16px left/right padding
     @include box-shadow( $default-shadow );
     a, span {
         height: rem-calc(48); // restrict height from increasing on active state (border is added)
-        padding: 0.75rem 0.5rem;
+        padding: rem-calc(14) 0.5rem rem-calc(10);
+        // padding: 0.75rem 0.5rem;
         @media #{$large-up} {
-            // padding: 1rem 0.5rem 0.5rem;
             margin-bottom: 0;
+        }
+        span {
+            height: auto;
+            padding: 0;
         }
     }
     &.is-stuck {
@@ -233,7 +237,7 @@ $harker-logo-width: 215px; // 16px left/right padding
 
 $transform-nav-distance: $harker-logo-square-width;
 $transform-nav-distance-large: $harker-logo-width;
-.current-page-nav {
+.current-page-nav, .current-site-nav {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     @include transform( translateX(0) );
@@ -253,16 +257,22 @@ $transform-nav-distance-large: $harker-logo-width;
     }
 }
 
-.current-page-menu-meta {
+.current-page-menu-meta, .current-site-menu-meta {
     float: left;
     a {
         color: $darkergray;
     }
 }
 
-.current-page-title {
-    text-transform: uppercase;
-    a, span, &:after {
+.current-page-title, .current-site-title {
+    h1, p, a, span {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1rem;
+        line-height: rhythm(1);    
+        margin: 0;
+    }
+    h1, p, a, span, &:after {
         display: inline-block;
     }
     @media #{$medium-up} {
@@ -271,25 +281,41 @@ $transform-nav-distance-large: $harker-logo-width;
         }
     }
     @media #{$large-up} {
-        // font-size: rem-calc(24);
-        font-size: 1rem;
+        &, h1, p, a { 
+            font-size: rem-calc(24);
+            // font-size: 1rem;
+        }
         &:after {
-            // display: none;
+            display: none;
         }
     }
 }
-.current-page-bar .current-page-tagline {
+.current-page-bar .current-page-tagline,
+.current-site-bar .current-site-tagline {
     display: none;
-    font-size: 1rem;
-    @media #{$large-up} {
-        // display: block; // tagline not needed
+    h1, h2, p, a, span {
+        font-weight: normal;
+        text-transform: none;
+        font-size: 1rem;
+        line-height: rhythm(1);    
+        margin: 0;
     }
-    .nav-bar.is-stuck & {
+    h1, h2, p, a, span, &:after {
+        display: inline-block;
+    }
+    @media #{$large-up} {
+        display: block; // tagline not needed
+        &:after {
+            content: "|";
+        }
+    }
+    .nav-bar.is-collapsed & {
         display: none;
     }
 }
 
-.current-page-menu-bookmarks {
+.current-page-menu-bookmarks,
+.current-site-menu-items {
     li {
         &.active {
             a {
@@ -322,7 +348,8 @@ $transform-nav-distance-large: $harker-logo-width;
         }
     }
 }
-.current-page-bar .current-page-menu-bookmarks {
+.current-page-bar .current-page-menu-bookmarks,
+.current-site-bar .current-site-menu-items {
     @media #{$large-up} {
         margin-left: 0.5rem;
     }

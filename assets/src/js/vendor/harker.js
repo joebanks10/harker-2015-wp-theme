@@ -524,7 +524,12 @@ hkr.navbar = {
         insertBookmarks: function() {
             var $bookmarks = $('main').find('*[id^="bookmark-"]'),
                 $bookmarksMenu = this.element,
+                moreMenuHTML = '<li class="menu-item-more">\n\t<a href="#more-bookmarks" data-dropdown="more-bookmarks" aria-controls="more-bookmarks" aria-expanded="false"><span>More</span></a>\n\t<ul id="more-bookmarks" class="f-dropdown" data-dropdown-content aria-hidden="true"></ul>\n</li>',
                 menuHTML = '';
+
+            if ( $bookmarks.length === 0 ) {
+                return;
+            }
 
             $bookmarks.each(function(i, el) {
                 var $bookmark = $(this),
@@ -545,7 +550,7 @@ hkr.navbar = {
                 menuHTML += '<li data-magellan-arrival="' + id + '"><a href="#' + id + '">' + text + '</a></li>';
             });
 
-            menuHTML += '<li class="menu-item-more">\n\t<a href="#more-bookmarks" data-dropdown="more-bookmarks" aria-controls="more-bookmarks" aria-expanded="false"><span>More</span></a>\n\t<ul id="more-bookmarks" class="f-dropdown" data-dropdown-content aria-hidden="true"></ul>\n</li>';
+            menuHTML += moreMenuHTML;
 
             $bookmarksMenu.html(menuHTML);
         },

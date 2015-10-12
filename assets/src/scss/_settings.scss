@@ -12,6 +12,7 @@ $white: #FFF;
 $silver: #CCC;
 $lightgray: #F4F5EF;
 $gray: #888;
+$mediumgray: #9a9a9a;
 $darkgray: #555;
 $darkergray: #333;
 
@@ -351,7 +352,7 @@ $hr-margin: rhythm(1);
 // $list-margin-bottom: $paragraph-margin-bottom;
 // $list-style-position: outside;
 $list-side-margin: 2rem;
-$list-ordered-side-margin: 2rem;
+$list-ordered-side-margin: $list-side-margin;
 // $list-side-margin-no-bullet: 0;
 $list-nested-margin: 2rem;
 // $definition-list-header-weight: $font-weight-bold;
