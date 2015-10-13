@@ -134,7 +134,7 @@
                 $moreItem = $(this.settings.moreItem).removeClass('hide'),
                 $hiddenList = $moreItem.children('ul'),
                 $visibleItems = $(this.settings.visibleItems),
-                $hiddenItems = $list.find('li').not($visibleItems);
+                $hiddenItems = $list.children('li').not($visibleItems).add($hiddenList.children());
 
             $list.empty().append($visibleItems).addClass('is-truncated-all');
             $hiddenList.empty().append($hiddenItems);

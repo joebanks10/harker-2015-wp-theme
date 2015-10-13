@@ -487,7 +487,7 @@ hkr.navbar = {
     },
     bookmarksMenu: {
         init: function() {
-            var $bookmarksMenu = $('.current-page-menu-bookmarks');
+            var $bookmarksMenu = $('.current-page-menu-bookmarks, .current-site-menu-items');
 
             if ($bookmarksMenu.length === 0) {
                 this.element = {};
@@ -497,16 +497,17 @@ hkr.navbar = {
             this.element = $bookmarksMenu;
             this.insertBookmarks();
             this.insertPageTitle();
-            this.mediaQueries = this.getMediaQueries();
 
             $bookmarksMenu.truncatedMenu({
-                moreItem: '.current-page-menu-bookmarks .menu-item-more, .current-page-menu-bookmarks .menu-item-hamburger',
+                moreItem: '.current-page-menu-bookmarks .menu-item-more, .current-site-menu-items .menu-item-more',
                 afterTruncate: function() {
                     $(document).foundation('dropdown', 'reflow');
                 }
             });
 
+            this.mediaQueries = this.getMediaQueries();
             this.mediaQueries();
+
             $(window).on('resize.hkr', this.mediaQueries);
         },
         getMediaQueries: function() {

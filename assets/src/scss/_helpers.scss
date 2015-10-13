@@ -163,15 +163,12 @@ a .menu-item-text {
     }
 }
 .menu-item-more .f-dropdown {
-    background-color: rgba($white,0.95);
     margin-top: 0;
     width: 200px;
-    @include box-shadow( 0 2px 2px -1px rgba(black, 0.2) );
+    @include box-shadow( 0 2px 2px rgba(black, 0.2) );
     li {
+        background: transparent;
         border-top: 1px solid $default-border-color;
-        &:hover, &:focus {
-            background-color: $white;
-        }
         &:first-child {
             border-top: none;
         }
@@ -183,12 +180,15 @@ a .menu-item-text {
         }
     }
     a {
-        color: $gray;
+        color: $darkgray;
         font-size: inherit;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
+        background-color: rgba($white,0.95);
+        @include transition(background-color 0.5s, color 0.5s, border-bottom 0.5s);
         &:hover, &:focus {
             color: $darkergray; 
+            background-color: rgba($body-bg, 0.95);
         }
     }
 }
