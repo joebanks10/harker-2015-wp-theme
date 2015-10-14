@@ -476,18 +476,22 @@ hkr.navbar = {
 
             $activeMenuItem.addClass('active');
 
-            $sectionMenu.truncatedMenu({
-                visibleItems: '.primary-nav-menu-sections > .active, .primary-nav-menu-sections .menu-item-hamburger',
-                moreItem: '.primary-nav-menu-sections .menu-item-more',
-                afterTruncate: function() {
-                    $(document).foundation('dropdown', 'reflow');
-                }
+            $(window).load( function() {
+                $sectionMenu.truncatedMenu({
+                    visibleItems: '.primary-nav-menu-sections > .active, .primary-nav-menu-sections .menu-item-hamburger',
+                    moreItem: '.primary-nav-menu-sections .menu-item-more',
+                    afterTruncate: function() {
+                        $(document).foundation('dropdown', 'reflow');
+                    }
+                });
             });
+            
         }
     },
     bookmarksMenu: {
         init: function() {
-            var $bookmarksMenu = $('.current-page-menu-bookmarks, .current-site-menu-items');
+            var $bookmarksMenu = $('.current-page-menu-bookmarks, .current-site-menu-items'),
+                bookmarksMenu = this;
 
             if ($bookmarksMenu.length === 0) {
                 this.element = {};
@@ -498,17 +502,20 @@ hkr.navbar = {
             this.insertBookmarks();
             this.insertPageTitle();
 
-            $bookmarksMenu.truncatedMenu({
-                moreItem: '.current-page-menu-bookmarks .menu-item-more, .current-site-menu-items .menu-item-more',
-                afterTruncate: function() {
-                    $(document).foundation('dropdown', 'reflow');
-                }
+            $(window).load( function() {
+                $bookmarksMenu.truncatedMenu({
+                    moreItem: '.current-page-menu-bookmarks .menu-item-more, .current-site-menu-items .menu-item-more',
+                    afterTruncate: function() {
+                        $(document).foundation('dropdown', 'reflow');
+                    }
+                });
+
+                bookmarksMenu.mediaQueries = bookmarksMenu.getMediaQueries();
+                bookmarksMenu.mediaQueries();
+
+                $(window).on('resize.hkr', bookmarksMenu.mediaQueries);
             });
 
-            this.mediaQueries = this.getMediaQueries();
-            this.mediaQueries();
-
-            $(window).on('resize.hkr', this.mediaQueries);
         },
         getMediaQueries: function() {
             var $bookmarksMenu = this.element;

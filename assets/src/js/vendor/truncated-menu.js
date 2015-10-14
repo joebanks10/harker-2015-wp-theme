@@ -82,6 +82,7 @@
                 visibleItemsWidth += $(this).outerWidth(true);
             });
 
+            // hide more items list if empty
             if ($hiddenList.children().length === 0) {
                 $moreItem.addClass('hide');
             }
@@ -101,13 +102,11 @@
 
                     if (!$listItem.is($visibleItems)) {
                         sum += listItemWidth;
+                        // console.log("+ " + listItemWidth + " (" + $listItem.text() + ")" + " = " + sum + " < " + listWidth);
                     }
 
                     if (sum < listWidth || $listItem.is($visibleItems)) {
                         visible.push(listItem);
-                        // if (!$listItem.is($visibleItems)) {
-                        //     console.log("+ " + listItemWidth + " (" + $listItem.text() + ")" + " = " + sum + " < " + listWidth);
-                        // }
                     } else {
                         hidden.push(listItem);
                     }
