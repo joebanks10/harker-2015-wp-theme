@@ -654,7 +654,7 @@ img.alignright,
 
 .current-site-menu-items .sub-menu {
     float: none;
-    
+
     li {
         float: none;
         border-top: 1px solid $default-border-color;
@@ -823,8 +823,43 @@ p.entry-meta {
 /* ## Entry Image
 --------------------------------------------- */
 
+.has-post-thumbnail {
+    margin-top: 0;
+}
+
 .entry-image {
     margin-bottom: rhythm(0.5);
+}
+
+.entry-image-container {
+    background-color: $darkergray;
+    margin: 0 (-$column-gutter/2) rhythm(2);
+
+    @media #{$medium-up} {
+        .content-sidebar &,
+        .content-sidebar-sidebar {
+            margin-right: 0;
+        }
+        .sidebar-content &,
+        .sidebar-sidebar-content {
+            margin-left: 0;
+        }
+        .sidebar-content-sidebar {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+    @media #{$large-up} {
+        .single & {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    .entry-image {
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 .entry-image-large-link {

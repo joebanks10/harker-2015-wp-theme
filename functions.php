@@ -12,6 +12,7 @@ function hkr_theme_setup() {
     define( 'CHILD_THEME_DIR_URL', get_stylesheet_directory_uri());
 
     include_once(CHILD_THEME_DIR . '/lib/functions.php');
+    include_once(CHILD_THEME_DIR . '/lib/admin/theme-settings.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/header.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/menu.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/post.php');
