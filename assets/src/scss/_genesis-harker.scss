@@ -228,6 +228,9 @@ img {
 
 .site-inner {
     clear: both;
+    padding: rhythm(2) 0;
+    background: $body-bg;
+    position: relative;
 
     .custom-background & {
         background: $body-bg;
@@ -238,16 +241,6 @@ img {
 --------------------------------------------- */
 
 /* ### Site Layout Options */
-
-.content-sidebar,
-.sidebar-content,
-.content-sidebar-sidebar,
-.sidebar-content-sidebar,
-.sidebar-sidebar-content {
-    .site-inner {
-        @include grid-row();
-    }
-}
 
 .content,
 .sidebar-primary,
@@ -363,12 +356,7 @@ img {
 .breadcrumb {
     font-size: rem-calc(14);
     line-height: rhythm(1);
-    margin: rhythm(2) 0 rhythm(0.5);
-
-    + .entry,
-    + .archive-description {
-        margin-top: 0;
-    }
+    margin: 0 0 rhythm(0.5);
 }
 
 .author-box {
@@ -461,24 +449,24 @@ a.alignright {
 img.centered,
 .aligncenter {
     display: block;
-    margin: 0 auto rhythm(1);
+    margin: rhythm(1) auto;
 }
 
 img.alignnone,
 .alignnone {
-    margin-bottom: rhythm(0.5);
+    margin: rhythm(1) 0;
 }
 
 a.alignleft,
 img.alignleft,
 .wp-caption.alignleft {
-    margin: 0 $column-gutter rhythm(0.5) 0;
+    margin: 0 $column-gutter rhythm(1) 0;
 }
 
 a.alignright,
 img.alignright,
 .wp-caption.alignright {
-    margin: 0 0 rhythm(0.5) $column-gutter;
+    margin: 0 0 rhythm(1) $column-gutter;
 }
 
 .wp-caption-text {
@@ -499,7 +487,7 @@ img.alignright,
 .entry-content .wp-audio-shortcode,
 .entry-content .wp-playlist,
 .entry-content .wp-video {
-    margin: 0 0 rhythm(1);
+    margin: rhythm(1) 0;
 }
 
 
@@ -632,6 +620,13 @@ img.alignright,
 /* # Site Navigation
 ---------------------------------------------------------------------------------------------------- */
 
+.nav-bar-wrapper {
+    background-color: transparent;
+    .has-single-thumbnail-hero & {
+        background-color: $body-bg;
+    }
+}
+
 .current-site-menu-items {
     > li.current-menu-item > a,
     > li.current-menu-ancestor > a {
@@ -753,32 +748,28 @@ img.alignright,
 ---------------------------------------------------------------------------------------------------- */
 
 .archive-description {
-    margin: rhythm(2) 0 rhythm(1);
-    & + .entry {
-        margin-top: 0;
-    }
+    margin: 0;
 }
 
 .archive-title {
-    margin-bottom: rhythm(0.5);
+    margin-bottom: rhythm(1);
+    + p {
+        margin: -(rhythm(0.5)) 0 rhythm(1);
+    }
 }
 
 /* ## Entries
 --------------------------------------------- */
 
 .entry {
-    margin: rhythm(2) 0;
+    margin: 0 0 rhythm(2);
 }
 
 /* ## Entry Title
 --------------------------------------------- */
 
-.entry-header {
-    margin-bottom: rhythm(1);
-}
-
 .entry-title {
-    margin-bottom: 0;
+    margin-bottom: rhythm(1);
 
     a {
         font-weight: $header-font-weight;
@@ -794,12 +785,18 @@ p.entry-meta {
 }
 
 .entry-header .entry-meta {
-    margin-bottom: $paragraph-margin-bottom;
+    margin-bottom: rhythm(1);
     line-height: rhythm(1);
     font-size: rem-calc(14);
-    .entry-time {
-        text-transform: uppercase;
-    }
+}
+
+.entry-time {
+    color: $header-font-color;
+    text-transform: uppercase;
+}
+
+.entry-header .entry-title + .entry-meta {
+    margin-top: -(rhythm(1));
 }
 
 .entry-footer .entry-meta {
@@ -823,34 +820,30 @@ p.entry-meta {
 /* ## Entry Image
 --------------------------------------------- */
 
-.has-post-thumbnail {
-    margin-top: 0;
-}
-
 .entry-image {
     margin-bottom: rhythm(0.5);
 }
 
-.entry-image-container {
+.entry-image-content {
     background-color: $darkergray;
     margin: 0 (-$column-gutter/2) rhythm(2);
 
     @media #{$medium-up} {
         .content-sidebar &,
-        .content-sidebar-sidebar {
+        .content-sidebar-sidebar & {
             margin-right: 0;
         }
         .sidebar-content &,
-        .sidebar-sidebar-content {
+        .sidebar-sidebar-content & {
             margin-left: 0;
         }
-        .sidebar-content-sidebar {
+        .sidebar-content-sidebar & {
             margin-left: 0;
             margin-right: 0;
         }
     }
     @media #{$large-up} {
-        .single & {
+        .content-sidebar-wrap & {
             margin-left: 0;
             margin-right: 0;
         }
@@ -859,6 +852,66 @@ p.entry-meta {
     .entry-image {
         display: block;
         margin: 0 auto;
+    }
+}
+
+.entry-image-banner,
+.entry-image-hero {
+    .hero-meta,
+    .entry-time,
+    .entry-author a {
+        color: $white;
+    }
+}
+
+.entry-image-banner {
+    position: relative;
+    text-align: center;
+    height: auto;
+    margin-top: -(rem-calc(48));
+    @media #{$medium-up} {
+        text-align: left;
+    }
+    .banner-text {
+        position: relative;
+        z-index: 1;
+        padding-top: rhythm(7);
+        padding-bottom: rhythm(5);
+        background-color: rgba(black,0.3);
+    }
+    .hero-title {
+        margin-bottom: 0;
+        @media #{$medium-up} {
+            margin-bottom: rhythm(0.5);
+        }
+    }
+    .hero-meta {
+        @media #{$medium-up} {
+            margin-top: -(rhythm(0.5));
+            margin-bottom: rhythm(1);
+        }
+    }
+    .hero-subtitle {
+        margin-bottom: 0;
+    }
+    .banner-image {
+        position: absolute;
+        background: center center no-repeat $darkergray;
+        @include background-size(cover);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        img {
+            display: none;
+        }
+    }
+}
+
+.entry-image-hero {
+    .hero-meta {
+        margin-top: -(rhythm(1));
+        margin-bottom: rhythm(1);
     }
 }
 
@@ -1022,7 +1075,7 @@ p.entry-meta {
 }
 
 .sidebar .widget {
-    margin: rhythm(2) 0;
+    margin: 0 0 rhythm(2);
 }
 
 

@@ -1,5 +1,11 @@
 <?php
 
+add_action( 'init', 'hkr_add_excerpts_to_pages' );
+
+function hkr_add_excerpts_to_pages() {
+     add_post_type_support( 'page', 'excerpt' );
+}
+
 add_action('genesis_setup', 'hkr_theme_setup');
 
 function hkr_theme_setup() {
@@ -13,9 +19,10 @@ function hkr_theme_setup() {
 
     include_once(CHILD_THEME_DIR . '/lib/functions.php');
     include_once(CHILD_THEME_DIR . '/lib/admin/theme-settings.php');
+    include_once(CHILD_THEME_DIR . '/lib/admin/post.php');
+    include_once(CHILD_THEME_DIR . '/lib/structure/post.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/header.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/menu.php');
-    include_once(CHILD_THEME_DIR . '/lib/structure/post.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/footer.php');
 
     // Remove header widget area
@@ -35,6 +42,35 @@ function hkr_theme_setup() {
 
     // Add viewport meta tag for mobile browsers
     add_theme_support( 'genesis-responsive-viewport' );
+
+    // Add inner divs to elements
+    add_theme_support( 'genesis-structural-wraps', array(
+        'header',
+        'nav',
+        'subnav',
+        'site-inner',
+        'footer-widgets',
+        'footer'
+    ) );
+
+    add_filter( 'genesis_attr_structural-wrap', 'hkr_attributes_structural_wrap' );
+    function hkr_attributes_structural_wrap( $attributes ) {
+
+        $attributes['class'] = 'row';
+
+        return $attributes;
+
+    }
+
+    add_filter( 'genesis_attr_site-inner', 'hkr_attributes_site_inner' );
+    function hkr_attributes_site_inner( $attributes ) {
+
+        $attributes['id'] = 'intro';
+        $attributes['data-magellan-destination'] = 'intro';
+
+        return $attributes;
+
+    }
 
     // Add support for custom background
     add_theme_support( 'custom-background' );

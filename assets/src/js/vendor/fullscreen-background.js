@@ -8,6 +8,8 @@
             aspectRatio: 16 / 9,
             cropBottom: 0,
             container: '',
+            offsetWidth: 0,
+            offsetHeight: 0,
             ready: function() {}
         };
 
@@ -41,8 +43,8 @@
         },
         // resize element to fill the screen
         resizeContent: function(event) {
-            var windowWidth = event.data.theWindow.width(),
-                windowHeight = event.data.theWindow.height(),
+            var windowWidth = event.data.theWindow.width() + event.data.settings.offsetWidth,
+                windowHeight = event.data.theWindow.height() + event.data.settings.offsetHeight,
                 $element = event.data.element,
                 $container = event.data.container,
                 $img = event.data.img,

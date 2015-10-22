@@ -4,7 +4,17 @@ remove_action('genesis_header', 'genesis_do_header');
 remove_action('genesis_header', 'genesis_header_markup_open', 5);
 remove_action('genesis_header', 'genesis_header_markup_close', 15);
 
-add_action('genesis_header', 'hkr_do_header');
+add_action( 'template_redirect', 'hkr_add_header' );
+
+function hkr_add_header() {
+
+    if ( has_single_thumbnail('hero') ) {
+        add_action('genesis_after_header', 'hkr_do_header', 20);
+    } else {
+        add_action('genesis_header', 'hkr_do_header');
+    }
+
+}
 
 function hkr_do_header() { ?>
 

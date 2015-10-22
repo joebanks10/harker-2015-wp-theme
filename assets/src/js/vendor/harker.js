@@ -91,12 +91,12 @@ hkr.foundation = {
 
         // Initialize Foundation
         $(document).foundation({
-            "magellan-expedition": {
-                destination_threshold: 24 + 96 + 48, // pixels from the top of destination for it to be considered active
-                offset_by_height: false
-            },
             accordion: {
                 multi_expand: true
+            },
+            "magellan-expedition": {
+                destination_threshold: 48, // pixels from the top of destination for it to be considered active
+                offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
             }
         });
 
@@ -249,22 +249,27 @@ hkr.hero = {
         }
     },
     setupBgImage: function() {
-        var $img = $('.hero-img > img');
+        var $img = $('.hero-img > img'),
+            container = '#hero';
 
         if ($img.length === 0) {
             return;
         }
 
+        if ($img.data('hero-container') === 'none') {
+            container = '';
+        }
+
         if ($('.hero-bg').length) {
             $img.fsBackground({
                 cropBottom: 60, // use same crop as bg video (to hide playbar)
-                container: '#hero'
+                container: container
             });
         } else {
             $(window).load(function() {
                 $img.fsBackground({
                     aspectRatio: $img.width() / $img.height(),
-                    container: '#hero'
+                    container: container
                 });
             });
         }
@@ -375,7 +380,8 @@ hkr.header = {
 hkr.navbar = {
     init: function() {
         var $navBar = $('.nav-bar'),
-            $hero = $('.fsElement.hero');
+            $hero = $('.fsElement.hero'),
+            navbar = this;
 
         if ($navBar.length === 0) {
             this.element = {};
@@ -397,24 +403,25 @@ hkr.navbar = {
             return;
         }
 
-        // set up scroll behavior for navbar
-        if (!Modernizr.touch) {
-            new Waypoint.Sticky({
-                element: $navBar[0],
-                stuckClass: 'is-stuck',
-                wrapper: '<div class="nav-bar-wrapper" />'
-            });
-
-            hkr.helpers.scroll(this.getScrollHandle("down"), this.getScrollHandle("up"));
-        } else {
-            new Waypoint.Sticky({
-                element: $('.current-page-bar')[0],
-                stuckClass: 'is-stuck',
-                wrapper: '<div class="current-page-bar-wrapper" />'
-            });
-        }
-
         $(window).load(function() {
+
+            // set up scroll behavior for navbar
+            if (!Modernizr.touch) {
+                new Waypoint.Sticky({
+                    element: $navBar[0],
+                    stuckClass: 'is-stuck',
+                    wrapper: '<div class="nav-bar-wrapper" />'
+                });
+
+                hkr.helpers.scroll(navbar.getScrollHandle("down"), navbar.getScrollHandle("up"));
+            } else {
+                new Waypoint.Sticky({
+                    element: $('.current-page-bar')[0],
+                    stuckClass: 'is-stuck',
+                    wrapper: '<div class="current-page-bar-wrapper" />'
+                });
+            }
+
             if (location.hash) {
                 // scroll up to reveal content behind fixed navbar
                 // scrollBy(0, $navBar.height() * -1 - 48);
@@ -499,8 +506,8 @@ hkr.navbar = {
             }
 
             this.element = $bookmarksMenu;
-            this.insertBookmarks();
-            this.insertPageTitle();
+            // this.insertBookmarks();
+            // this.insertPageTitle();
 
             $(window).load( function() {
                 $bookmarksMenu.truncatedMenu({

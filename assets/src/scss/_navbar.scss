@@ -28,7 +28,7 @@ $harker-logo-width: 215px; // 16px left/right padding
     // @include perspective(1000);
 }
 
-.nav-bar, .nav-bar-wrapper {
+.nav-bar-wrapper {
     position: relative;
     background-color: $body-bg;
 }
