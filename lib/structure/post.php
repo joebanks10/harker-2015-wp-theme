@@ -44,6 +44,9 @@ function hkr_do_single_thumbnail() {
             }
 
         } else if ( has_single_thumbnail('banner') ) {
+
+            if ( is_page_template( 'page_home.php' ) && is_active_sidebar( 'hkr-home-banner-widgets') ) 
+                return;
             
             add_action( 'genesis_after_header', 'hkr_do_single_post_banner_image', 15 );
             
@@ -55,6 +58,9 @@ function hkr_do_single_thumbnail() {
             }
 
         } else if ( has_single_thumbnail('hero') ) {
+            if ( is_page_template( 'page_home.php' ) && is_active_sidebar( 'hkr-home-banner-widgets') ) 
+                return;
+
             add_action( 'genesis_after_header', 'hkr_do_single_post_hero_image', 15 );
         } 
 

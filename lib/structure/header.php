@@ -8,7 +8,9 @@ add_action( 'template_redirect', 'hkr_add_header' );
 
 function hkr_add_header() {
 
-    if ( has_single_thumbnail('hero') ) {
+    if ( is_page_template( 'page_home.php' ) && is_active_sidebar( 'hkr-home-banner-widgets') ) {
+        add_action('genesis_header', 'hkr_do_header');
+    } else if ( has_single_thumbnail('hero') ) {
         add_action('genesis_after_header', 'hkr_do_header', 20);
     } else {
         add_action('genesis_header', 'hkr_do_header');

@@ -75,10 +75,26 @@ function hkr_theme_setup() {
     // Add Aesop Story Engine component styles
     add_theme_support( "aesop-component-styles", array( "parallax", "image", "quote", "gallery", "content", "video", "audio", "collection", "chapter", "document", "character", "map", "timeline" ) );
 
-    add_action( 'widgets_init', 'hkr_remove_sidebars' );
-    function hkr_remove_sidebars() {
-        // Remove header widget area
+    add_action( 'widgets_init', 'hkr_setup_sidebars' );
+    function hkr_setup_sidebars() {
+        
+        // Remove header right widget area
         unregister_sidebar( 'header-right' );
+
+        // Add header widget area (full screen)
+        genesis_register_sidebar( array(
+            'id'            => 'hkr-home-banner-widgets',
+            'name'          => __( 'Home Page: Banner', 'harker-2015' ),
+            'description'   => __( 'This is a widget area above the main content area.', 'harker-2015' ),
+        ));
+
+        // Add content widget area
+        genesis_register_sidebar( array(
+            'id'            => 'hkr-home-content-widgets',
+            'name'          => __( 'Home Page: Content', 'harker-2015' ),
+            'description'   => __( 'This is a widget area in the main content area.', 'harker-2015' ),
+        ));
+
     }
 
 } 
