@@ -25,9 +25,6 @@ function hkr_theme_setup() {
     include_once(CHILD_THEME_DIR . '/lib/structure/menu.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/footer.php');
 
-    // Remove header widget area
-    unregister_sidebar( 'header-right' );
-
     // Remove secondary menu
     add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis' ) ) );
 
@@ -77,5 +74,11 @@ function hkr_theme_setup() {
 
     // Add Aesop Story Engine component styles
     add_theme_support( "aesop-component-styles", array( "parallax", "image", "quote", "gallery", "content", "video", "audio", "collection", "chapter", "document", "character", "map", "timeline" ) );
+
+    add_action( 'widgets_init', 'hkr_remove_sidebars' );
+    function hkr_remove_sidebars() {
+        // Remove header widget area
+        unregister_sidebar( 'header-right' );
+    }
 
 } 
