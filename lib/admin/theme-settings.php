@@ -39,11 +39,11 @@ function hkr_single_settings_box_content() {
     ?>
     <p>
         <label for="<?php hkr_settings_field_name('single_thumbnail'); ?>"><input type="checkbox" name="<?php hkr_settings_field_name('single_thumbnail'); ?>" id="<?php hkr_settings_field_name('single_thumbnail'); ?>" value="1"<?php checked( genesis_get_option('single_thumbnail') ); ?> />
-        <?php _e( 'Include the Featured Image?', 'genesis' ); ?></label>
+        <?php _e( 'Display the Featured Image?', 'genesis' ); ?></label>
     </p>
     <div id="genesis_post_image_extras">
         <p>
-            <label for="<?php hkr_settings_field_name('single_thumbnail_format'); ?>"><?php _e( 'Display Feature Image as:', 'genesis' ); ?></label>
+            <label for="<?php hkr_settings_field_name('single_thumbnail_format'); ?>"><?php _e( 'Display Featured Image as:', 'genesis' ); ?></label>
             <select name="<?php hkr_settings_field_name('single_thumbnail_format'); ?>" id="<?php hkr_settings_field_name('single_thumbnail_format'); ?>">
                 <?php
                 $formats = array( 
