@@ -1,35 +1,13 @@
 <?php
 
-remove_filter( 'post_class', 'genesis_featured_image_post_class' );
-add_filter( 'post_class', 'hkr_featured_image_post_class' );
-
-// Check if post has a thumbnail; exludes attachments in post content (use Genesis function to include attachments)
-function hkr_featured_image_post_class( $classes ) {
-
-    if ( has_post_thumbnail() && ! in_array( 'has-post-thumbnail', $classes ) ) {
-        $classes[] = 'has-post-thumbnail';
-    }
-
-    if ( $i = array_search( 'has-post-thumbnail', $classes ) !== false ) {
-        
-        if ( ! genesis_get_option( 'single_thumbnail' ) ) {
-            unset($classes[$i]);
-        }
-        if ( 'genesis_after_header' === genesis_get_option('single_thumbnail_format') ) {
-            unset($classes[$i]);
-        }
-
-    }
-
-    return $classes;
-
-}
+/* Featured Image
+-------------------------------------------------- */
 
 remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
-add_action( 'genesis_entry_header', 'hkr_do_post_image', 4 );
+add_action( 'genesis_entry_header', 'hkr_do_archive_thumbnail', 4 );
 
 // Print post thumbnail in archives/blogs
-function hkr_do_post_image() {
+function hkr_do_archive_thumbnail() {
 
     if ( ! is_singular() && genesis_get_option( 'content_archive_thumbnail' ) ) {
         $img = genesis_get_image( array(
@@ -83,27 +61,17 @@ function hkr_do_single_thumbnail() {
     }
 
 }
-    
-function hkr_single_thumbnail_class( $classes ) {
-    $classes[] = 'has-single-thumbnail';
 
-    if ( 'content' === genesis_get_option('single_thumbnail_format') ) {
-        $classes[] = 'has-single-thumbnail-content';
-    } else if ( 'banner' === genesis_get_option('single_thumbnail_format') ) {
-        $classes[] = 'has-single-thumbnail-banner';
-    } else if ( 'hero' === genesis_get_option('single_thumbnail_format') ) {
-        $classes[] = 'has-single-thumbnail-hero';
-    } 
 
-    return $classes;
-}
+/* Feature Image Templates
+-------------------------------------------------- */
 
 function hkr_do_single_post_content_image() {
-
-    echo '<div class="entry-image-content">';
-    the_post_thumbnail('large', array('class' => 'attachment-large entry-image'));
-    echo '</div>';
-
+    ?>
+    <div class="entry-image-content">
+        <?php the_post_thumbnail('large', array('class' => 'attachment-large entry-image')); ?>
+    </div>
+    <?php
 }
 
 function hkr_do_single_post_banner_image() {
@@ -138,48 +106,8 @@ function hkr_do_single_post_banner_image() {
 }
 
 function hkr_do_single_post_hero_image() {
-    
     hkr_do_hero_header();
     hkr_do_hero();
-
-}
-
-function has_single_thumbnail( $format = false ) {
-
-    if ( genesis_get_custom_field('_hkr_custom_single_thumbnail') ) {
-
-        $has_format = ($format) ? ($format == genesis_get_custom_field( '_hkr_single_thumbnail_format' )) : true;
-
-        return (is_singular() && has_post_thumbnail() && genesis_get_custom_field( '_hkr_single_thumbnail' ) && $has_format);
-
-    } else {
-
-        $has_format = ($format) ? ($format == genesis_get_option( 'single_thumbnail_format' )) : true;
-
-        return (is_singular() && has_post_thumbnail() && genesis_get_option( 'single_thumbnail' ) && $has_format);
-
-    }
-
-}
-
-function hkr_get_post_time( $post_id ) {
-    $output = sprintf( '<time %s>', genesis_attr( 'entry-time' ) ) . get_the_time( get_option( 'date_format' ), $post_id ) . '</time>';
-
-    return $output;
-}
-
-function hkr_get_post_author_posts_link( $user_id ) {
-    
-    $author = get_the_author_meta( 'display_name', $user_id );
-    $url    = get_author_posts_url( $user_id );
-
-    $output  = sprintf( '<span %s>', genesis_attr( 'entry-author' ) );
-    $output .= sprintf( '<a href="%s" %s>', $url, genesis_attr( 'entry-author-link' ) );
-    $output .= sprintf( '<span %s>', genesis_attr( 'entry-author-name' ) );
-    $output .= esc_html( $author );
-    $output .= '</span></a></span>';
-
-    return $output;
 }
 
 function hkr_do_hero_header() {
@@ -252,4 +180,89 @@ function hkr_do_hero() {
         </div>
     </div>
     <?php
+}
+
+
+/* Class Hooks
+-------------------------------------------------- */
+
+remove_filter( 'post_class', 'genesis_featured_image_post_class' );
+add_filter( 'post_class', 'hkr_featured_image_post_class' );
+
+// Check if post has a thumbnail; exludes attachments in post content (use Genesis function to include attachments)
+function hkr_featured_image_post_class( $classes ) {
+
+    if ( has_post_thumbnail() && ! in_array( 'has-post-thumbnail', $classes ) ) {
+        $classes[] = 'has-post-thumbnail';
+    }
+
+    if ( $i = array_search( 'has-post-thumbnail', $classes ) !== false ) {
+        
+        if ( ! genesis_get_option( 'single_thumbnail' ) ) {
+            unset($classes[$i]);
+        }
+        if ( 'genesis_after_header' === genesis_get_option('single_thumbnail_format') ) {
+            unset($classes[$i]);
+        }
+
+    }
+
+    return $classes;
+
+}
+    
+function hkr_single_thumbnail_class( $classes ) {
+    $classes[] = 'has-single-thumbnail';
+
+    if ( 'content' === genesis_get_option('single_thumbnail_format') ) {
+        $classes[] = 'has-single-thumbnail-content';
+    } else if ( 'banner' === genesis_get_option('single_thumbnail_format') ) {
+        $classes[] = 'has-single-thumbnail-banner';
+    } else if ( 'hero' === genesis_get_option('single_thumbnail_format') ) {
+        $classes[] = 'has-single-thumbnail-hero';
+    } 
+
+    return $classes;
+}
+
+
+/* Helper Functions 
+-------------------------------------------------- */
+
+function has_single_thumbnail( $format = false ) {
+
+    if ( genesis_get_custom_field('_hkr_custom_single_thumbnail') ) {
+
+        $has_format = ($format) ? ($format == genesis_get_custom_field( '_hkr_single_thumbnail_format' )) : true;
+
+        return (is_singular() && has_post_thumbnail() && genesis_get_custom_field( '_hkr_single_thumbnail' ) && $has_format);
+
+    } else {
+
+        $has_format = ($format) ? ($format == genesis_get_option( 'single_thumbnail_format' )) : true;
+
+        return (is_singular() && has_post_thumbnail() && genesis_get_option( 'single_thumbnail' ) && $has_format);
+
+    }
+
+}
+
+function hkr_get_post_time( $post_id ) {
+    $output = sprintf( '<time %s>', genesis_attr( 'entry-time' ) ) . get_the_time( get_option( 'date_format' ), $post_id ) . '</time>';
+
+    return $output;
+}
+
+function hkr_get_post_author_posts_link( $user_id ) {
+    
+    $author = get_the_author_meta( 'display_name', $user_id );
+    $url    = get_author_posts_url( $user_id );
+
+    $output  = sprintf( '<span %s>', genesis_attr( 'entry-author' ) );
+    $output .= sprintf( '<a href="%s" %s>', $url, genesis_attr( 'entry-author-link' ) );
+    $output .= sprintf( '<span %s>', genesis_attr( 'entry-author-name' ) );
+    $output .= esc_html( $author );
+    $output .= '</span></a></span>';
+
+    return $output;
 }
