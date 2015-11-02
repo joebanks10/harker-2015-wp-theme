@@ -24,6 +24,7 @@ function hkr_theme_setup() {
     include_once(CHILD_THEME_DIR . '/lib/structure/header.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/menu.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/footer.php');
+    include_once(CHILD_THEME_DIR . '/lib/aesop.php');
 
     // Remove secondary menu
     add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis' ) ) );
@@ -53,7 +54,13 @@ function hkr_theme_setup() {
     add_filter( 'genesis_attr_structural-wrap', 'hkr_attributes_structural_wrap' );
     function hkr_attributes_structural_wrap( $attributes ) {
 
-        $attributes['class'] = 'row';
+        $site_layout = genesis_site_layout();
+
+        if ( 'full-width-content' === $site_layout ) {
+            $attributes['class'] = 'row-full';
+        } else {
+            $attributes['class'] = 'row';
+        }
 
         return $attributes;
 

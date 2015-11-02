@@ -1079,18 +1079,111 @@ p.entry-meta {
 }
 
 
-/* # Site Footer
+/* # Aesop Story Engine
 ---------------------------------------------------------------------------------------------------- */
 
-// No styles
+.aesop-on-harker-2015 {
+    .entry-header,
+    .entry-content > *:not(.aesop-component),
+    .entry-footer,
+    .author-box,
+    .comment-respond,
+    .aesop-content {
+        width: 100%;
+        max-width: rem-calc(750);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
+.aesop-component {
+    margin-left: -($column-gutter/2);
+    margin-right: -($column-gutter/2);
+    
+    &.aesop-component-align-left {
+        margin: 0 ($column-gutter/2) rhythm(0.5) 0;
+    }
+    &.aesop-component-align-right {
+        margin: 0 0 rhythm(0.5) ($column-gutter/2);
+    }
+    &.aesop-component-align-center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
-/* # Media Queries
----------------------------------------------------------------------------------------------------- */
+.aesop-image-component {
+    .aesop-image-component-image {
+        margin-top: 0;
+    }
 
-// Styled within sections above
+    .aesop-img-enlarge, 
+    .aesop-image-component-caption,
+    .aesop-cap-cred {
+        color: $mediumgray;
+    }
 
-/* # Print Styles
----------------------------------------------------------------------------------------------------- */
+    .aesop-cap-cred {
+        border-color: $default-border-color;
+    }
+}
 
-// No styles
+.aesop-character-component {
+    .aesop-content {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        float: left;
+    }
+    .aesop-character-cap {
+        color: $mediumgray;
+        line-height: 1.5;
+        font-style: normal;
+        border-color: $default-border-color;
+    }
+}
+
+.aesop-quote-component.aesop-component {
+    margin: rhythm(1) auto;
+    border-color: $default-border-color;
+    padding: 0.75rem 1.5rem 0;
+
+    &.aesop-component-align-left {
+        margin: rhythm(1) auto rhythm(1) $column-gutter/2;
+        border-left: 5px solid $default-border-color;
+    }
+    &.aesop-component-align-right {
+        margin: rhythm(1) $column-gutter/2 rhythm(1) auto;
+        border-right: 5px solid $default-border-color;
+    }
+    &.aesop-component-align-center {
+        border-top: 5px solid $default-border-color;
+    }
+    &.aesop-quote-type-block, 
+    &.quote-has-image {
+        padding-bottom: 0.75rem;
+        border: none;
+
+        blockquote, cite {
+            color: inherit;
+        }
+    }
+
+    blockquote {
+        line-height: 1;
+        font-weight: 100;
+    }
+    cite {
+        margin-top: rhythm(0.5);
+    }
+
+}
+
+.aesop-parallax-sc {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.aesop-video-component-caption {
+    clear: both;
+}
