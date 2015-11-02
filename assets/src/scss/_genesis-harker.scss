@@ -504,15 +504,24 @@ img.alignright,
     line-height: rhythm(1);
     margin-bottom: rhythm(0.5);
     text-transform: none;
+}
 
-    + * {
+.widget-wrap {
+    > * {
         background: $white;
         padding: $column-gutter/2;
         @include box-shadow($default-shadow);
     }
-    + ul, + ol, + dl {
+    > ul, > ol, > dl {
         margin-left: 0;
         padding-left: $column-gutter/2 + $list-side-margin;
+    }
+    > .widget-title, > .widgettitle,
+    #calendar_wrap,
+    .search-form {
+        background: transparent;
+        padding: 0;
+        @include box-shadow(none);
     }
 }
 
@@ -532,15 +541,6 @@ img.alignright,
 /* ## Featured Content
 --------------------------------------------- */
 
-.featured-content .entry {
-    border-bottom: 2px solid $default-border-color;
-    margin-bottom: rhythm(1);
-    padding: 0 0 rhythm(1);
-}
-
-.featured-content .entry-title {
-    font-size: $h3-font-size;
-}
 
 
 /* # Plugins
