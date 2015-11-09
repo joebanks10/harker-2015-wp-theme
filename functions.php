@@ -17,6 +17,7 @@ function hkr_theme_setup() {
     define( 'CHILD_THEME_DIR', get_stylesheet_directory());
     define( 'CHILD_THEME_DIR_URL', get_stylesheet_directory_uri());
 
+    // include_once(CHILD_THEME_DIR . '/lib/helpers.php');
     include_once(CHILD_THEME_DIR . '/lib/functions.php');
     include_once(CHILD_THEME_DIR . '/lib/admin/theme-settings.php');
     include_once(CHILD_THEME_DIR . '/lib/admin/post.php');
@@ -25,6 +26,8 @@ function hkr_theme_setup() {
     include_once(CHILD_THEME_DIR . '/lib/structure/menu.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/footer.php');
     include_once(CHILD_THEME_DIR . '/lib/aesop.php');
+    include_once(CHILD_THEME_DIR . '/lib/widgets/featured-post-widget.php');
+    include_once(CHILD_THEME_DIR . '/lib/widgets/hero-post-widget.php');
 
     // Remove secondary menu
     add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis' ) ) );
@@ -101,6 +104,19 @@ function hkr_theme_setup() {
             'name'          => __( 'Home Page: Content', 'harker-2015' ),
             'description'   => __( 'This is a widget area in the main content area.', 'harker-2015' ),
         ));
+
+    }
+
+    add_action( 'widgets_init', 'hkr_setup_widgets' );
+
+    function hkr_setup_widgets() {
+
+        // Remove Genesis Featured Post Widget
+        unregister_widget( 'Genesis_Featured_Post' );
+
+        // Add modified version of Genesis Featured Post Widget
+        register_widget( 'HKR_Featured_Posts' );
+        register_widget( 'HKR_Hero_Posts' );
 
     }
 

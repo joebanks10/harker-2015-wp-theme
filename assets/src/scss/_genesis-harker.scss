@@ -1,76 +1,49 @@
-/* # Table of Contents
-- Imports
-- HTML5 Reset
-    - Baseline Normalize
-    - Box Sizing
-    - Float Clearing
-- Defaults
-    - Typographical Elements
-    - Headings
-    - Objects
-    - Gallery
-    - Forms
-    - Tables
-    - Screen Reader Text
-- Structure and Layout
-    - Site Containers
-    - Column Widths and Positions
-    - Column Classes
-- Common Classes
-    - Avatar
-    - Genesis
-    - Search Form
-    - Titles
-    - WordPress
-- Widgets
-    - Featured Content
-- Plugins
-    - Genesis eNews Extended
-    - Jetpack
-- Site Header
-    - Title Area
-    - Widget Area
-- Site Navigation
-    - Accessible Menu
-    - Site Header Navigation
-    - Primary Navigation
-    - Secondary Navigation
-    - Skip Links
-- Content Area
-    - Entries
-    - Entry Meta
-    - Pagination
-    - Comments
-- Sidebars
-- Site Footer
-- Media Queries
-    - Retina Display
-    - Max-width: 1200px
-    - Max-width: 960px
-    - Max-width: 800px
-- Print Styles
-*/
-
-
-/* # Imports
+/* # Mixins
 ---------------------------------------------------------------------------------------------------- */
 
-// No styles
+@mixin hkr-panel() {
+    background: $white;
+    padding: $column-gutter/2;
+    @include box-shadow($default-shadow);
+}
 
-/* # HTML5 Reset
----------------------------------------------------------------------------------------------------- */
+@mixin hkr-panel-reset() {
+    background: transparent;
+    padding: 0;
+    @include box-shadow(none);
+}
 
-/* ## Baseline Normalize
---------------------------------------------- */
+@mixin hkr-post-listing-header() {
+    .entry-header {
+        margin-bottom: rhythm(0.5);
+    }
+    .entry-title {
+        font-size: rem-calc(20);
+        line-height: rhythm(1);
+        text-transform: none;
+        a {
+            text-transform: none;
+        }
+    }
+    .entry-header .entry-meta {
+        font-size: rem-calc(12);
+        line-height: 1.25em;
+        padding-top: rem-calc(5);
+        padding-bottom: rem-calc(4);
+    }
+    .entry-time {
+        text-transform: none;
+    }
+    .entry-title,
+    .entry-header .entry-meta {
+        margin-bottom: rhythm(0.5);
+    }
+    .entry-header .entry-title + .entry-meta {
+        margin-top: -(rhythm(0.5));
+    }
+}
 
-// No styles, already set earlier
-
-/* ## Box Sizing
---------------------------------------------- */
-
-// No styles, already set by Foundation
-
-/* ## Float Clearing
+/* # Float Clearing
 --------------------------------------------- */
 
 .author-box,
@@ -335,6 +308,8 @@ img {
 
 .avatar {
     float: left;
+    margin-right: $column-gutter/2;
+    margin-bottom: rhythm(0.5);
 }
 
 .alignleft .avatar,
@@ -344,6 +319,7 @@ img {
 
 .alignright .avatar {
     margin-left: $column-gutter/2;
+    margin-right: 0;
 }
 
 .comment .avatar {
@@ -460,13 +436,13 @@ img.alignnone,
 a.alignleft,
 img.alignleft,
 .wp-caption.alignleft {
-    margin: 0 $column-gutter rhythm(1) 0;
+    margin: 0 $column-gutter rhythm(0.5) 0;
 }
 
 a.alignright,
 img.alignright,
 .wp-caption.alignright {
-    margin: 0 0 rhythm(1) $column-gutter;
+    margin: 0 0 rhythm(0.5) $column-gutter;
 }
 
 .wp-caption-text {
@@ -496,6 +472,7 @@ img.alignright,
 
 .widget {
     word-wrap: break-word;
+    margin: 0 0 rhythm(2);
 }
 
 .widget-title,
@@ -508,9 +485,7 @@ img.alignright,
 
 .widget-wrap {
     > * {
-        background: $white;
-        padding: $column-gutter/2;
-        @include box-shadow($default-shadow);
+        @include hkr-panel();
     }
     > ul, > ol, > dl {
         margin-left: 0;
@@ -519,9 +494,7 @@ img.alignright,
     > .widget-title, > .widgettitle,
     #calendar_wrap,
     .search-form {
-        background: transparent;
-        padding: 0;
-        @include box-shadow(none);
+        @include hkr-panel-reset();
     }
 }
 
@@ -541,7 +514,88 @@ img.alignright,
 /* ## Featured Content
 --------------------------------------------- */
 
+.featured-content {
+    
+    .widget-wrap {
+        @include hkr-panel();
 
+        > * {
+            @include hkr-panel-reset();
+        }
+        > ul, > ol, > dl {
+            margin-left: $list-side-margin;
+            padding-left: 0;        
+        }
+
+    }
+    .widget-title, .widgettitle {
+        font-size: rem-calc(12);
+        color: $steel;
+        line-height: 1.25em;
+        padding-top: rem-calc(5);
+        padding-bottom: rem-calc(4);
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .entry {
+        margin-bottom: rhythm(1);
+    }
+
+    @include hkr-post-listing-header();
+
+    .entry-content {
+        font-size: rem-calc(12);
+        line-height: 1.25em;
+    }
+
+    .featured-post-1-headlines-wrap {
+        margin: 0 -1rem;
+        @include clearfix;
+        
+        .featured-post-1, .featured-headlines {
+            float: left;
+            width: 50%;
+            padding: 0 $column-gutter/2;
+        }
+    }
+    .featured-headlines-header {
+        font-size: rem-calc(12);
+        line-height: 1.25em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $darkergray;
+        margin-bottom: 0.625em;
+    }
+    .featured-headlines-list {
+        list-style: none;
+        margin: 0 0 rhythm(1);
+        padding: 0;
+
+        li {
+            margin: 0;
+        }
+        .entry-title {
+            font-size: rem-calc(12);
+            font-weight: normal;
+            color: $darkgray;
+            line-height: 1.25em;
+            margin-bottom: 0.625em;
+        }
+    }
+
+    .featured-posts-more {
+        margin: 0;
+        text-align: right;
+        font-size: rem-calc(12);
+        line-height: 1.25em;
+
+        a:after {
+            content: " \00bb";
+        }
+    }
+
+}
 
 /* # Plugins
 ---------------------------------------------------------------------------------------------------- */
@@ -926,6 +980,10 @@ p.entry-meta {
         display: block;
         margin: 0 auto;
     }
+
+    .featured-content .widget-wrap > & {
+        background: $darkergray;
+    }
 }
 
 /* ## Page Types
@@ -934,25 +992,8 @@ p.entry-meta {
 .home, .blog, .page-template-page_blog, .archive {
     
     .content > .post {
-        background: $white;
-        padding: $column-gutter/2;
-        @include box-shadow($default-shadow);
-
-        .entry-header {
-            margin-bottom: rhythm(0.5);
-        }
-        .entry-title {
-            font-size: rem-calc(20);
-            line-height: rhythm(1);
-            text-transform: none;
-            a {
-                text-transform: none;
-            }
-        }
-        .entry-header .entry-meta {
-            font-size: rem-calc(12);
-        }
-
+        @include hkr-panel();
+        @include hkr-post-listing-header();
     }
 }
 
@@ -1074,15 +1115,12 @@ p.entry-meta {
     margin-bottom: 0;
 }
 
-.sidebar .widget {
-    margin: 0 0 rhythm(2);
-}
-
 
 /* # Aesop Story Engine
 ---------------------------------------------------------------------------------------------------- */
 
-.aesop-on-harker-2015 {
+
+.full-width-content.aesop-on-harker-2015 {
     .entry-header,
     .entry-content > *:not(.aesop-component),
     .entry-footer,
@@ -1097,8 +1135,8 @@ p.entry-meta {
 }
 
 .aesop-component {
-    margin-left: -($column-gutter/2);
-    margin-right: -($column-gutter/2);
+    margin-left: 0;
+    margin-right: 0;
     
     &.aesop-component-align-left {
         margin: 0 ($column-gutter/2) rhythm(0.5) 0;

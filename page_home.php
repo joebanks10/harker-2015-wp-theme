@@ -2,7 +2,7 @@
 
 //* Template Name: Home
 
-// add_action( 'genesis_after_header', 'hkr_do_home_banner', 15 );
+add_action( 'genesis_after_header', 'hkr_do_home_banner', 15 );
 
 function hkr_do_home_banner() {
     genesis_widget_area( 'hkr-home-banner-widgets', array( 
