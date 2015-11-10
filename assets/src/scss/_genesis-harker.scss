@@ -597,6 +597,85 @@ img.alignright,
 
 }
 
+/* ## Hero Posts
+--------------------------------------------- */
+
+.hero-posts {
+    position: relative;
+    margin: -(rhythm(2)) 0 0;
+
+    .hero-post-background {
+        background: $harkergreen no-repeat center center;
+        @include background-size(cover);
+        padding: 0;
+        @include box-shadow(none);
+    }
+    .hero-post-overlay {
+        background-color: rgba(black,0.3);
+    }
+    .row {
+        padding: rhythm(4) 0;
+    }
+    .widget-title, .widgettitle {
+        padding: 0 $column-gutter/2;
+        color: $white;
+        font-size: rem-calc(14);
+        text-transform: uppercase;
+        font-weight: normal;
+        margin-bottom: 0;
+    }
+
+    .entry {
+        margin: 0;
+    }
+    .entry-title {
+        margin-bottom: 0;
+
+        &, a {
+            font-weight: normal;
+            color: $white;
+            text-transform: none;
+        }
+    }
+    .entry-meta, .entry-time {
+        &, a {
+            color: $white;
+        }
+    }
+    .entry-header .entry-title + .entry-meta {
+        margin-top: 0;
+    }
+    .entry-time {
+        text-transform: none;
+    }
+
+    .hero-post-1 {
+        @include grid-column($columns:15);
+
+        .entry-header {
+            max-width: rem-calc(450);
+        }
+        .entry-title {
+            font-size: rem-calc(48);
+            line-height: 1.1667em;
+            font-family: $font-family-black;
+        }
+    }
+    .hero-posts-list {
+        @include grid-column($columns:8, $float:right);
+        margin-left: 0;
+        list-style: none;
+
+        .entry {
+            margin-bottom: rhythm(1);
+        }
+        .entry-title {
+            font-size: rem-calc(18);
+        }
+    }
+
+}
+
 /* # Plugins
 ---------------------------------------------------------------------------------------------------- */
 
@@ -1224,4 +1303,13 @@ p.entry-meta {
 
 .aesop-video-component-caption {
     clear: both;
+}
+
+/* # Admin
+---------------------------------------------------------------------------------------------------- */
+
+.admin-bar {
+    .nav-bar.is-stuck {
+        margin-top: 32px !important;
+    }
 }

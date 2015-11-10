@@ -168,6 +168,9 @@ class HKR_Hero_Posts extends WP_Widget {
                 echo '<div class="hero-post-background">';
             }
 
+            echo '<div class="hero-post-overlay">';
+            echo '<div class="row">';
+
         endif;
 
         rewind_posts();
@@ -175,7 +178,7 @@ class HKR_Hero_Posts extends WP_Widget {
     }
 
     function large_featured_image_close() {
-        echo '</div>';
+        echo '</div></div></div>';
     }
 
     function post_article( $args, $instance ) {
