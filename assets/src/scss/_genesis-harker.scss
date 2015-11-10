@@ -484,18 +484,20 @@ img.alignright,
     text-transform: none;
 }
 
-.widget-wrap {
-    > * {
-        @include hkr-panel();
-    }
-    > ul, > ol, > dl {
-        margin-left: 0;
-        padding-left: $column-gutter/2 + $list-side-margin;
-    }
-    > .widget-title, > .widgettitle,
-    #calendar_wrap,
-    .search-form {
-        @include hkr-panel-reset();
+.content-sidebar-wrap {
+    .widget-wrap {
+        > * {
+            @include hkr-panel();
+        }
+        > ul, > ol, > dl {
+            margin-left: 0;
+            padding-left: $column-gutter/2 + $list-side-margin;
+        }
+        > .widget-title, > .widgettitle,
+        #calendar_wrap,
+        .search-form {
+            @include hkr-panel-reset();
+        }
     }
 }
 
@@ -503,13 +505,17 @@ img.alignright,
     margin-bottom: 0;
 }
 
-.widget_calendar table {
-    width: 100%;
-}
+.widget_calendar {
+    table {
+        width: 100%;
+    }
+    td, th {
+        text-align: center;
+    }
+} 
 
-.widget_calendar td,
-.widget_calendar th {
-    text-align: center;
+.home-widgets-banner {
+    background: $darkergray;
 }
 
 /* ## Featured Content

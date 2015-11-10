@@ -12,7 +12,7 @@ function hkr_post_single_thumbnail_fields( $content ) {
     <p>
         <label for="custom-single-thumbnail">
             <input type="checkbox" name="<?php hkr_post_field_name('_hkr_custom_single_thumbnail'); ?>" id="custom-single-thumbnail" value="1"<?php checked( genesis_get_custom_field('_hkr_custom_single_thumbnail') ); ?> />
-            <?php printf( __( 'Customize <a href="%s" target="_blank" title="See default settings">Featured Image settings</a> for this post.', 'harker-2015' ), menu_page_url( 'harker-2015', 0 ) ); ?>
+            <?php printf( __( 'Customize the <a href="%s" target="_blank" title="See default settings">Featured Image display settings</a> for this post.', 'harker-2015' ), menu_page_url( 'genesis', 0 ) . '#hkr-single-settings' ); ?>
         </label>
     </p>
     <div id="hkr_single_thumbnail_settings">

@@ -1,5 +1,8 @@
 <?php
 
+// Enable shortcodes in widget text
+add_filter('widget_text', 'do_shortcode');
+
 add_action( 'widgets_init', 'hkr_setup_sidebars' );
 
 function hkr_setup_sidebars() {
