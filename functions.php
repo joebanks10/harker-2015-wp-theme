@@ -30,6 +30,11 @@ function hkr_theme_setup() {
     include_once(CHILD_THEME_DIR . '/lib/widgets/featured-post-widget.php');
     include_once(CHILD_THEME_DIR . '/lib/widgets/hero-post-widget.php');
 
+    add_action( 'admin_enqueue_scripts', 'hkr_admin_assets' );
+    function hkr_admin_assets() {
+        wp_enqueue_style( 'hkr_admin_css', CHILD_THEME_DIR_URL . '/assets/admin/style.css');
+    }
+
     // Remove secondary menu
     add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis' ) ) );
 

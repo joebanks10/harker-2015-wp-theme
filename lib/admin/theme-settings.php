@@ -1,5 +1,14 @@
 <?php
 
+add_filter( 'genesis_theme_settings_menu_ops', 'hkr_menu_ops' );
+
+function hkr_menu_ops( $options ) {
+    $options['main_menu']['menu_title'] = 'Harker Theme';
+    $options['main_menu']['icon_url'] = CHILD_THEME_DIR_URL . '/lib/admin/images/harker-menu.png';
+
+    return $options;
+}
+
 add_filter( 'genesis_theme_settings_defaults', 'hkr_theme_ops_defaults' );
 
 function hkr_theme_ops_defaults( $defaults ) {
@@ -29,9 +38,10 @@ function hkr_theme_ops_sanitization_filters() {
 }
 
 
-add_action( 'genesis_theme_settings_metaboxes', 'hkr_single_settings_box' );
+add_action( 'genesis_theme_settings_metaboxes', 'hkr_settings_boxes' );
 
-function hkr_single_settings_box( $_genesis_theme_settings_pagehook ) {
+function hkr_settings_boxes( $_genesis_theme_settings_pagehook ) {
+    remove_meta_box( 'genesis-theme-settings-header', $_genesis_theme_settings_pagehook, 'main' );
     add_meta_box( 'hkr-single-settings', __( 'Single Posts', 'genesis' ), 'hkr_single_settings_box_content', $_genesis_theme_settings_pagehook, 'main');
 }
 
