@@ -93,7 +93,7 @@ function hkr_do_single_post_banner_image() {
                     <div class="hero-title"><?php echo $post->post_title; ?></div>
                     <?php if ( is_single() ) : ?>
                     <div class="hero-meta">
-                        <?php echo hkr_get_post_time($post->ID)  . __( ' by ', 'genesis' ) . hkr_get_post_author_posts_link($post->post_author)  ?>
+                        <?php echo hkr_get_post_time($post->ID)  . __( ' by ', 'harker-2015' ) . hkr_get_post_author_posts_link($post->post_author)  ?>
                     </div>
                     <?php endif; ?>
                     <?php if ( !empty( $post->post_excerpt ) ) : ?>
@@ -163,7 +163,7 @@ function hkr_do_hero() {
                     <div class="hero-title"><?php echo $post->post_title; ?></div>
                     <?php if ( is_single() ) : ?>
                     <div class="hero-meta">
-                        <?php echo hkr_get_post_time($post->ID)  . __( ' by ', 'genesis' ) . hkr_get_post_author_posts_link($post->post_author)  ?>
+                        <?php echo hkr_get_post_time($post->ID)  . __( ' by ', 'harker-2015' ) . hkr_get_post_author_posts_link($post->post_author)  ?>
                     </div>
                     <?php endif; ?>
                     <?php if ( !empty( $post->post_excerpt ) ) : ?>

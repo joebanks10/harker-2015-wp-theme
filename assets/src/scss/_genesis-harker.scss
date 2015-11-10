@@ -445,6 +445,7 @@ img.alignright,
     margin: 0 0 rhythm(0.5) $column-gutter;
 }
 
+.gallery-caption,
 .wp-caption-text {
     font-size: rem-calc(12);
     font-weight: 700;
@@ -1198,8 +1199,11 @@ p.entry-meta {
 /* # Aesop Story Engine
 ---------------------------------------------------------------------------------------------------- */
 
-
 .full-width-content.aesop-on-harker-2015 {
+    .row {
+        max-width: none;
+    }
+
     .entry-header,
     .entry-content > *:not(.aesop-component),
     .entry-footer,
@@ -1307,6 +1311,10 @@ p.entry-meta {
 
 /* # Admin
 ---------------------------------------------------------------------------------------------------- */
+
+.post-edit-link {
+    clear: both;
+}
 
 .admin-bar {
     .nav-bar.is-stuck {

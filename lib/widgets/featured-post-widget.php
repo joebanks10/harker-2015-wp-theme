@@ -480,11 +480,11 @@ class HKR_Featured_Posts extends WP_Widget {
                 </p>
 
                 <p>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'gravatar_alignment' ) ); ?>"><?php _e( 'Gravatar Alignment', 'genesis' ); ?>:</label>
+                    <label for="<?php echo esc_attr( $this->get_field_id( 'gravatar_alignment' ) ); ?>"><?php _e( 'Gravatar Alignment', 'harker-2015' ); ?>:</label>
                     <select id="<?php echo esc_attr( $this->get_field_id( 'gravatar_alignment' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'gravatar_alignment' ) ); ?>">
-                        <option value="alignnone">- <?php _e( 'None', 'genesis' ); ?> -</option>
-                        <option value="alignleft" <?php selected( 'alignleft', $instance['gravatar_alignment'] ); ?>><?php _e( 'Left', 'genesis' ); ?></option>
-                        <option value="alignright" <?php selected( 'alignright', $instance['gravatar_alignment'] ); ?>><?php _e( 'Right', 'genesis' ); ?></option>
+                        <option value="alignnone">- <?php _e( 'None', 'harker-2015' ); ?> -</option>
+                        <option value="alignleft" <?php selected( 'alignleft', $instance['gravatar_alignment'] ); ?>><?php _e( 'Left', 'harker-2015' ); ?></option>
+                        <option value="alignright" <?php selected( 'alignright', $instance['gravatar_alignment'] ); ?>><?php _e( 'Right', 'harker-2015' ); ?></option>
                     </select>
                 </p>
 
@@ -573,15 +573,15 @@ class HKR_Featured_Posts extends WP_Widget {
             <div class="genesis-widget-column-box">
 
                 <h4>Headlines</h4>
-                <p id="<?php echo esc_attr( $this->get_field_id( 'headlines_title' ) ); ?>-descr"><?php _e( 'To display a small list of headlines after the first post, please fill out the information below:', 'genesis' ); ?>:</p>
+                <p id="<?php echo esc_attr( $this->get_field_id( 'headlines_title' ) ); ?>-descr"><?php _e( 'To display a small list of headlines after the first post, please fill out the information below:', 'harker-2015' ); ?>:</p>
 
                 <p>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'headlines_title' ) ); ?>"><?php _e( 'Title', 'genesis' ); ?>:</label>
+                    <label for="<?php echo esc_attr( $this->get_field_id( 'headlines_title' ) ); ?>"><?php _e( 'Title', 'harker-2015' ); ?>:</label>
                     <input type="text" id="<?php echo esc_attr( $this->get_field_id( 'headlines_title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'headlines_title' ) ); ?>" value="<?php echo esc_attr( $instance['headlines_title'] ); ?>" class="widefat" aria-describedby="<?php echo esc_attr( $this->get_field_id( 'headlines_title' ) ); ?>-descr" />
                 </p>
 
                 <p>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'headlines_num' ) ); ?>"><?php _e( 'Number of Headlines to Display', 'genesis' ); ?>:</label>
+                    <label for="<?php echo esc_attr( $this->get_field_id( 'headlines_num' ) ); ?>"><?php _e( 'Number of Headlines to Display', 'harker-2015' ); ?>:</label>
                     <input type="text" id="<?php echo esc_attr( $this->get_field_id( 'headlines_num' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'headlines_num' ) ); ?>" value="<?php echo esc_attr( $instance['headlines_num'] ); ?>" size="2" />
                 </p>
 
