@@ -35,6 +35,11 @@ function hkr_theme_setup() {
         wp_enqueue_style( 'hkr_admin_css', CHILD_THEME_DIR_URL . '/assets/admin/style.css');
     }
 
+    add_filter( 'genesis_favicon_url', 'hkr_favicon_url' );
+    function hkr_favicon_url( $url ) {
+        return CHILD_THEME_DIR_URL . '/assets/dist/img/favicon.ico';
+    }
+
     // Remove secondary menu
     add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis' ) ) );
 
