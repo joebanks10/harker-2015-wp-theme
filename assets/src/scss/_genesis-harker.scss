@@ -484,20 +484,18 @@ img.alignright,
     text-transform: none;
 }
 
-.content-sidebar-wrap {
-    .widget-wrap {
-        > * {
-            @include hkr-panel();
-        }
-        > ul, > ol, > dl {
-            margin-left: 0;
-            padding-left: $column-gutter/2 + $list-side-margin;
-        }
-        > .widget-title, > .widgettitle,
-        #calendar_wrap,
-        .search-form {
-            @include hkr-panel-reset();
-        }
+.widget-wrap {
+    > * {
+        @include hkr-panel();
+    }
+    > ul, > ol, > dl {
+        margin-left: 0;
+        padding-left: $column-gutter/2 + $list-side-margin;
+    }
+    > .widget-title, > .widgettitle,
+    #calendar_wrap,
+    .search-form {
+        @include hkr-panel-reset();
     }
 }
 
@@ -516,6 +514,23 @@ img.alignright,
 
 .home-widgets-banner {
     background: $darkergray;
+    color: $white;
+
+    .widget-wrap {
+        @include grid-row();
+
+        > * {
+            @include hkr-panel-reset();
+        }
+        > ul, > ol, > dl {
+            margin-left: $list-side-margin;
+            padding-left: 0;
+        }
+    }
+    .widget-title, .widgettitle {
+        color: $white;
+        margin: rhythm(0.5) 0;
+    }
 }
 
 /* ## Featured Content
@@ -604,20 +619,23 @@ img.alignright,
 
 }
 
-/* ## Hero Posts
+/* ## Featured Posts Banner
 --------------------------------------------- */
 
-.hero-posts {
+.featured-posts-banner {
     position: relative;
     margin: -(rhythm(2)) 0 0;
 
-    .hero-post-background {
+    .widget-wrap {
+        max-width: none;
+    }
+    .banner-background {
         background: $harkergreen no-repeat center center;
         @include background-size(cover);
         padding: 0;
         @include box-shadow(none);
     }
-    .hero-post-overlay {
+    .banner-overlay {
         background-color: rgba(black,0.3);
     }
     .row {
@@ -656,7 +674,7 @@ img.alignright,
         text-transform: none;
     }
 
-    .hero-post-1 {
+    .banner-post-1 {
         @include grid-column($columns:15);
 
         .entry-header {
@@ -668,7 +686,7 @@ img.alignright,
             font-family: $font-family-black;
         }
     }
-    .hero-posts-list {
+    .banner-posts-list {
         @include grid-column($columns:8, $float:right);
         margin-left: 0;
         list-style: none;

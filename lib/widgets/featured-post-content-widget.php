@@ -1,12 +1,12 @@
 <?php
 /**
- * Featured Post Feed. Modified version of Genesis Featured Post widget class.
+ * Featured Post Feed for Content Area. Modified version of Genesis Featured Post widget class.
  *
  * @since 0.1.8
  *
  * @package Genesis\Widgets
  */
-class HKR_Featured_Posts extends WP_Widget {
+class HKR_Featured_Posts_Content extends WP_Widget {
 
     /**
      * Holds widget settings defaults, populated in constructor.
@@ -55,7 +55,7 @@ class HKR_Featured_Posts extends WP_Widget {
 
         $widget_ops = array(
             'classname'   => 'featured-content featured-posts',
-            'description' => __( 'Displays posts with thumbnails', 'harker-2015' ),
+            'description' => __( 'Displays posts with thumbnails. Optimized for the Home Page: Content area.', 'harker-2015' ),
         );
 
         $control_ops = array(
@@ -68,7 +68,7 @@ class HKR_Featured_Posts extends WP_Widget {
         add_action( 'hkr_before_featured_post_widget_content', array($this, 'large_featured_image') );
         add_filter( 'genesis_attr_featured-post', array($this, 'post_class') );
 
-        parent::__construct( 'featured-post', __( 'Featured Posts (harker)', 'harker-2015' ), $widget_ops, $control_ops );
+        parent::__construct( 'featured-post', __( 'Featured Posts (content)', 'harker-2015' ), $widget_ops, $control_ops );
 
     }
 

@@ -6,7 +6,7 @@
  *
  * @package Genesis\Widgets
  */
-class HKR_Hero_Posts extends WP_Widget {
+class HKR_Featured_Posts_Banner extends WP_Widget {
 
     /**
      * Holds widget settings defaults, populated in constructor.
@@ -54,22 +54,20 @@ class HKR_Hero_Posts extends WP_Widget {
         );
 
         $widget_ops = array(
-            'classname'   => 'hero-posts',
-            'description' => __( 'Displays featured posts with thumbnails', 'harker-2015' ),
+            'classname'   => 'featured-posts-banner',
+            'description' => __( 'Displays posts with thumbnails. Optimized for the Home Page: Banner area.', 'harker-2015' ),
         );
 
         $control_ops = array(
-            'id_base' => 'hero-post',
-            'width'   => 505,
-            'height'  => 350,
+            'id_base' => 'featured-post-banner'
         );
 
         // add actions and filters
-        add_action( 'hkr_before_hero_post_widget_content', array($this, 'large_featured_image_open') );
-        add_action( 'hkr_after_hero_post_widget_content', array($this, 'large_featured_image_close') );
-        add_filter( 'genesis_attr_hero-post', array($this, 'post_class') );
+        add_action( 'hkr_before_banner_post_widget_content', array($this, 'large_featured_image_open') );
+        add_action( 'hkr_after_banner_post_widget_content', array($this, 'large_featured_image_close') );
+        add_filter( 'genesis_attr_banner-post', array($this, 'post_class') );
 
-        parent::__construct( 'hero-post', __( 'Hero Posts (harker)', 'harker-2015' ), $widget_ops, $control_ops );
+        parent::__construct( 'featured-post-banner', __( 'Featured Posts Banner', 'harker-2015' ), $widget_ops, $control_ops );
 
     }
 
@@ -95,7 +93,7 @@ class HKR_Hero_Posts extends WP_Widget {
         $wp_query = $this->get_query( $instance );
 
         echo $args['before_widget'];
-        do_action( 'hkr_before_hero_post_widget_content', $instance );
+        do_action( 'hkr_before_banner_post_widget_content', $instance );
 
         // the widget title
         if ( ! empty( $instance['title'] ) )
@@ -112,7 +110,7 @@ class HKR_Hero_Posts extends WP_Widget {
             else {
                 
                 if ( $wp_query->current_post == 1 ) {
-                    echo '<ul class="hero-posts-list">';
+                    echo '<ul class="banner-posts-list">';
                 }
                 
                 $this->post_list_item( $args, $instance );
@@ -126,7 +124,7 @@ class HKR_Hero_Posts extends WP_Widget {
         endwhile; endif; 
         wp_reset_query();
 
-        do_action( 'hkr_after_hero_post_widget_content', $instance );
+        do_action( 'hkr_after_banner_post_widget_content', $instance );
         echo $args['after_widget'];
 
     }
@@ -163,12 +161,12 @@ class HKR_Hero_Posts extends WP_Widget {
             ) );
 
             if ( $image_url ) {
-                printf( '<div class="hero-post-background" style="background-image:url(%s);">', $image_url );
+                printf( '<div class="banner-background" style="background-image:url(%s);">', $image_url );
             } else {
-                echo '<div class="hero-post-background">';
+                echo '<div class="banner-background">';
             }
 
-            echo '<div class="hero-post-overlay">';
+            echo '<div class="banner-overlay">';
             echo '<div class="row">';
 
         endif;
@@ -187,7 +185,7 @@ class HKR_Hero_Posts extends WP_Widget {
         genesis_markup( array(
             'html5'   => '<article %s>',
             'xhtml'   => sprintf( '<div class="%s">', implode( ' ', get_post_class() ) ),
-            'context' => 'hero-post',
+            'context' => 'banner-post',
         ) );
 
         echo genesis_html5() ? '<header class="entry-header">' : '';
@@ -224,7 +222,7 @@ class HKR_Hero_Posts extends WP_Widget {
 
         $title = get_the_title() ? get_the_title() : __( '(no title)', 'harker-2015' );
 
-        $title = apply_filters( 'hkr_hero_post_title', $title, $instance, $args );
+        $title = apply_filters( 'hkr_banner_post_title', $title, $instance, $args );
         $heading = genesis_a11y( 'headings' ) ? 'h4' : 'h2';
 
         if ( genesis_html5() )
@@ -238,7 +236,7 @@ class HKR_Hero_Posts extends WP_Widget {
         global $wp_query;
 
         $classes = get_post_class();
-        $classes[] = 'hero-post-' . ($wp_query->current_post + 1);
+        $classes[] = 'banner-post-' . ($wp_query->current_post + 1);
 
         $attributes['class'] = join( ' ', $classes );
 
@@ -315,101 +313,93 @@ class HKR_Hero_Posts extends WP_Widget {
             <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
         </p>
 
-        <div class="genesis-widget-column">
+        <div class="genesis-widget-column-box genesis-widget-column-box-top">
 
-            <div class="genesis-widget-column-box genesis-widget-column-box-top">
+            <h4>Post Selection</h4>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'posts_cat' ); ?>"><?php _e( 'Category', 'harker-2015' ); ?>:</label>
+                <?php
+                $categories_args = array(
+                    'name'            => $this->get_field_name( 'posts_cat' ),
+                    'id'              => $this->get_field_id( 'posts_cat' ),
+                    'selected'        => $instance['posts_cat'],
+                    'orderby'         => 'Name',
+                    'hierarchical'    => 1,
+                    'show_option_all' => __( 'All Categories', 'harker-2015' ),
+                    'hide_empty'      => '0',
+                );
+                wp_dropdown_categories( $categories_args ); ?>
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'posts_tag' ); ?>"><?php _e( 'Tag', 'harker-2015' ); ?>:</label>
+                <?php
+                $tag_args = array(
+                    'name'            => $this->get_field_name( 'posts_tag' ),
+                    'id'              => $this->get_field_id( 'posts_tag' ),
+                    'selected'        => $instance['posts_tag'],
+                    'orderby'         => 'Name',
+                    'hierarchical'    => 1,
+                    'show_option_all' => __( 'All Tags', 'harker-2015' ),
+                    'hide_empty'      => '0',
+                    'taxonomy' => 'post_tag'
+                );
+                wp_dropdown_categories( $tag_args ); ?>
+            </p>
 
-                <h4>Post Selection</h4>
-                <p>
-                    <label for="<?php echo $this->get_field_id( 'posts_cat' ); ?>"><?php _e( 'Category', 'harker-2015' ); ?>:</label>
-                    <?php
-                    $categories_args = array(
-                        'name'            => $this->get_field_name( 'posts_cat' ),
-                        'id'              => $this->get_field_id( 'posts_cat' ),
-                        'selected'        => $instance['posts_cat'],
-                        'orderby'         => 'Name',
-                        'hierarchical'    => 1,
-                        'show_option_all' => __( 'All Categories', 'harker-2015' ),
-                        'hide_empty'      => '0',
-                    );
-                    wp_dropdown_categories( $categories_args ); ?>
-                </p>
-                <p>
-                    <label for="<?php echo $this->get_field_id( 'posts_tag' ); ?>"><?php _e( 'Tag', 'harker-2015' ); ?>:</label><br>
-                    <?php
-                    $tag_args = array(
-                        'name'            => $this->get_field_name( 'posts_tag' ),
-                        'id'              => $this->get_field_id( 'posts_tag' ),
-                        'selected'        => $instance['posts_tag'],
-                        'orderby'         => 'Name',
-                        'hierarchical'    => 1,
-                        'show_option_all' => __( 'All Tags', 'harker-2015' ),
-                        'hide_empty'      => '0',
-                        'taxonomy' => 'post_tag'
-                    );
-                    wp_dropdown_categories( $tag_args ); ?>
-                </p>
+            <p>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'posts_num' ) ); ?>"><?php _e( 'Number of Posts to Show', 'harker-2015' ); ?>:</label>
+                <input type="text" id="<?php echo esc_attr( $this->get_field_id( 'posts_num' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'posts_num' ) ); ?>" value="<?php echo esc_attr( $instance['posts_num'] ); ?>" size="2" />
+            </p>
 
-                <p>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'posts_num' ) ); ?>"><?php _e( 'Number of Posts to Show', 'harker-2015' ); ?>:</label>
-                    <input type="text" id="<?php echo esc_attr( $this->get_field_id( 'posts_num' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'posts_num' ) ); ?>" value="<?php echo esc_attr( $instance['posts_num'] ); ?>" size="2" />
-                </p>
+            <p>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'posts_offset' ) ); ?>"><?php _e( 'Number of Posts to Offset', 'harker-2015' ); ?>:</label>
+                <input type="text" id="<?php echo esc_attr( $this->get_field_id( 'posts_offset' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'posts_offset' ) ); ?>" value="<?php echo esc_attr( $instance['posts_offset'] ); ?>" size="2" />
+            </p>
 
-                <p>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'posts_offset' ) ); ?>"><?php _e( 'Number of Posts to Offset', 'harker-2015' ); ?>:</label>
-                    <input type="text" id="<?php echo esc_attr( $this->get_field_id( 'posts_offset' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'posts_offset' ) ); ?>" value="<?php echo esc_attr( $instance['posts_offset'] ); ?>" size="2" />
-                </p>
+            <p>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php _e( 'Order By', 'harker-2015' ); ?>:</label>
+                <select id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>">
+                    <option value="date" <?php selected( 'date', $instance['orderby'] ); ?>><?php _e( 'Date', 'harker-2015' ); ?></option>
+                    <option value="title" <?php selected( 'title', $instance['orderby'] ); ?>><?php _e( 'Title', 'harker-2015' ); ?></option>
+                    <option value="parent" <?php selected( 'parent', $instance['orderby'] ); ?>><?php _e( 'Parent', 'harker-2015' ); ?></option>
+                    <option value="ID" <?php selected( 'ID', $instance['orderby'] ); ?>><?php _e( 'ID', 'harker-2015' ); ?></option>
+                    <option value="comment_count" <?php selected( 'comment_count', $instance['orderby'] ); ?>><?php _e( 'Comment Count', 'harker-2015' ); ?></option>
+                    <option value="rand" <?php selected( 'rand', $instance['orderby'] ); ?>><?php _e( 'Random', 'harker-2015' ); ?></option>
+                </select>
+            </p>
 
-                <p>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php _e( 'Order By', 'harker-2015' ); ?>:</label>
-                    <select id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>">
-                        <option value="date" <?php selected( 'date', $instance['orderby'] ); ?>><?php _e( 'Date', 'harker-2015' ); ?></option>
-                        <option value="title" <?php selected( 'title', $instance['orderby'] ); ?>><?php _e( 'Title', 'harker-2015' ); ?></option>
-                        <option value="parent" <?php selected( 'parent', $instance['orderby'] ); ?>><?php _e( 'Parent', 'harker-2015' ); ?></option>
-                        <option value="ID" <?php selected( 'ID', $instance['orderby'] ); ?>><?php _e( 'ID', 'harker-2015' ); ?></option>
-                        <option value="comment_count" <?php selected( 'comment_count', $instance['orderby'] ); ?>><?php _e( 'Comment Count', 'harker-2015' ); ?></option>
-                        <option value="rand" <?php selected( 'rand', $instance['orderby'] ); ?>><?php _e( 'Random', 'harker-2015' ); ?></option>
-                    </select>
-                </p>
+            <p>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php _e( 'Sort Order', 'harker-2015' ); ?>:</label>
+                <select id="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>">
+                    <option value="DESC" <?php selected( 'DESC', $instance['order'] ); ?>><?php _e( 'Descending (3, 2, 1)', 'harker-2015' ); ?></option>
+                    <option value="ASC" <?php selected( 'ASC', $instance['order'] ); ?>><?php _e( 'Ascending (1, 2, 3)', 'harker-2015' ); ?></option>
+                </select>
+            </p>
 
-                <p>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php _e( 'Sort Order', 'harker-2015' ); ?>:</label>
-                    <select id="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>">
-                        <option value="DESC" <?php selected( 'DESC', $instance['order'] ); ?>><?php _e( 'Descending (3, 2, 1)', 'harker-2015' ); ?></option>
-                        <option value="ASC" <?php selected( 'ASC', $instance['order'] ); ?>><?php _e( 'Ascending (1, 2, 3)', 'harker-2015' ); ?></option>
-                    </select>
-                </p>
+            <p>
+                <input id="<?php echo esc_attr( $this->get_field_id( 'exclude_displayed' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'exclude_displayed' ) ); ?>" value="1" <?php checked( $instance['exclude_displayed'] ); ?>/>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'exclude_displayed' ) ); ?>"><?php _e( 'Exclude Previously Displayed Posts?', 'harker-2015' ); ?></label>
+            </p>
 
-                <p>
-                    <input id="<?php echo esc_attr( $this->get_field_id( 'exclude_displayed' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'exclude_displayed' ) ); ?>" value="1" <?php checked( $instance['exclude_displayed'] ); ?>/>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'exclude_displayed' ) ); ?>"><?php _e( 'Exclude Previously Displayed Posts?', 'harker-2015' ); ?></label>
-                </p>
-
-                <p>
-                    <input id="<?php echo esc_attr( $this->get_field_id( 'exclude_sticky' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'exclude_sticky' ) ); ?>" value="1" <?php checked( $instance['exclude_sticky'] ); ?>/>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'exclude_sticky' ) ); ?>"><?php _e( 'Exclude Sticky Posts?', 'harker-2015' ); ?></label>
-                </p>
-
-            </div>
+            <p>
+                <input id="<?php echo esc_attr( $this->get_field_id( 'exclude_sticky' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'exclude_sticky' ) ); ?>" value="1" <?php checked( $instance['exclude_sticky'] ); ?>/>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'exclude_sticky' ) ); ?>"><?php _e( 'Exclude Sticky Posts?', 'harker-2015' ); ?></label>
+            </p>
 
         </div>
 
-        <div class="genesis-widget-column genesis-widget-column-right">
+        <div class="genesis-widget-column-box genesis-widget-column-box-top">
 
-            <div class="genesis-widget-column-box genesis-widget-column-box-top">
+            <h4>Post Content</h4>
 
-                <h4>Post Content</h4>
+            <p>
+                <input id="<?php echo esc_attr( $this->get_field_id( 'show_byline' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_byline' ) ); ?>" value="1" <?php checked( $instance['show_byline'] ); ?>/>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'show_byline' ) ); ?>"><?php _e( 'Show Post Info', 'harker-2015' ); ?></label>
 
-                <p>
-                    <input id="<?php echo esc_attr( $this->get_field_id( 'show_byline' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_byline' ) ); ?>" value="1" <?php checked( $instance['show_byline'] ); ?>/>
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'show_byline' ) ); ?>"><?php _e( 'Show Post Info', 'harker-2015' ); ?></label>
+                <input type="text" id="<?php echo esc_attr( $this->get_field_id( 'post_info' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_info' ) ); ?>" value="<?php echo esc_attr( $instance['post_info'] ); ?>" class="widefat" />
+                <label for="<?php echo esc_attr( $this->get_field_id( 'post_info' ) ); ?>" class="screen-reader-text"><?php _e( 'Content Post Info', 'harker-2015' ); ?></label>
 
-                    <input type="text" id="<?php echo esc_attr( $this->get_field_id( 'post_info' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_info' ) ); ?>" value="<?php echo esc_attr( $instance['post_info'] ); ?>" class="widefat" />
-                    <label for="<?php echo esc_attr( $this->get_field_id( 'post_info' ) ); ?>" class="screen-reader-text"><?php _e( 'Content Post Info', 'harker-2015' ); ?></label>
-
-                </p>
-
-            </div>
+            </p>
 
         </div>
         <?php

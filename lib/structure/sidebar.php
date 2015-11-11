@@ -34,7 +34,7 @@ function hkr_setup_widgets() {
     unregister_widget( 'Genesis_Featured_Post' );
 
     // Add modified version of Genesis Featured Post Widget
-    register_widget( 'HKR_Featured_Posts' );
-    register_widget( 'HKR_Hero_Posts' );
+    register_widget( 'HKR_Featured_Posts_Content' );
+    register_widget( 'HKR_Featured_Posts_Banner' );
 
 }
