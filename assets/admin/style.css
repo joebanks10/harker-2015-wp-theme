@@ -1,0 +1,10 @@
+#adminmenu #toplevel_page_genesis .wp-menu-image:before {
+    display: none;
+}
+
+#adminmenu #toplevel_page_genesis .wp-menu-image img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding-top: 7px;
+}
