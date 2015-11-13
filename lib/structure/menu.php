@@ -14,7 +14,8 @@ function hkr_do_nav() {
         'link_before'    => sprintf( '<span %s>', genesis_attr( 'nav-link-wrap' ) ),
         'link_after'     => '</span>',
         'depth'          => 3,
-        'echo'           => true
+        'echo'           => true,
+        'fallback_cb'    => ''
     );
 
     wp_nav_menu($args);

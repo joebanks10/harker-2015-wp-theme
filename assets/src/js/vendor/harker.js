@@ -497,12 +497,16 @@ hkr.navbar = {
     },
     bookmarksMenu: {
         init: function() {
-            var $bookmarksMenu = $('.current-page-menu-bookmarks, .current-site-menu-items'),
+            var $bookmarksMenu = $('ul.current-page-menu-bookmarks, ul.current-site-menu-items'),
                 bookmarksMenu = this;
 
             if ($bookmarksMenu.length === 0) {
-                this.element = {};
-                return this.element;
+                $bookmarksMenu = $('div.current-page-menu-bookmarks > ul, div.current-site-menu-items > ul');
+
+                if ($bookmarksMenu.length === 0) {
+                    this.element = {};
+                    return this.element;
+                }
             }
 
             this.element = $bookmarksMenu;

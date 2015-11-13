@@ -96,7 +96,9 @@ function hkr_do_header() { ?>
             <nav class="current-site-nav">
                 <ul class="current-site-menu current-site-menu-meta">
                     <li class="current-site-title"><?php do_action( 'genesis_site_title' ); ?></li>
+                    <?php if ( ! empty(get_bloginfo('description')) ): ?>
                     <li class="current-site-tagline"><?php do_action( 'genesis_site_description' ); ?></li>
+                    <?php endif; ?>
                 </ul>
                 <?php do_action( 'hkr_current_site_menu_items' ); ?>
             </nav>

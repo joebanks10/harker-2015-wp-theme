@@ -300,14 +300,11 @@ $transform-nav-distance-large: $harker-logo-width;
         line-height: rhythm(1);    
         margin: 0;
     }
-    h1, h2, p, a, span, &:after {
+    h1, h2, p, a, span {
         display: inline-block;
     }
     @media #{$large-up} {
         display: block; // tagline not needed
-        &:after {
-            content: "|";
-        }
     }
     .nav-bar.is-collapsed & {
         display: none;
@@ -334,6 +331,19 @@ $transform-nav-distance-large: $harker-logo-width;
         }
         @media #{$large-up} {
             font-size: 1rem;
+        }
+    }
+    > li:first-child {
+        a {
+            padding-left: 0;
+            &:before {
+                content: "|";
+                margin-right: 0.5rem;
+                color: $gray;
+            }
+            &:before, span {
+                display: inline-block;
+            }
         }
     }
     > li > a {
