@@ -19,6 +19,25 @@ function hkr_theme_assets() {
 
 }
 
+add_filter( 'genesis_site_title_wrap', 'hkr_do_home_title_wrap' );
+add_filter( 'genesis_entry_title_wrap', 'hkr_entry_title_wrap' );
+
+function hkr_do_home_title_wrap($wrap) {
+    if ( is_front_page() ) {
+        return 'h1';
+    } else {
+        return $wrap;
+    }
+}
+
+function hkr_entry_title_wrap($wrap) {
+    if ( is_front_page() ) {
+        return 'h2';
+    } else {
+        return $wrap;
+    }
+}
+
 remove_action('genesis_header', 'genesis_do_header');
 remove_action('genesis_header', 'genesis_header_markup_open', 5);
 remove_action('genesis_header', 'genesis_header_markup_close', 15);

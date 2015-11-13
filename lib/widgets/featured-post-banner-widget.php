@@ -161,7 +161,7 @@ class HKR_Featured_Posts_Banner extends WP_Widget {
             ) );
 
             if ( $image_url ) {
-                printf( '<div class="banner-background" style="background-image:url(%s);">', $image_url );
+                printf( '<div class="banner-background has-background-image" style="background-image:url(%s);">', $image_url );
             } else {
                 echo '<div class="banner-background">';
             }

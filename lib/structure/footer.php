@@ -14,72 +14,77 @@ function hkr_do_footer() { ?>
             <nav class="footer-nav">
                 <ul class="footer-nav-menu row">
                     <li class="column large-5 medium-8">
-                        <a href="#">Preschool</a>
+                        <a href="/preschool">Preschool</a>
                         <ul>
-                            <li><a href="#">Academics</a></li>
-                            <li><a href="#">Specialty Classes</a></li>
-                            <li><a href="#">Teachers</a></li>
-                            <li><a href="#">Support &amp; Services</a></li>
-                            <li><a href="#">Campus &amp; Facilities</a></li>
-                            <li><a href="#">School Community</a></li>
+                            <li><a href="/preschool/academics">Academics</a></li>
+                            <li><a href="/preschool/specialty-classes">Specialty Classes</a></li>
+                            <li><a href="/preschool/teachers">Teachers</a></li>
+                            <li><a href="/preschool/support-services">Support &amp; Services</a></li>
+                            <li><a href="/preschool/campus-facilities">Campus &amp; Facilities</a></li>
+                            <li><a href="/preschool/school-community">School Community</a></li>
                         </ul>
                     </li>
                     <li class="column large-5 medium-8">
-                        <a href="#">Lower School</a>
+                        <a href="/lower-school">Lower School</a>
                         <ul>
-                            <li><a href="#">Academics</a></li>
-                            <li><a href="#">Programs &amp; Extracurriculars</a></li>
-                            <li><a href="#">Teachers</a></li>
-                            <li><a href="#">Students</a></li>
-                            <li><a href="#">Support &amp; Services</a></li>
-                            <li><a href="#">Campus &amp; Facilities</a></li>
-                            <li><a href="#">School Community</a></li>
+                            <li><a href="/lower-school/academics">Academics</a></li>
+                            <li><a href="/lower-school/programs-extracurriculars">Programs &amp; Extracurriculars</a></li>
+                            <li><a href="/lower-school/teachers">Teachers</a></li>
+                            <li><a href="/lower-school/students">Students</a></li>
+                            <li><a href="/lower-school/support-services">Support &amp; Services</a></li>
+                            <li><a href="/lower-school/campus-facilities">Campus &amp; Facilities</a></li>
+                            <li><a href="/lower-school/school-community">School Community</a></li>
                         </ul>
                     </li>
                     <li class="column large-5 medium-8">
-                        <a href="#">Middle School</a>
+                        <a href="/middle-school">Middle School</a>
                         <ul>
-                            <li><a href="#">Academics</a></li>
-                            <li><a href="#">Programs &amp; Extracurriculars</a></li>
-                            <li><a href="#">Teachers</a></li>
-                            <li><a href="#">Students</a></li>
-                            <li><a href="#">Support &amp; Services</a></li>
-                            <li><a href="#">Campus &amp; Facilities</a></li>
-                            <li><a href="#">School Community</a></li>
+                            <li><a href="/middle-school/academics">Academics</a></li>
+                            <li><a href="/middle-school/programs-extracurriculars">Programs &amp; Extracurriculars</a></li>
+                            <li><a href="/middle-school/teachers">Teachers</a></li>
+                            <li><a href="/middle-school/students">Students</a></li>
+                            <li><a href="/middle-school/support-services">Support &amp; Services</a></li>
+                            <li><a href="/middle-school/campus-facilities">Campus &amp; Facilities</a></li>
+                            <li><a href="/middle-school/school-community">School Community</a></li>
                         </ul>
                     </li>
                     <li class="column large-5 medium-8">
-                        <a href="#">Upper School</a>
+                        <a href="/upper-school">Upper School</a>
                         <ul>
-                            <li><a href="#">Academics</a></li>
-                            <li><a href="#">Programs &amp; Extracurriculars</a></li>
-                            <li><a href="#">Teachers</a></li>
-                            <li><a href="#">Students</a></li>
-                            <li><a href="#">Support &amp; Services</a></li>
-                            <li><a href="#">Campus &amp; Facilities</a></li>
-                            <li><a href="#">School Community</a></li>
+                            <li><a href="/upper-school/academics">Academics</a></li>
+                            <li><a href="/upper-school/programs-extracurriculars">Programs &amp; Extracurriculars</a></li>
+                            <li><a href="/upper-school/teachers">Teachers</a></li>
+                            <li><a href="/upper-school/students">Students</a></li>
+                            <li><a href="/upper-school/support-services">Support &amp; Services</a></li>
+                            <li><a href="/upper-school/campus-facilities">Campus &amp; Facilities</a></li>
+                            <li><a href="/upper-school/school-community">School Community</a></li>
                         </ul>
                     </li>
                     <li class="column large-4 medium-8 end">
                         <ul>
-                            <li><a href="#">Admission</a></li>
-                            <li><a href="#">Summer</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Alumni</a></li>
-                            <li><a href="#">Giving</a></li>
-                            <li><a href="#">Portal</a></li>
+                            <li><a href="/admission">Admission</a></li>
+                            <li><a href="/summer">Summer</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/news">News</a></li>
+                            <li><a href="/alumni">Alumni</a></li>
+                            <li><a href="/giving">Giving</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
             <div class="text-center"><div class="harker-logo harker-logo-horiz"><a href="http://www.harker.org">The Harker School</a></div></div>
-            <p class="footer-legal">Copyright &copy; 1893-2015 &bull; The Harker School &bull; San Jose, CA 95129 <span class="footer-contact-link">| <a href="page.cfm?p=93" target="_self">Contact Us</a> | <a href="/page.cfm?p=3686" data-page-name="Privacy Policy">Privacy Policy</a></span></p>
+            <div class="footer-legal">
+                <div itemscope="" itemtype="http://schema.org/LocalBusiness">
+                    <p class="margin-bottom-small">
+                        <span class="copyright">Copyright © 1893-2015</span> • <span itemprop="name">The Harker School</span> • <span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">500 Saratoga Ave.</span>, <span itemprop="addressLocality">San Jose</span>, <span itemprop="addressRegion">CA</span> <span itemprop="postalCode">95129</span></span> • <span itemprop="telephone">408.249.2510</span> | <a href="/about/contact-us">Contact Us</a> | <a href="/about/privacy-policy">Privacy Policy</a>
+                    </p>
+                </div>
+            </div>
             <div class="text-center">
                 <ul class="footer-nav-menu-social">
                     <li class="menu-item-followtext">Follow Us!</li>
                     <li class="menu-item-social menu-item-instagram"><a href="http://instagram.com/harkerschool" title="Instagram"></a></li>
-                    <li class="menu-item-social menu-item-youtube"><a href="http://youtube.com/harkerschool" title="Youtube"></a></li>
+                    <li class="menu-item-social menu-item-youtube"><a href="http://www.youtube.com/user/harkerschool" title="Youtube"></a></li>
                     <li class="menu-item-social menu-item-twitter"><a href="http://twitter.com/harkerschool" title="Twitter"></a></li>
                     <li class="menu-item-social menu-item-facebook"><a href="http://facebook.com/harkerschool" title="Facebook"></a></li>
                 </ul>

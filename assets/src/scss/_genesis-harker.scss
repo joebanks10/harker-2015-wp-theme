@@ -288,8 +288,14 @@ img {
 
 @media #{$large-up} {
     .content-sidebar {
+        .content {
+            @include grid-column($columns:16);
+        }
         .sidebar-primary {
             @include grid-column($columns:8, $float:right);
+        }
+        .entry-content {
+            max-width: rem-calc(750-16*2);
         }
     }
     .sidebar-content {
@@ -297,6 +303,33 @@ img {
             @include grid-column($columns:8, $float:right, $pull:16);
         }
     }
+}
+
+.has-single-thumbnail-content {
+    .site-inner {
+        padding-top: 0;
+    }
+    .sidebar-primary, .sidebar-secondary {
+        padding-top: rhythm(0.5);
+    }
+}
+
+.page-template-page_home {
+    .site-inner {
+        padding-top: rem-calc(32);
+    }
+}
+
+.home {
+
+    .content > .page > .entry-header > .entry-title,
+    .content > .archive-description > .entry-title {
+        font-size: $h1-font-size - $h1-font-reduction;
+        @media #{$medium-up} {
+            font-size: $h1-font-size;
+        }
+    }
+
 }
 
 
@@ -478,7 +511,7 @@ img.alignright,
 
 .widget-title,
 .widgettitle {
-    font-size: rem-calc(18);
+    font-size: rem-calc(16);
     line-height: rhythm(1);
     margin-bottom: rhythm(0.5);
     text-transform: none;
@@ -516,6 +549,9 @@ img.alignright,
     background: $darkergray;
     color: $white;
 
+    .widget {
+        margin-bottom: 0;
+    }
     .widget-wrap {
         @include grid-row();
 
@@ -630,16 +666,19 @@ img.alignright,
         max-width: none;
     }
     .banner-background {
-        background: $harkergreen no-repeat center center;
+        background: $harkergreen no-repeat 50% 25%;
         @include background-size(cover);
         padding: 0;
         @include box-shadow(none);
     }
-    .banner-overlay {
-        background-color: rgba(black,0.3);
+    .has-background-image {
+        .banner-overlay {
+            background-color: rgba(black,0.3);
+        }
     }
     .row {
         padding: rhythm(4) 0;
+        margin: 0 auto;
     }
     .widget-title, .widgettitle {
         padding: 0 $column-gutter/2;
@@ -770,11 +809,6 @@ img.alignright,
 }
 
 
-/* # Site Header
----------------------------------------------------------------------------------------------------- */
-
-// No styles
-
 /* # Site Navigation
 ---------------------------------------------------------------------------------------------------- */
 
@@ -887,20 +921,6 @@ img.alignright,
     opacity: 1;
 }
 
-/* ## Site Header Navigation
---------------------------------------------- */
-
-// No styles
-
-/* ## Primary Navigation
---------------------------------------------- */
-
-// No styles
-
-/* ## Secondary Navigation
---------------------------------------------- */
-
-// No styles
 
 /* # Content Area
 ---------------------------------------------------------------------------------------------------- */
@@ -933,6 +953,7 @@ img.alignright,
         font-weight: $header-font-weight;
         text-transform: uppercase;
     }
+
 }
 
 /* ## Entry Meta
@@ -949,7 +970,6 @@ p.entry-meta {
 }
 
 .entry-time {
-    color: $header-font-color;
     text-transform: uppercase;
 }
 
@@ -1054,7 +1074,7 @@ p.entry-meta {
     }
     .banner-image {
         position: absolute;
-        background: center center no-repeat $darkergray;
+        background: 50% 25% no-repeat $darkergray;
         @include background-size(cover);
         top: 0;
         bottom: 0;
@@ -1063,6 +1083,12 @@ p.entry-meta {
         img {
             display: none;
         }
+    }
+}
+.has-single-thumbnail-banner {
+    .nav-bar-wrapper {
+        // position above featured image banner
+        z-index: 2;
     }
 }
 
@@ -1093,9 +1119,9 @@ p.entry-meta {
 /* ## Page Types
 --------------------------------------------- */
 
-.home, .blog, .page-template-page_blog, .archive {
+.blog, .page-template-page_blog, .archive {
     
-    .content > .post {
+    .content > .entry {
         @include hkr-panel();
         @include hkr-post-listing-header();
     }
@@ -1343,5 +1369,16 @@ p.entry-meta {
 .admin-bar {
     .nav-bar.is-stuck {
         margin-top: 32px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .admin-bar {
+        #wpadminbar {
+            position: fixed;
+        }
+        .nav-bar.is-stuck {
+            margin-top: 46px !important;
+        }
     }
 }

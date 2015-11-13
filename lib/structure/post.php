@@ -32,39 +32,40 @@ add_action( 'template_redirect', 'hkr_do_single_thumbnail' );
 
 function hkr_do_single_thumbnail() {
 
-    if ( has_single_thumbnail() ) {
-        add_filter( 'body_class', 'hkr_single_thumbnail_class' );
+    if ( ! has_single_thumbnail() )
+        return;
 
-        if ( has_single_thumbnail('content') ) {
-            
-            if ( is_page_template( 'page_blog.php' ) ) {
-                add_action( 'genesis_before_loop', 'hkr_do_single_post_content_image', 5 );
-            } else {
-                add_action( 'genesis_entry_header', 'hkr_do_single_post_content_image', 3 );
-            }
+    if ( is_page_template( 'page_home.php' ) && is_active_sidebar( 'hkr-home-banner-widgets') ) 
+        return;
 
-        } else if ( has_single_thumbnail('banner') ) {
+    if ( has_single_thumbnail('content') ) {
 
-            if ( is_page_template( 'page_home.php' ) && is_active_sidebar( 'hkr-home-banner-widgets') ) 
-                return;
-            
-            add_action( 'genesis_after_header', 'hkr_do_single_post_banner_image', 15 );
-            
-            if ( is_page_template( 'page_blog.php' ) ) {
-                remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
-            } else {
-                remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-                remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
-            }
+        if ( is_page_template( 'page_blog.php' ) || is_page_template( 'page_home.php' ) ) {
+            add_action( 'genesis_before_loop', 'hkr_do_single_post_content_image', 5 );
+        } else {
+            add_action( 'genesis_entry_header', 'hkr_do_single_post_content_image', 3 );
+        }
 
-        } else if ( has_single_thumbnail('hero') ) {
-            if ( is_page_template( 'page_home.php' ) && is_active_sidebar( 'hkr-home-banner-widgets') ) 
-                return;
+    } 
+    else if ( has_single_thumbnail('banner') ) {
+        
+        add_action( 'genesis_after_header', 'hkr_do_single_post_banner_image', 15 );
 
-            add_action( 'genesis_after_header', 'hkr_do_single_post_hero_image', 15 );
-        } 
+        if ( is_page_template( 'page_blog.php' ) ) {
+            remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
+        } else {
+            remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+            remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+        }
 
-    }
+    } 
+    else if ( has_single_thumbnail('hero') ) {
+
+        add_action( 'genesis_after_header', 'hkr_do_single_post_hero_image', 15 );
+
+    } 
+
+    add_filter( 'body_class', 'hkr_single_thumbnail_class' );
 
 }
 
@@ -84,13 +85,14 @@ function hkr_do_single_post_banner_image() {
     global $post;
 
     $thumb_url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+    $title_wrap = apply_filters( 'genesis_entry_title_wrap', 'h1' );
 
     ?>
     <div class="entry-image-banner">
         <div class="banner-text">
             <div class="row">
                 <div class="columns medium-22 large-24 medium-centered">
-                    <div class="hero-title"><?php echo $post->post_title; ?></div>
+                    <?php printf('<%s class="hero-title">%s</%s>', $title_wrap, $post->post_title, $title_wrap); ?>
                     <?php if ( is_single() ) : ?>
                     <div class="hero-meta">
                         <?php echo hkr_get_post_time($post->ID)  . __( ' by ', 'harker-2015' ) . hkr_get_post_author_posts_link($post->post_author)  ?>
@@ -218,13 +220,23 @@ function hkr_featured_image_post_class( $classes ) {
 }
     
 function hkr_single_thumbnail_class( $classes ) {
+    
+    if ( ! has_single_thumbnail() )
+        return $classes;
+
     $classes[] = 'has-single-thumbnail';
 
-    if ( 'content' === genesis_get_option('single_thumbnail_format') ) {
+    if ( genesis_get_custom_field('_hkr_custom_single_thumbnail') ) {
+        $format = genesis_get_custom_field( '_hkr_single_thumbnail_format' );
+    } else {
+        $format = genesis_get_option('single_thumbnail_format');
+    }
+
+    if ( 'content' === $format ) {
         $classes[] = 'has-single-thumbnail-content';
-    } else if ( 'banner' === genesis_get_option('single_thumbnail_format') ) {
+    } else if ( 'banner' === $format ) {
         $classes[] = 'has-single-thumbnail-banner';
-    } else if ( 'hero' === genesis_get_option('single_thumbnail_format') ) {
+    } else if ( 'hero' === $format ) {
         $classes[] = 'has-single-thumbnail-hero';
     } 
 
