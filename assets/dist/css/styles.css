@@ -14191,27 +14191,45 @@ p.entry-meta {
 .full-width-content.aesop-on-harker-2015 .row {
   max-width: none;
 }
+.full-width-content.aesop-on-harker-2015 .content {
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+}
 .full-width-content.aesop-on-harker-2015 .entry-header,
 .full-width-content.aesop-on-harker-2015 .entry-content > *:not(.aesop-component),
+.full-width-content.aesop-on-harker-2015 .entry-content > .aesop-content,
 .full-width-content.aesop-on-harker-2015 .entry-footer,
 .full-width-content.aesop-on-harker-2015 .author-box,
-.full-width-content.aesop-on-harker-2015 .comment-respond,
-.full-width-content.aesop-on-harker-2015 .aesop-content {
+.full-width-content.aesop-on-harker-2015 .comment-respond {
   width: 100%;
-  max-width: 46.875rem;
+  max-width: 40.625rem;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.full-width-content.aesop-on-harker-2015 .content .entry-content > ul, .full-width-content.aesop-on-harker-2015 .content .entry-content > ol {
+  padding-left: 4rem;
+}
+.full-width-content.aesop-on-harker-2015 .content .entry-content > blockquote, .full-width-content.aesop-on-harker-2015 .content .entry-content > table, .full-width-content.aesop-on-harker-2015 .content .entry-content > pre {
+  width: 38.625rem;
+}
+.full-width-content.aesop-on-harker-2015 .content .entry-content > table, .full-width-content.aesop-on-harker-2015 .content .entry-content > pre {
+  padding-left: 0;
+  padding-right: 0;
+}
+.full-width-content.aesop-on-harker-2015 .content .entry-content > .aesop-content.aesop-component-align-left,
+.full-width-content.aesop-on-harker-2015 .content .entry-content > .aesop-content.aesop-component-align-right {
+  margin: 0 1rem 0.75rem;
 }
 
 .aesop-component {
   margin-left: 0;
   margin-right: 0;
 }
-.aesop-component.aesop-component-align-left {
-  margin: 0 1rem 0.75rem 0;
-}
-.aesop-component.aesop-component-align-right {
-  margin: 0 0 0.75rem 1rem;
+.aesop-component.aesop-component-align-left, .aesop-component.aesop-component-align-right {
+  margin: 0 1rem 0.75rem;
 }
 .aesop-component.aesop-component-align-center {
   margin-left: auto;
