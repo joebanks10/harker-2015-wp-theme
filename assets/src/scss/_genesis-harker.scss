@@ -821,7 +821,8 @@ img.alignright,
 
 .current-site-menu-items {
     > li.current-menu-item > a,
-    > li.current-menu-ancestor > a {
+    > li.current-menu-ancestor > a,
+    > li[class*="current-"] > a {
         color: $darkergray;
         border-bottom: 3px solid $blue;
     }

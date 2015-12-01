@@ -1,13 +1,4 @@
 @charset "UTF-8";
-.primary-nav-menu ul,
-.primary-nav-menu ul li,
-.current-page-menu ul,
-.current-page-menu ul li,
-.current-site-menu ul,
-.current-site-menu ul li {
-  float: left;
-}
-
 .primary-nav-menu ul[data-dropdown-content],
 .primary-nav-menu ul[data-dropdown-content] li,
 .current-page-menu ul[data-dropdown-content],
@@ -398,13 +389,15 @@
 .current-page-bar .current-page-tagline p,
 .current-page-bar .current-page-tagline a,
 .current-page-bar .current-page-tagline span,
+.current-page-bar .current-page-tagline:after,
 .current-site-bar .current-site-tagline h1,
 .current-site-bar .current-site-tagline .h1,
 .current-site-bar .current-site-tagline h2,
 .current-site-bar .current-site-tagline .h2,
 .current-site-bar .current-site-tagline p,
 .current-site-bar .current-site-tagline a,
-.current-site-bar .current-site-tagline span {
+.current-site-bar .current-site-tagline span,
+.current-site-bar .current-site-tagline:after {
   display: inline-block;
 }
 
@@ -412,6 +405,11 @@
   .current-page-bar .current-page-tagline,
   .current-site-bar .current-site-tagline {
     display: block;
+  }
+
+  .current-page-bar .current-page-tagline:after,
+  .current-site-bar .current-site-tagline:after {
+    content: "|";
   }
 }
 
@@ -452,25 +450,6 @@
   .current-site-menu-items a {
     font-size: 1rem;
   }
-}
-
-.current-page-menu-bookmarks > li:first-child a,
-.current-site-menu-items > li:first-child a {
-  padding-left: 0;
-}
-
-.current-page-menu-bookmarks > li:first-child a:before,
-.current-site-menu-items > li:first-child a:before {
-  content: "|";
-  margin-right: 0.5rem;
-  color: #707070;
-}
-
-.current-page-menu-bookmarks > li:first-child a:before,
-.current-page-menu-bookmarks > li:first-child a span,
-.current-site-menu-items > li:first-child a:before,
-.current-site-menu-items > li:first-child a span {
-  display: inline-block;
 }
 
 .current-page-menu-bookmarks > li > a,
@@ -5520,7 +5499,8 @@ img.alignright,
 }
 
 .current-site-menu-items > li.current-menu-item > a,
-.current-site-menu-items > li.current-menu-ancestor > a {
+.current-site-menu-items > li.current-menu-ancestor > a,
+.current-site-menu-items > li[class*="current-"] > a {
   color: #333;
   border-bottom: 3px solid #00809E;
 }

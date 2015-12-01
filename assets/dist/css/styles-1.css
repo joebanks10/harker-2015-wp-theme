@@ -8196,7 +8196,7 @@ ul {
 
 ul li ul,
 ul li ol {
-  margin-left: 0;
+  margin-left: 2rem;
   margin-bottom: 0;
 }
 
@@ -8229,7 +8229,7 @@ ol {
 
 ol li ul,
 ol li ol {
-  margin-left: 0;
+  margin-left: 2rem;
   margin-bottom: 0;
 }
 
@@ -8240,7 +8240,7 @@ ol li ol {
 
 .no-bullet li ul,
 .no-bullet li ol {
-  margin-left: 0;
+  margin-left: 2rem;
   margin-bottom: 0;
   list-style: none;
 }
@@ -10050,16 +10050,6 @@ blockquote p {
   margin: 0;
 }
 
-ol,
-ol li ol,
-ol li ul,
-ul,
-ul.circle,
-ul.disc,
-ul.square {
-  padding-left: 2rem;
-}
-
 small {
   font-size: 80%;
 }
@@ -11134,4 +11124,13 @@ select {
 .current-page-menu li,
 .current-site-menu li {
   margin: 0;
+}
+
+.primary-nav-menu ul,
+.primary-nav-menu ul li,
+.current-page-menu ul,
+.current-page-menu ul li,
+.current-site-menu ul,
+.current-site-menu ul li {
+  float: left;
 }
