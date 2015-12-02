@@ -7,19 +7,38 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        watch: {
-            src: {
-                files: ['assets/src/scss/{,*/}*.{scss,sass}'],
-                tasks: ['compile:css']
-            },
-            dist: {
-                files: [
-                    'assets/src/scss/{,*/}*.{scss,sass}',
-                    'assets/src/js/{,*/}*.js',
-                    'assets/src/fonts/{,*/}*',
-                    'assets/src/img/{,*/}*.*'
+        clean: {
+            bower: ['assets/src/js/vendor/bower.js'],
+            css_src: ['assets/src/css/*'],
+            css_dist: ['style.css', 'style-2.css'],
+            css_tmp: ['assets/src/css/tmp'],
+            scripts_dist: ['assets/js/*', '!assets/js/vendor'],
+            scripts_tmp: ['assets/src/js/tmp'],
+            img_dist: ['assets/img/*'],
+            fonts_dist: ['assets/fonts/*'],
+        },
+
+        bower_concat: {
+            js: {
+                dest: 'assets/src/js/vendor/bower.js',
+                exclude: [
+                    'modernizr',
+                    'jquery',
+                    'hologram-github-theme'
                 ],
-                tasks: ['build']
+                mainFiles: {
+                    'waypoints': [
+                        'lib/jquery.waypoints.js',
+                        'lib/shortcuts/sticky.js',
+                        'lib/shortcuts/inview.js',
+                    ],
+                    'foundation': [
+                        'js/foundation/foundation.js',
+                        'js/foundation/foundation.dropdown.js',
+                        'js/foundation/foundation.equalizer.js',
+                        'js/foundation/foundation.magellan.js'
+                    ]
+                }
             }
         },
 
@@ -68,78 +87,23 @@ module.exports = function(grunt) {
             }
         },
 
-        clean: {
-            dist: {
-                dot: true,
-                src: [
-                    'assets/dist/*',
-                    '!assets/dist/.git*'
-                ]
-            },
-            bower: ['assets/src/js/vendor/bower*.js'],
-            css: ['assets/src/css/*']
-        },
-
-        // Concat Bower JS files. CSS styles are imported via SASS.
-        bower_concat: {
-            dist: {
-                dest: 'assets/src/js/vendor/bower.js',
-                exclude: [
-                    'modernizr',
-                    'jquery',
-                    'hologram-github-theme'
-                ],
-                mainFiles: {
-                    'waypoints': [
-                        'lib/jquery.waypoints.js',
-                        'lib/shortcuts/sticky.js',
-                        'lib/shortcuts/inview.js',
-                    ],
-                    'foundation': [
-                        'js/foundation/foundation.js',
-                        'js/foundation/foundation.dropdown.js',
-                        'js/foundation/foundation.equalizer.js',
-                        'js/foundation/foundation.magellan.js'
-                    ]
-                }
-            }
-            // css: {
-            //     cssDest: 'assets/src/css/vendor/bower.css',
-            //     exclude: [
-            //         'foundation',
-            //         'font-awesome'
-            //     ]
-            // }
-        },
-
-        concat: {
-            js: {
-                src: ['assets/src/js/vendor/*.js', 'assets/src/js/*.js'],
-                dest: 'assets/dist/js/scripts.js'
-            }
-        },
-
         cssmin: {
             options: {
                 banner: '/*! <%= pkg.title %> | <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             css: {
                 expand: true,
-                cwd: 'assets/dist/css',
+                cwd: 'assets/src/css/tmp',
                 src: ['*.css', '!*.min.css'],
-                dest: 'assets/dist/css',
+                dest: 'assets/src/css/tmp',
                 ext: '.min.css'
             }
         },
 
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'assets/src/img/',
-                    src: ['**/*.{png,jpg,jpeg,gif}'],
-                    dest: 'assets/src/img/'
-                }]
+        concat: {
+            scripts: {
+                src: ['assets/src/js/vendor/*.js', 'assets/src/js/*.js'],
+                dest: 'assets/src/js/tmp/scripts.js'
             }
         },
 
@@ -147,22 +111,18 @@ module.exports = function(grunt) {
             options: {
                 banner: '/*! <%= pkg.title %> | <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            js: {
-                src: ['assets/dist/js/scripts.js'],
-                dest: 'assets/dist/js/scripts.min.js'
+            scripts: {
+                src: ['assets/src/js/tmp/scripts.js'],
+                dest: 'assets/src/js/tmp/scripts.min.js'
             },
             modernizr: {
-                src: 'assets/dist/js/vendor/modernizr.js',
-                dest: 'assets/dist/js/vendor/modernizr.min.js'
+                src: 'assets/js/vendor/modernizr.js',
+                dest: 'assets/js/vendor/modernizr.min.js'
             }
         },
 
         copy: {
-            modernizr: {
-                src: 'assets/src/bower_components/modernizr/modernizr.js',
-                dest: 'assets/dist/js/vendor/modernizr.js'
-            },
-            bower: {
+            bower_fonts: {
                 files: [{
                     expand: true,
                     cwd: 'assets/src/bower_components/font-awesome/fonts/',
@@ -176,73 +136,140 @@ module.exports = function(grunt) {
                     src: '*.*'
                 }]
             },
-            css: {
+            modernizr: {
+                src: 'assets/src/bower_components/modernizr/modernizr.js',
+                dest: 'assets/js/vendor/modernizr.js'
+            },
+            css_tmp: {
                 files: [{
                     expand: true,
-                    cwd: 'assets/src',
-                    dest: 'assets/dist',
-                    src: ['css/*.css']
+                    cwd: 'assets/src/css/',
+                    dest: 'assets/src/css/tmp',
+                    src: ['*.css']
                 }]
             },
-            wp_style: {
+            css_dist: {
                 // move first stylesheet to root for WordPress theme stylesheet
                 files: [{
-                    src: 'assets/dist/css/styles-1.min.css',
+                    src: 'assets/src/css/tmp/styles-1.min.css',
                     dest: 'style.css'
                 },
                 {
-                    src: 'assets/dist/css/styles-2.min.css',
+                    src: 'assets/src/css/tmp/styles-2.min.css',
                     dest: 'style-2.css'
                 }]
             },
-            dist: {
+            scripts: {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: 'assets/src',
-                    dest: 'assets/dist',
+                    cwd: 'assets/src/js/tmp',
+                    dest: 'assets/js',
+                    src: ['{,*/}*.js']
+                }]
+            },
+            img: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: 'assets/src/img/',
+                    dest: 'assets/img/',
                     src: [
-                        'fonts/*.*',
-                        'fonts/vendor/*.*',
-                        'img/**/*.{png,jpg,jpeg,gif,ico}'
+                        '**/*.{png,jpg,jpeg,gif,ico}'
+                    ]
+                }]
+            },
+            fonts: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: 'assets/src/fonts/',
+                    dest: 'assets/fonts/',
+                    src: [
+                        '*.*',
+                        'vendor/*.*'
                     ]
                 }]
             }
-        }
+        },
+
+        watch: {
+            css: {
+                files: ['assets/src/scss/{,*/}*.{scss,sass}'],
+                tasks: ['compile:css']
+            },
+            scripts: {
+                files: ['assets/src/js/{,*/}*.js'],
+                tasks: ['compile:scripts']
+            },
+            img: {
+                files: ['assets/src/img/{,*/}*.*'],
+                tasks: ['compile:img']
+            },
+            fonts: {
+                files: ['assets/src/fonts/{,*/}*'],
+                tasks: ['compile:fonts']
+            }
+        },
 
     });
 
-    grunt.registerTask('bower', [
-        'clean:bower',
-        'bower_concat',
-        'copy:bower'
+    grunt.registerTask('compile:bower', [
+        'clean:bower', // remove bower.js
+        'bower_concat:js', // copy/concat component js files into src
+        'copy:bower_fonts' // copy component fonts
+    ]);
+
+    grunt.registerTask('compile:sass', [
+        'clean:css_src', // clean src/css folder
+        'sass', // compile sass files
+        'csssplit', // split css file for <IE8 support
+        'file_append', // append UTF-8 header
     ]);
 
     grunt.registerTask('compile:css', [
-        'clean:css',
-        'sass',
-        'csssplit',
-        'file_append'
+        'compile:sass', // compile sass files to css
+        'clean:css_dist',
+        'copy:css_tmp', // copy css files to tmp folder
+        'cssmin', // minify css
+        'copy:css_dist', // copy css files to dist folder
+        'clean:css_tmp' // delete tmp directory
     ]);
 
-    grunt.registerTask('build', [
-        'clean',
-        'copy:bower',
-        'sass',
-        'csssplit',
-        'file_append',
-        'copy:css',
-        'cssmin',
-        'copy:wp_style',
-        'bower_concat:dist',
-        'concat',
+    grunt.registerTask('compile:scripts', [
+        'clean:scripts_dist', // clean dist folder
+        'concat:scripts', // concat into tmp directory
+        'uglify:scripts',
+        'copy:scripts', // move files to dist folder
+        'clean:scripts_tmp' // delete tmp directory
+    ]);
+
+    grunt.registerTask('compile:modernizr', [
         'copy:modernizr',
-        'uglify',
-        'copy:dist'
+        'uglify:modernizr'
+    ]);
+
+    grunt.registerTask('compile:img', [
+        'clean:img_dist',
+        'copy:img'
+    ]);
+
+    grunt.registerTask('compile:fonts', [
+        'clean:fonts_dist',
+        'copy:fonts'
+    ]);
+
+    grunt.registerTask('compile', [
+        'compile:bower',
+        'compile:css',
+        'compile:scripts',
+        'compile:modernizr',
+        'compile:img',
+        'compile:fonts'
     ]);
 
     grunt.registerTask('default' [
-        'build'
+        'compile'
     ]);
 
 };
