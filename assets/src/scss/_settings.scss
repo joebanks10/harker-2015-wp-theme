@@ -54,11 +54,12 @@ $font-family-black: "DINPro Black", Helvetica, Arial, sans-serif;
 // II. Paths
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-$img-path: "assets/dist/img/css/"; 
-$font-path: "assets/dist/fonts/";
-$slick-font-path: $font-path + "vendor/";
+$img-path: "assets/img/css/"; 
+$font-path: "assets/fonts/";
+$vendor-font-path: $font-path + "vendor/";
+$slick-font-path: $vendor-font-path;
 $slick-loader-path: $img-path;
-$fa-font-path: "assets/dist/fonts/vendor";
+$fa-font-path: $vendor-font-path;
 
 // III. Vertical Rhythm
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -357,7 +358,7 @@ $hr-margin: rhythm(1);
 $list-side-margin: 2rem;
 $list-ordered-side-margin: $list-side-margin;
 // $list-side-margin-no-bullet: 0;
-$list-nested-margin: 0;
+$list-nested-margin: $list-side-margin;
 // $definition-list-header-weight: $font-weight-bold;
 // $definition-list-header-margin-bottom: .3rem;
 $definition-list-margin-bottom: $paragraph-margin-bottom;

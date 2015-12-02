@@ -14,8 +14,8 @@ function hkr_theme_assets() {
     // wp_deregister_script( 'superfish-args' );
 
     wp_enqueue_style( 'harker-2015-2', CHILD_THEME_DIR_URL . '/style-2.css', array(), CHILD_THEME_VERSION );
-    wp_enqueue_script( 'modernizr', CHILD_THEME_DIR_URL . '/assets/dist/js/vendor/modernizr.min.js', array(), CHILD_THEME_VERSION );
-    wp_enqueue_script( 'harker-2015-scripts', CHILD_THEME_DIR_URL . '/assets/dist/js/scripts.min.js', array('jquery'), CHILD_THEME_VERSION, true );
+    wp_enqueue_script( 'modernizr', CHILD_THEME_DIR_URL . '/assets/js/vendor/modernizr.min.js', array(), CHILD_THEME_VERSION );
+    wp_enqueue_script( 'harker-2015-scripts', CHILD_THEME_DIR_URL . '/assets/js/scripts.min.js', array('jquery'), CHILD_THEME_VERSION, true );
 
 }
 
@@ -62,31 +62,31 @@ function hkr_do_header() { ?>
         <div class="brand-bar">
             <nav class="primary-nav">
                 <ul class="primary-nav-menu primary-nav-menu-home">
-                    <li class="harker-logo"><a href="/">The Harker School</a></li>
+                    <li class="harker-logo"><a href="http://www.harker.org">The Harker School</a></li>
                 </ul>
                 <ul class="primary-nav-menu primary-nav-menu-secondary">
                     <li class="menu-item-social menu-item-instagram"><a href="http://instagram.com/harkerschool" title="Instagram"></a></li>
                     <li class="menu-item-social menu-item-youtube"><a href="http://youtube.com/harkerschool" title="Youtube"></a></li>
                     <li class="menu-item-social menu-item-twitter"><a href="http://twitter.com/harkerschool" title="Twitter"></a></li>
                     <li class="menu-item-social menu-item-facebook"><a href="http://facebook.com/harkerschool" title="Facebook"></a></li>
-                    <li class="menu-item-search"><a href="http://search.harker.org" title="Search"></a></li>
-                    <li class="menu-item-login"><a href="http://www.harker.org/page.cfm?p=196" title="Login"></a></li>
+                    <li class="menu-item-search"><a href="http://www.harker.org/search" title="Search"></a></li>
+                    <li class="menu-item-login"><a href="http://www.harker.org/login" title="Login"></a></li>
                 </ul>
                 <ul class="primary-nav-menu primary-nav-menu-sections">
                     <li class="menu-item-hamburger"><a href="#global-nav" title="Menu"><span class="menu-item-text">Menu</span></a></li>
-                    <li><a href="/admission">Admission</a></li>
-                    <li><a href="/preschool">Preschool</a></li>
-                    <li><a href="/lower-school">Lower School</a></li>
-                    <li><a href="/middle-school">Middle School</a></li>
-                    <li><a href="/upper-school">Upper School</a></li>
-                    <li><a href="/summer">Summer</a></li>
+                    <li><a href="http://www.harker.org//admission">Admission</a></li>
+                    <li><a href="http://www.harker.org//preschool">Preschool</a></li>
+                    <li><a href="http://www.harker.org//lower-school">Lower School</a></li>
+                    <li><a href="http://www.harker.org//middle-school">Middle School</a></li>
+                    <li><a href="http://www.harker.org//upper-school">Upper School</a></li>
+                    <li><a href="http://www.harker.org//summer">Summer</a></li>
                     <li class="menu-item-more">
                         <a href="#more-sections" data-dropdown="more-sections" aria-controls="more-sections" aria-expanded="false"><span>More</span></a>
                         <ul id="more-sections" class="f-dropdown" data-dropdown-content aria-hidden="true">
-                            <li class="more-sections-item"><a href="/about">About</a></li>
-                            <li class="more-sections-item"><a href="/news">News</a></li>
-                            <li class="more-sections-item"><a href="/alumni">Alumni</a></li>
-                            <li class="more-sections-item"><a href="/giving">Giving</a></li>
+                            <li class="more-sections-item"><a href="http://www.harker.org//about">About</a></li>
+                            <li class="more-sections-item"><a href="http://www.harker.org//news">News</a></li>
+                            <li class="more-sections-item"><a href="http://www.harker.org//alumni">Alumni</a></li>
+                            <li class="more-sections-item"><a href="http://www.harker.org//giving">Giving</a></li>
                         </ul>
                     </li>
                 </ul>
