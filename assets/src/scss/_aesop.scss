@@ -19,6 +19,7 @@ $aesop-small-down: "only screen and (max-width: 480px)";
     .entry-header,
     .entry-content > :not(.aesop-component),
     .entry-content > .scroll-nav__section > :not(.aesop-component),
+    .aesop-audio-component,
     .aesop-content,
     .entry-footer,
     .author-box,
@@ -175,6 +176,11 @@ $aesop-small-down: "only screen and (max-width: 480px)";
 }
 .aesop-toggle-chapter-menu {
     text-decoration: none;
+}
+
+.aesop-audio-component {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .aesop-parallax-sc {

@@ -29,7 +29,21 @@ function hkr_theme_support() {
     ) );
 
     // Add Aesop Story Engine component styles
-    add_theme_support( "aesop-component-styles", array( "parallax", "image", "quote", "gallery", "content", "video", "audio", "collection", "chapter", "document", "character", "map", "timeline" ) );
+    add_theme_support( "aesop-component-styles", array( 
+        "parallax", 
+        "image", 
+        "quote", 
+        "gallery", 
+        "content", 
+        "video", 
+        "audio", 
+        "collection", 
+        "chapter", 
+        "document", 
+        "character", 
+        "map", 
+        "timeline" 
+    ));
 }
 
 add_action( 'init', 'hkr_post_type_support' );
