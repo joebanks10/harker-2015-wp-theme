@@ -224,3 +224,72 @@ $aesop-small-down: "only screen and (max-width: 480px)";
         }
     }
 }
+
+.aesop-story-collection {
+    .aesop-story-collection-title {
+        background: transparent;
+        color: $header-font-color;
+        font-size: $h2-font-size - $h2-font-reduction;
+        font-weight: bold;
+        line-height: 1em;
+        letter-spacing: normal;
+        padding: 0 $column-gutter/2;
+        margin-bottom: $header-bottom-margin;
+        @include box-shadow(none);
+
+        @media #{$medium-up} {
+            font-size: $h2-font-size;
+        }
+    }
+    .aesop-collection-item {
+        height: 300px;
+
+        .aesop-collection-item-link {
+            text-decoration: none;
+
+            &:before {
+                display: block;
+            }
+        }
+        .aesop-collection-item-inner .aesop-collection-meta {
+            margin-bottom: rhythm(1);
+        }
+    }
+}
+
+.aesop-story-collection .aesop-collection-splash {
+    background: $darkgray;
+
+    .aesop-collection-item-link {
+        background: $darkgray;
+        @include transition(background 0.25s);
+        @include box-shadow(0 0 0 1px $darkergray);
+
+        &:hover, &:focus {
+            background: $darkergray;
+        }
+    }
+    .aesop-collection-item-inner .aesop-collection-entry-title {
+        color: $white;
+    }
+}
+
+.aesop-collection-item {
+    @media #{$aesop-medium-down} {
+        .aesop-collection-grid.aesop-collection-grid-2col &,
+        .aesop-collection-grid.aesop-collection-grid-3col &,
+        .aesop-collection-grid.aesop-collection-grid-4col &,
+        .aesop-collection-grid.aesop-collection-grid-5col & {
+            width: 50%;
+        }
+    }
+    @media #{$aesop-small-down} {
+        .aesop-collection-grid.aesop-collection-grid-2col &,
+        .aesop-collection-grid.aesop-collection-grid-3col &,
+        .aesop-collection-grid.aesop-collection-grid-4col &,
+        .aesop-collection-grid.aesop-collection-grid-5col & {
+            width: auto;
+            float: none;
+        }
+    }
+}
