@@ -70,6 +70,10 @@ $aesop-small-down: "only screen and (max-width: 480px)";
     }
 }
 
+.aesop-component-caption {
+    font-family: $font-family-sans-serif;
+}
+
 .aesop-image-component {
     .aesop-image-component-image {
         margin-top: 0;
@@ -291,5 +295,20 @@ $aesop-small-down: "only screen and (max-width: 480px)";
             width: auto;
             float: none;
         }
+    }
+}
+
+.aesop-gallery-component {
+    border-color: $default-border-color;
+    border-style: solid;
+    border-width: 1px 0;
+    background: $white;
+    padding: 5px;
+
+    .aesop-component-caption {
+        background: transparent;
+        padding: rhythm(0.25) 0;
+        line-height: 1.5;
+        margin: 0;
     }
 }
