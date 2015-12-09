@@ -1,0 +1,55 @@
+.widget_widget_tptn_pop {
+    .widget-wrap > div {
+        padding: 0;
+    }
+    .tptn_posts_widget > ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        > li {
+            position: relative;
+            padding: 1rem;
+            border-bottom: 1px solid $default-border-color;
+            @include clearfix;
+
+            &:first-child {
+                border-top: 1px solid $default-border-color;
+            }
+        }
+    }
+    .tptn_after_thumb, .tptn_link, .tptn_title, .tptn_author, .tptn_date {
+        display: block;
+    }
+    .tptn_excerpt, .tptn_list_count {
+        display: inline-block;
+    }
+    .tptn_author, .tptn_date, .tptn_excerpt, .tptn_list_count {
+        font-size: rem-calc(12);
+        line-height: 1.5;
+    }
+    .tptn_title {
+        line-height: 1.375;
+    }
+    .tptn_thumb {
+        display: block;
+        float: left;
+        margin-right: 0.5rem;
+        width: 80px !important;
+        height: auto !important;
+    }
+    .tptn_link + .tptn_after_thumb {
+        margin-left: rem-calc(80) + 0.5rem;
+    }
+    .tptn_link {
+        color: $darkgray;
+        text-decoration: none;
+
+        &:hover, &:focus {
+            color: $blue;
+        }
+    }
+    .tptn_excerpt {
+        margin: 0.375rem 0;
+    }
+}
