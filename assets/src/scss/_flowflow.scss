@@ -1,0 +1,90 @@
+.widget {
+    .ff-stream {
+        min-width: auto;
+        background: transparent !important;
+        padding: 0;
+    }
+
+    .ff-header h1 {
+        font-size: rem-calc(16);
+        line-height: rhythm(1);
+        text-transform: none;
+        margin: 0 0 rhythm(0.5) !important;
+    }
+
+    .ff-header h2 {
+        font-size: rem-calc(12);
+        line-height: 1.25;
+        text-transform: none;
+        font-weight: normal;
+        margin: -(rhythm(0.5)) 0 rhythm(0.5) !important;
+    }
+
+    .ff-stream-wrapper {
+        margin: 0;
+    }
+
+    .ff-item {
+        width: 100% !important;
+    }
+
+    .picture-item__inner {
+        border: 1px solid $default-border-color;
+        padding: 1rem;
+        @include box-shadow(none !important);
+    }
+
+    .ff-item .ff-content {
+        font-size: rem-calc(12);
+        line-height: 1.25;
+    }
+
+    .ff-item-cont .ff-content a {
+        line-height: 1.25 !important;
+    }
+
+    .ff-item-meta {
+        font-size: rem-calc(10);
+
+        a {
+            font-size: inherit;
+            color: $darkergray;
+        }
+    }
+
+    .ff-userpic, .ff-icon, .ff-icon-inner, .ff-icon-inner:after {
+        width: auto !important;
+        @include border-radius(0);
+    }
+
+    .ff-item-meta .ff-icon {
+        font-size: rem-calc(12);
+        border-width: 0;
+    }
+
+    .ff-item-meta .ff-icon-inner {
+        @include fa-icon();
+        position: static;
+        background: transparent;
+        color: $darkgray;
+    }
+
+    .ff-facebook .ff-icon-inner, 
+    .ff-type-facebook {
+        &:after {
+            content: $fa-var-facebook-square;
+        }
+    }
+    .ff-twitter .ff-icon-inner, 
+    .ff-type-twitter {
+        &:after {
+            content: $fa-var-twitter-square;
+        }
+    }
+    .ff-instagram .ff-icon-inner, 
+    .ff-type-instagram {
+        &:after {
+            content: $fa-var-instagram;
+        }
+    }
+}
