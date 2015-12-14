@@ -34,6 +34,20 @@
         @include box-shadow(none !important);
     }
 
+    .ff-item .ff-item-cont .ff-img-holder {
+        margin-bottom: rhythm(0.5);
+
+        img {
+            width: auto !important;
+            height: auto !important;
+        }
+    }
+
+    .ff-item h4 {
+        line-height: 1.2;
+        margin-bottom: rhythm(0.5);
+    }
+
     .ff-item .ff-content {
         font-size: rem-calc(12);
         line-height: 1.25;
