@@ -190,7 +190,7 @@ class HKR_Featured_Posts_Content extends WP_Widget {
             the_post();
 
             $post_id = get_the_ID();
-            $size = 'large';
+            $size = '6x4';
 
             $anchor_class = "entry-image-link entry-image-link-$post_id entry-image-$size-link";
             $image = genesis_get_image( array(

@@ -28,6 +28,9 @@ function hkr_theme_support() {
         'footer'
     ) );
 
+    // Add image sizes
+    add_image_size( '6x4', 900, 600, true );
+
     // Add Aesop Story Engine component styles
     add_theme_support( "aesop-component-styles", array( 
         "parallax", 
