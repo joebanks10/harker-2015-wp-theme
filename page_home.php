@@ -21,7 +21,7 @@ function hkr_do_home_content() {
             'after'  => '</div>'
         ));
     }
-    else {
+    else if ( current_user_can( 'edit_theme_options' ) ) {
         genesis_default_widget_area_content( __( 'Home Page: Content Widget Area', 'harker-2015' ) );
     } 
 }
