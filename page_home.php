@@ -15,10 +15,15 @@ remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'hkr_do_home_content' );
 
 function hkr_do_home_content() {
-    genesis_widget_area( 'hkr-home-content-widgets', array( 
-        'before' => '<div class="home-widgets home-widgets-content widget-area">', 
-        'after'  => '</div>'
-    ));
+    if ( is_active_sidebar( 'hkr-home-content-widgets') ) {
+        genesis_widget_area( 'hkr-home-content-widgets', array( 
+            'before' => '<div class="home-widgets home-widgets-content widget-area">', 
+            'after'  => '</div>'
+        ));
+    }
+    else {
+        genesis_default_widget_area_content( __( 'Home Page: Content Widget Area', 'harker-2015' ) );
+    } 
 }
 
 genesis();
