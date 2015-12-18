@@ -1100,7 +1100,8 @@ p.entry-meta {
     }
 }
 
-.entry-image-large-link {
+.entry-image-large-link,
+.entry-image-6x4-link {
     background: $darkergray;
     display: block;
     margin: (-$column-gutter/2) (-$column-gutter/2) rhythm(1);
