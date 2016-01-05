@@ -677,8 +677,9 @@ img.alignright,
         }
     }
     .row {
-        padding: rhythm(4) 0;
+        padding: rhythm(4) 0 rhythm(2);
         margin: 0 auto;
+        min-height: rem-calc(420);
     }
     .widget-title, .widgettitle {
         padding: 0 $column-gutter/2;
@@ -714,7 +715,7 @@ img.alignright,
     }
 
     .banner-post-1 {
-        @include grid-column($columns:15);
+        padding: 0 $column-gutter/2;
 
         .entry-header {
             max-width: rem-calc(450);
@@ -724,10 +725,14 @@ img.alignright,
             line-height: 1.1667em;
             font-family: $font-family-black;
         }
+
+        @media #{$medium-up} {
+            @include grid-column($columns:15);
+        }
     }
     .banner-posts-list {
-        @include grid-column($columns:8, $float:right);
-        margin-left: 0;
+        padding: 0 $column-gutter/2;
+        margin: 0;
         list-style: none;
 
         .entry {
@@ -735,6 +740,10 @@ img.alignright,
         }
         .entry-title {
             font-size: rem-calc(18);
+        }
+
+        @media #{$medium-up} {
+            @include grid-column($columns:9, $float:right);
         }
     }
 
