@@ -221,6 +221,10 @@ img {
     @include grid-column($columns:24, $float:false);
 }
 
+.sidebar-secondary {
+    clear: both;
+}
+
 @media #{$medium-up} {
 
     .content-sidebar {
@@ -242,27 +246,11 @@ img {
     }
 
     .content-sidebar-sidebar {
-        .content-sidebar-wrap {
-            @include grid-column($columns:19, $collapse:true);
-        }
-        .sidebar-secondary {
-            @include grid-column($columns:5, $float:right);
-        }
         .content {
             @include grid-column($columns:15);
         }
         .sidebar-primary {
             @include grid-column($columns:9, $float:right);
-        }
-    }
-
-    .sidebar-sidebar-content,
-    .sidebar-content-sidebar {
-        .content-sidebar-wrap {
-            @include grid-column($columns:19, $collapse:true, $push:5);
-        }
-        .sidebar-secondary {
-            @include grid-column($columns:5, $float:right, $pull:19);
         }
     }
 
@@ -301,6 +289,29 @@ img {
     .sidebar-content {
         .sidebar-primary {
             @include grid-column($columns:8, $float:right, $pull:16);
+        }
+    }
+
+    .sidebar-secondary {
+        clear: none;
+    }
+
+    .content-sidebar-sidebar {
+        .content-sidebar-wrap {
+            @include grid-column($columns:19, $collapse:true);
+        }
+        .sidebar-secondary {
+            @include grid-column($columns:5, $float:right);
+        }
+    }
+
+    .sidebar-sidebar-content,
+    .sidebar-content-sidebar {
+        .content-sidebar-wrap {
+            @include grid-column($columns:19, $collapse:true, $push:5);
+        }
+        .sidebar-secondary {
+            @include grid-column($columns:5, $float:right, $pull:19);
         }
     }
 }
