@@ -226,6 +226,7 @@ $body-font-color: $gray;
 // d. Media Query Ranges
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
+$xsmall-range: (0em, 30em); // 0-480px
 $small-range: (0em, 40em); // 0-640px
 $medium-range: (40.063em, 64em); // 641px-1024px
 $large-range: (64.063em, 90em); // 1025-1440px
@@ -236,6 +237,8 @@ $screen: "only screen";
 
 $landscape: "#{$screen} and (orientation: landscape)";
 $portrait: "#{$screen} and (orientation: portrait)";
+
+$xsmall-only: "#{$screen} and (max-width: #{upper-bound($xsmall-range)})";
 
 // $small-up: $screen;
 // $small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})";

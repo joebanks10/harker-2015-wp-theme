@@ -626,6 +626,11 @@ img.alignright,
             float: left;
             width: 50%;
             padding: 0 $column-gutter/2;
+
+            @media #{$xsmall-only} {
+                float: none;
+                width: auto;
+            }
         }
     }
     .featured-headlines-header {
