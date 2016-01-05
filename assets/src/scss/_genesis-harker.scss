@@ -729,12 +729,16 @@ img.alignright,
     .entry-time {
         text-transform: none;
     }
+    .entry-meta {
+        margin-bottom: 0;
+    }
 
     .banner-post-1 {
         padding: 0 $column-gutter/2;
 
         .entry-header {
             max-width: rem-calc(450);
+            margin-bottom: rhythm(1);
         }
         .entry-title {
             font-size: rem-calc(48);
