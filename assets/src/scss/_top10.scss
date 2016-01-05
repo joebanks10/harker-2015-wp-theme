@@ -38,9 +38,9 @@
         width: 80px !important;
         height: auto !important;
     }
-    // .tptn_link + .tptn_after_thumb {
-    //     margin-left: rem-calc(80) + 0.5rem;
-    // }
+    .tptn_link + .tptn_after_thumb {
+        margin-left: rem-calc(80) + 0.5rem;
+    }
     .tptn_link {
         color: $darkgray;
         text-decoration: none;
