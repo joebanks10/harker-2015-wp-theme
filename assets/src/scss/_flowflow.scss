@@ -1,6 +1,7 @@
 .widget {
     .ff-stream {
         min-width: auto;
+        max-width: rem-calc(300);
         background: transparent !important;
         padding: 0;
     }
