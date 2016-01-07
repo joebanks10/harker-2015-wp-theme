@@ -299,16 +299,13 @@ $aesop-small-down: "only screen and (max-width: 480px)";
 }
 
 .aesop-gallery-component {
-    border-color: $default-border-color;
-    border-style: solid;
-    border-width: 1px 0;
-    background: $white;
-    padding: 5px;
-
     .aesop-component-caption {
-        background: transparent;
-        padding: rhythm(0.25) 0;
         line-height: 1.5;
-        margin: 0;
+        background: transparent;
+        width: 100%;
+        max-width: $aesop-content-width;
+        margin: 0 auto;
+        padding-left: $column-gutter/2;
+        padding-right: $column-gutter/2;
     }
 }
