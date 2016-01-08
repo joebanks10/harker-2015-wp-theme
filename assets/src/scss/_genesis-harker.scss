@@ -714,7 +714,13 @@ img.alignright,
         max-width: none;
     }
     .banner-background {
-        background: $harkergreen no-repeat 50% 25%;
+        background: #05533e; /* Old browsers */
+        background: -moz-radial-gradient(center, ellipse cover, #05533e 0%, #1a4f3f 48%, #134c3a 61%, #003f2f 100%); /* FF3.6-15 */
+        background: -webkit-radial-gradient(center, ellipse cover, #05533e 0%,#1a4f3f 48%,#134c3a 61%,#003f2f 100%); /* Chrome10-25,Safari5.1-6 */
+        background: radial-gradient(ellipse at center, #05533e 0%,#1a4f3f 48%,#134c3a 61%,#003f2f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05533e', endColorstr='#003f2f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        background-repeat: no-repeat;
+        background-position: 50% 25%;
         @include background-size(cover);
         padding: 0;
         @include box-shadow(none);
