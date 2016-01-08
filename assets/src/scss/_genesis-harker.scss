@@ -547,6 +547,38 @@ img.alignright,
     margin-bottom: 0;
 }
 
+.widget_rss {
+    .widget-title {
+        a {
+            font-weight: normal;
+        }
+    }
+    .widget-wrap > ul {
+        list-style: none;
+        padding-left: 1rem;
+
+        li {
+            margin-bottom: rhythm(1);
+
+            &:last-child, &:last-child .rssSummary {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+.rss-widget-icon {
+    position: relative;
+    top: -2px; // align with text
+    margin-right: 0.25em;
+}
+.rss-date {
+    display: block;
+    font-size: rem-calc(12);
+}
+.rssSummary {
+    margin: rhythm(0.5) 0;
+}
+
 .widget_calendar {
     table {
         width: 100%;
