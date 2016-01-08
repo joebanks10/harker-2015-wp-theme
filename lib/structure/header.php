@@ -99,6 +99,7 @@ function hkr_do_header() { ?>
                     <?php if ( trim(get_bloginfo('description')) != false ): ?>
                     <li class="current-site-tagline"><?php do_action( 'genesis_site_description' ); ?></li>
                     <?php endif; ?>
+                    <li class="current-site-separator"><span>|</span></li>
                 </ul>
                 <?php do_action( 'hkr_current_site_menu_items' ); ?>
             </nav>

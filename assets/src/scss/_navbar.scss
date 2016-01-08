@@ -266,51 +266,61 @@ $transform-nav-distance-large: $harker-logo-width;
 
 .current-page-title, .current-site-title {
     h1, p, a, span {
+        display: inline-block;
         font-weight: bold;
         text-transform: uppercase;
         font-size: 1rem;
         line-height: rhythm(1);    
         margin: 0;
     }
-    h1, p, a, span, &:after {
-        display: inline-block;
-    }
-    @media #{$medium-up} {
-        &:after {
-            content: "|";
-        }
-    }
-    @media #{$large-up} {
-        &, h1, p, a { 
-            font-size: rem-calc(24);
-            // font-size: 1rem;
-        }
-        &:after {
-            display: none;
-        }
-    }
+    // @media #{$medium-up} {
+    //     &:after {
+    //         content: "|";
+    //     }
+    // }
+    // @media #{$large-up} {
+    //     &, h1, p, a { 
+    //         font-size: rem-calc(24);
+    //         // font-size: 1rem;
+    //     }
+    //     &:after {
+    //         display: none;
+    //     }
+    // }
 }
 .current-page-bar .current-page-tagline,
 .current-site-bar .current-site-tagline {
     display: none;
+
     h1, h2, p, a, span {
+        display: inline-block;
         font-weight: normal;
         text-transform: none;
         font-size: 1rem;
         line-height: rhythm(1);    
         margin: 0;
     }
-    h1, h2, p, a, span, &:after {
-        display: inline-block;
-    }
-    @media #{$large-up} {
-        display: block; 
-        &:after {
-            content: "|";
-        }
+    span {
+        padding-left: 0;
     }
     .nav-bar.is-collapsed & {
         display: none;
+    }
+    @media #{$large-up} {
+        display: block; 
+    }
+}
+.current-site-bar .current-site-separator {
+    display: none;
+    color: $darkergray;
+
+    @media #{$medium-up} {
+        display: inline-block;
+    }
+
+    span {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
