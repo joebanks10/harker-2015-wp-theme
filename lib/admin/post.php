@@ -10,6 +10,13 @@ function hkr_post_single_thumbnail_fields( $content ) {
     ?>
     <hr />
     <p>
+        <label for="home-banner-image">
+            <input type="checkbox" name="<?php hkr_post_field_name('_hkr_hide_home_banner_image'); ?>" id="home-banner-image" value="1"<?php checked( genesis_get_custom_field('_hkr_hide_home_banner_image') ); ?> />
+            <?php _e( 'Do not display in home page banner.' ); ?>
+        </label>
+    </p>
+    <hr />
+    <p>
         <label for="custom-single-thumbnail">
             <input type="checkbox" name="<?php hkr_post_field_name('_hkr_custom_single_thumbnail'); ?>" id="custom-single-thumbnail" value="1"<?php checked( genesis_get_custom_field('_hkr_custom_single_thumbnail') ); ?> />
             <?php printf( __( 'Customize the <a href="%s" target="_blank" title="See default settings">Featured Image display settings</a> for this post.', 'harker-2015' ), menu_page_url( 'genesis', 0 ) . '#hkr-single-settings' ); ?>
@@ -74,6 +81,7 @@ function hkr_post_single_thumbnail_save( $post_id, $post ) {
         return;
 
     $data = wp_parse_args( $_POST['hkr_feature_image'], array(
+        '_hkr_hide_home_banner_image' => '',
         '_hkr_custom_single_thumbnail' => '',
         '_hkr_single_thumbnail' => '',
         '_hkr_single_thumbnail_format' => '',
