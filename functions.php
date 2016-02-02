@@ -62,7 +62,7 @@ function hkr_theme_setup() {
 
     // set up globals
     global $_hkr_displayed_ids;
-    $_hkr_displayed_ids = [];
+    $_hkr_displayed_ids = array();
 
     // child theme variables
     define( 'CHILD_THEME_NAME', 'Harker 2015' );
