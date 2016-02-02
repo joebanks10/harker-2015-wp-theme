@@ -517,7 +517,7 @@ img.alignright,
 
 .widget {
     word-wrap: break-word;
-    margin: 0 0 rhythm(2);
+    margin: 0 0 rhythm(1);
 }
 
 .widget-title,
@@ -990,7 +990,7 @@ img.alignright,
 }
 
 
-/* # Content Area
+/* # Archive
 ---------------------------------------------------------------------------------------------------- */
 
 .archive-description {
@@ -1004,11 +1004,20 @@ img.alignright,
     }
 }
 
+.archive, .page-template-page_blog {
+    @include hkr-post-listing-header();
+
+    .entry-content {
+        font-size: rem-calc(12);
+        line-height: 1.25em;
+    }
+}
+
 /* ## Entries
 --------------------------------------------- */
 
 .entry {
-    margin: 0 0 rhythm(2);
+    margin: 0 0 rhythm(1);
 }
 
 /* ## Entry Title

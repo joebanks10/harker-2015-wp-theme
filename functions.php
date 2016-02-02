@@ -60,6 +60,10 @@ add_action('genesis_setup', 'hkr_theme_setup');
 
 function hkr_theme_setup() {
 
+    // set up globals
+    global $_hkr_displayed_ids;
+    $_hkr_displayed_ids = [];
+
     // child theme variables
     define( 'CHILD_THEME_NAME', 'Harker 2015' );
     define( 'CHILD_THEME_URL', 'http://www.harker.org/' );
@@ -80,6 +84,7 @@ function hkr_theme_setup() {
     include_once(CHILD_THEME_DIR . '/lib/structure/structure.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/header.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/menu.php');
+    include_once(CHILD_THEME_DIR . '/lib/structure/loops.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/post.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/sidebar.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/footer.php');
