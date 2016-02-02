@@ -4,11 +4,11 @@ add_action( 'template_redirect', 'hkr_setup_featured_post' );
 
 function hkr_setup_featured_post() {
     
-    if ( is_page_template( 'page_blog.php' ) && is_front_page() ) {
+    if ( is_home() && ! is_paged() ) {
         add_action( 'genesis_before_while', 'hkr_do_featured_post_loop' );
         add_action( 'genesis_before_entry', 'hkr_skip_featured_post' );
     }
-    
+
 }
 
 function hkr_do_featured_post_loop() {
