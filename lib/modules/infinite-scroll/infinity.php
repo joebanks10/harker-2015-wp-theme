@@ -1,9 +1,15 @@
 <?php
 
+if ( hkr_jetpack_module_is_active('infinite-scroll') ) {
+    remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
+}
+
 add_action( 'wp_enqueue_scripts', 'hkr_infinite_scroll_script' );
 
 function hkr_infinite_scroll_script() {
-    wp_enqueue_script( 'harker-infinite-scroll', CHILD_THEME_DIR_URL . '/lib/modules/infinite-scroll/infinity.js', array('the-neverending-homepage'), CHILD_THEME_VERSION, true );
+    if ( hkr_jetpack_module_is_active('infinite-scroll') ) {
+        wp_enqueue_script( 'harker-infinite-scroll', CHILD_THEME_DIR_URL . '/lib/modules/infinite-scroll/infinity.js', array('the-neverending-homepage'), CHILD_THEME_VERSION, true );
+    }
 }
 
 add_filter( 'infinite_scroll_results', 'hkr_infinite_scroll_results' );
@@ -50,4 +56,9 @@ function hkr_infinite_scroll_pages_validate($input) {
     } else {
         return $input;
     }
+}
+
+// helpers
+function hkr_jetpack_module_is_active($module) {
+    return (class_exists( 'Jetpack' ) && Jetpack::is_module_active( $module ));
 }
