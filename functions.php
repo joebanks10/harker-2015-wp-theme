@@ -31,6 +31,13 @@ function hkr_theme_support() {
     // Add image sizes
     add_image_size( '6x4', 900, 600, true );
 
+    // Add infinite scroll
+    add_theme_support( 'infinite-scroll', array(
+        'container' => 'genesis-content',
+        'footer' => 'intro',
+        'render' => 'genesis_standard_loop',
+    ) );
+
     // Add Aesop Story Engine component styles
     add_theme_support( "aesop-component-styles", array( 
         "parallax", 
@@ -93,5 +100,8 @@ function hkr_theme_setup() {
     // widgets
     include_once(CHILD_THEME_DIR . '/lib/widgets/featured-post-content-widget.php');
     include_once(CHILD_THEME_DIR . '/lib/widgets/featured-post-banner-widget.php');
+
+    // modules
+    include_once(CHILD_THEME_DIR . '/lib/modules/infinite-scroll/infinity.php');    
 
 } 

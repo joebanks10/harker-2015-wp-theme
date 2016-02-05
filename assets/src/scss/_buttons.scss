@@ -46,6 +46,26 @@ p, ul, ol, dl {
     }
 }
 
+#infinite-handle {
+    span {
+        display: inline-block;
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+
+        button {
+            @include button;
+            padding: rhythm(0.25) 2rem;
+            font-size: 1rem;
+
+            &:hover, &:focus {
+                @include button;
+                padding: rhythm(0.25) 2rem;
+                font-size: 1rem;
+            }
+        }
+    }
+}
 
 .button-outline-invert {
     &, &:hover, &:focus {

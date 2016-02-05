@@ -3,10 +3,11 @@
 add_action( 'template_redirect', 'hkr_setup_featured_post' );
 
 function hkr_setup_featured_post() {
+    $page = (isset($_REQUEST['page'])) ? (int) $_REQUEST['page'] : 0; // for ajax requests
     
-    if ( is_home() && ! is_paged() ) {
+    if ( is_home() && ! is_paged() && $page === 0 ) {
         add_action( 'genesis_before_while', 'hkr_do_featured_post_loop' );
-        add_action( 'genesis_before_entry', 'hkr_skip_featured_post' );
+        add_action( 'genesis_before_entry', 'hkr_skip_featured_post', 1 );
     }
 
 }

@@ -1004,8 +1004,13 @@ img.alignright,
     }
 }
 
-.home, .archive, .page-template-page_blog {
+.home, .blog, .archive, .page-template-page_blog {
     @include hkr-post-listing-header();
+
+    .content > .entry,
+    .infinite-wrap > .entry {
+        @include hkr-panel();
+    }
 
     .entry-content {
         font-size: rem-calc(12);
@@ -1191,17 +1196,6 @@ p.entry-meta {
 
     .featured-content .widget-wrap > & {
         background: $darkergray;
-    }
-}
-
-/* ## Page Types
---------------------------------------------- */
-
-.blog, .page-template-page_blog, .archive {
-    
-    .content > .entry {
-        @include hkr-panel();
-        @include hkr-post-listing-header();
     }
 }
 
