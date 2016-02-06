@@ -1087,6 +1087,8 @@ p.entry-meta {
 .entry-image-content {
     background-color: $darkergray;
     margin: 0 (-$column-gutter/2) rhythm(2);
+    max-height: 576px; // for vertical photos
+    overflow: hidden;
 
     @media #{$medium-up} {
         .content-sidebar &,

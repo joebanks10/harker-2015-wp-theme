@@ -84,7 +84,7 @@ $harker-logo-width: 215px; // 16px left/right padding
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 .brand-bar {
-    z-index: 2;
+    z-index: 12;
     background-color: $darkharkergreen;
     a, span, & {
         color: $lightgray;
@@ -212,7 +212,7 @@ $harker-logo-width: 215px; // 16px left/right padding
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 .current-page-bar, .current-site-bar {
-    z-index: 1;
+    z-index: 11;
     background-color: rgba($lightgray, 0.9);
     color: $gray;
     font-size: rem-calc(14);
