@@ -68,7 +68,7 @@ function featured_post_image_size($size) {
     global $post;
 
     if ( $post->is_featured ) {
-        return '6x4-archive';
+        return 'archive-post';
     } else {
         return $size;
     }
