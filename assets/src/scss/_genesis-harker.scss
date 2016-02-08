@@ -1087,7 +1087,7 @@ p.entry-meta {
 .entry-image-content {
     background-color: $darkergray;
     margin: 0 (-$column-gutter/2) rhythm(2);
-    max-height: 576px; // for vertical photos
+    // max-height: 576px; // for vertical photos
     overflow: hidden;
 
     @media #{$medium-up} {
@@ -1184,7 +1184,8 @@ p.entry-meta {
 }
 
 .entry-image-large-link,
-.entry-image-6x4-link {
+.entry-image-6x4-link,
+.entry-image-archive-post-link {
     background: $darkergray;
     display: block;
     margin: (-$column-gutter/2) (-$column-gutter/2) rhythm(1);
@@ -1194,6 +1195,7 @@ p.entry-meta {
     img {
         display: block;
         margin: 0 auto;
+        float: none;
     }
 
     .featured-content .widget-wrap > & {

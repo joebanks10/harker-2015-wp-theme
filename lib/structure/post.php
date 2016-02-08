@@ -1,7 +1,25 @@
 <?php
 
-/* Archive Header
+/* Archive Posts
 -------------------------------------------------- */
+
+add_action( 'template_redirect', 'hkr_remove_post_info' );
+
+function hkr_remove_post_info() {
+    if ( is_home() || is_tax() ) {
+        add_filter( 'genesis_post_info', '__return_false' );
+    }
+}
+
+add_action( 'template_redirect', 'hkr_remove_entry_footer' );
+
+function hkr_remove_entry_footer() {
+    if ( is_home() || is_tax() ) {
+        remove_post_type_support( 'post', 'genesis-entry-meta-after-content' );
+        // remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_open', 5 );
+        // remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 );
+    }
+}
 
 add_action( 'template_redirect', 'hkr_remove_front_page_blog_header');
 
@@ -12,6 +30,8 @@ function hkr_remove_front_page_blog_header() {
     }
 
 }
+
+
 
 /* Featured Image
 -------------------------------------------------- */
@@ -48,7 +68,7 @@ function featured_post_image_size($size) {
     global $post;
 
     if ( $post->is_featured ) {
-        return 'large';
+        return '6x4-archive';
     } else {
         return $size;
     }
@@ -102,7 +122,7 @@ function hkr_do_single_thumbnail() {
 function hkr_do_single_post_content_image() {
     ?>
     <div class="entry-image-content">
-        <?php the_post_thumbnail('large', array('class' => 'attachment-large entry-image')); ?>
+        <?php the_post_thumbnail('single-post', array('class' => 'attachment-large entry-image')); ?>
     </div>
     <?php
 }
