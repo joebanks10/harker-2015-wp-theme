@@ -30,8 +30,8 @@ function hkr_theme_support() {
 
     // Add image sizes
     add_image_size( '6x4', 900, 600, true );
-    add_image_size( 'archive-post', 600, 400 );
-    add_image_size( 'single-post', 768, 512 );
+    add_image_size( 'archive-post', 600, 400 ); // use 600x360 to swap for 5x3 images
+    add_image_size( 'single-post', 768, 512 );  // use 768x461 to swap for 5x3 images
 
     // Add infinite scroll
     add_theme_support( 'infinite-scroll', array(
