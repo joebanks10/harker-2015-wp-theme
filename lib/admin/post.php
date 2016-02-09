@@ -32,6 +32,7 @@ function hkr_post_single_thumbnail_fields( $content ) {
             <select name="<?php hkr_post_field_name('_hkr_single_thumbnail_format'); ?>" id="<?php hkr_post_field_name('_hkr_single_thumbnail_format'); ?>">
                 <?php
                 $formats = array( 
+                    'square' => 'Square',
                     'content' => 'Content', 
                     'banner' => 'Banner',
                     'hero' => 'Hero'

@@ -92,7 +92,7 @@ function hkr_do_single_thumbnail() {
     if ( is_page_template( 'page_home.php' ) && is_active_sidebar( 'hkr-home-banner-widgets') ) 
         return;
 
-    if ( has_single_thumbnail('medium') ) {
+    if ( has_single_thumbnail('square') ) {
 
         if ( is_page_template( 'page_blog.php' ) || is_page_template( 'page_home.php' ) ) {
             add_action( 'genesis_before_loop', 'hkr_do_single_post_medium_image', 5 );
@@ -138,8 +138,8 @@ function hkr_do_single_thumbnail() {
 
 function hkr_do_single_post_medium_image() {
     ?>
-    <div class="entry-image-medium">
-        <?php the_post_thumbnail('medium-square', array('class' => 'attachment-medium entry-image single-entry-image-medium')); ?>
+    <div class="entry-image-square">
+        <?php the_post_thumbnail('medium-square', array('class' => 'attachment-square entry-image single-entry-image-square')); ?>
     </div>
     <?php 
 }

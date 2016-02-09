@@ -1064,7 +1064,12 @@ $entry-feature-image-width: 38.2%;
 --------------------------------------------- */
 
 .entry-title {
+    font-size: $h1-font-size - $h1-font-reduction;
     margin-bottom: rhythm(1);
+
+    @media #{$large-up} {
+        font-size: $h1-font-size;
+    }
 
     a {
         font-weight: $header-font-weight;
@@ -1123,7 +1128,7 @@ p.entry-meta {
     margin-bottom: rhythm(0.5);
 }
 
-.entry-image-medium {
+.entry-image-square {
     float: left;
     margin-right: $column-gutter;
     width: 38.2%;
