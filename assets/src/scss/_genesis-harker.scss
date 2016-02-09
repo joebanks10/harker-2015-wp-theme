@@ -1037,6 +1037,12 @@ $entry-feature-image-width: 38.2%;
     .entry-header {
         padding: 1rem 1rem 0;
     }
+    .entry-title {
+        @media #{$medium-up} {
+            font-size: rem-calc(32);
+            line-height: 1;
+        }
+    }
     .entry-content {
         display: block;
         padding: 0 1rem;
