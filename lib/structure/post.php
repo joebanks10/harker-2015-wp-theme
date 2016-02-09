@@ -139,7 +139,7 @@ function hkr_do_single_thumbnail() {
 function hkr_do_single_post_medium_image() {
     ?>
     <div class="entry-image-medium">
-        <?php the_post_thumbnail('medium', array('class' => 'attachment-medium entry-image single-entry-image-medium')); ?>
+        <?php the_post_thumbnail('medium-square', array('class' => 'attachment-medium entry-image single-entry-image-medium')); ?>
     </div>
     <?php 
 }
