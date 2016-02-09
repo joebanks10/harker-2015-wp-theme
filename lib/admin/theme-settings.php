@@ -49,6 +49,7 @@ function hkr_single_settings_box_content() {
             <select name="<?php hkr_settings_field_name('single_thumbnail_format'); ?>" id="<?php hkr_settings_field_name('single_thumbnail_format'); ?>">
                 <?php
                 $formats = array( 
+                    'medium' => 'Medium',
                     'content' => 'Content', 
                     'banner' => 'Banner',
                     'hero' => 'Hero'

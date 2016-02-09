@@ -1,6 +1,7 @@
 .widget_widget_tptn_pop {
     .widget-wrap > div {
         padding: 0;
+        background: none;
     }
     .tptn_posts_widget > ul {
         list-style: none;
@@ -9,13 +10,14 @@
 
         > li {
             position: relative;
-            padding: 1rem;
-            border-bottom: 1px solid $default-border-color;
+            margin-bottom: 1rem;
+            // padding: 1rem;
+            // border-bottom: 1px solid $default-border-color;
             @include clearfix;
 
-            &:first-child {
-                border-top: 1px solid $default-border-color;
-            }
+            // &:first-child {
+            //     border-top: 1px solid $default-border-color;
+            // }
         }
     }
     .tptn_after_thumb, .tptn_link, .tptn_title, .tptn_author, .tptn_date {

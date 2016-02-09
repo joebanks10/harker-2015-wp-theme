@@ -1094,6 +1094,10 @@ p.entry-meta {
     margin-top: -(rhythm(1));
 }
 
+.entry-footer {
+    clear: both;
+}
+
 .entry-footer .entry-meta {
     font-size: rem-calc(12);
     border-top: 1px solid $default-border-color;
@@ -1117,6 +1121,11 @@ p.entry-meta {
 
 .entry-image {
     margin-bottom: rhythm(0.5);
+}
+
+.entry-image-medium {
+    float: left;
+    margin-right: $column-gutter;
 }
 
 .entry-image-content {
