@@ -1040,7 +1040,7 @@ $entry-feature-image-width: 38.2%;
     .entry-title {
         @media #{$medium-up} {
             font-size: rem-calc(32);
-            line-height: 1;
+            line-height: 1.2;
         }
     }
     .entry-content {
