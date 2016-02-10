@@ -1059,6 +1059,19 @@ $entry-feature-image-width: 38.2%;
     }
 } 
 
+.entry-image-small-square-link {
+    ~.entry-header .entry-title {
+        @media #{$small-only} {
+            font-size: 1rem;
+        }
+    }
+
+    ~ .entry-header, ~ .entry-content {
+        margin-left: 75px;
+        padding-bottom: $column-gutter/2;
+    }
+}
+
 /* ## Entries
 --------------------------------------------- */
 
