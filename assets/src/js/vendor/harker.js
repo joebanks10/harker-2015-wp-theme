@@ -513,6 +513,11 @@ hkr.navbar = {
             // this.insertBookmarks();
             // this.insertPageTitle();
 
+            this.createSubmenuLinks();
+            new Activate('.f-dropdown > li > .sub-menu-link', {
+                activeClassName: 'submenu-open'
+            });
+
             $(window).load( function() {
                 $bookmarksMenu.truncatedMenu({
                     moreItem: '.current-page-menu-bookmarks .menu-item-more, .current-site-menu-items .menu-item-more',
@@ -590,6 +595,11 @@ hkr.navbar = {
             }
 
             $navbarTitle.html(text);
+        },
+        createSubmenuLinks: function() {
+            var menuItemLinks = $('.menu-item-has-children > a', this.element);
+
+            menuItemLinks.after('<a href="#" class="sub-menu-link"></a>');
         }
     }
 };

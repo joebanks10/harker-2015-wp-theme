@@ -886,18 +886,16 @@ img.alignright,
     }
 }
 
-.current-site-menu-items {
-    > li.current-menu-item > a,
-    > li.current-menu-ancestor > a,
-    > li[class*="current-"] > a {
-        color: $darkergray;
-        border-bottom: 3px solid $blue;
-    }
-    .f-dropdown,
-    > li.current-menu-ancestor {
+.current-site-menu-items, 
+.current-site-menu-items .menu-item-more > ul {
+    > li[class*="current-"] {
+        > a {
+            color: $darkergray;
+            border-bottom: 3px solid $blue;
+        }
+
         li.current-menu-item > a {
             color: $darkergray;
-            background-color: rgba($body-bg, 0.95);
         }
     }
 }
@@ -972,6 +970,44 @@ img.alignright,
         right: 1rem;
         &:before, &:after {
             display: none;
+        }
+    }
+}
+
+// the hacked up submenu accordion 
+
+.menu-item-has-children {
+    position: relative;
+}
+
+.current-site-menu-items > li .sub-menu-link {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: rem-calc(48);
+    border-left: 1px solid $default-border-color;
+    text-align: center;
+
+    &:before {
+        @include fa-icon();
+        content: $fa-var-angle-down;
+    }
+}
+
+.menu-item-more .f-dropdown > li {
+    > .sub-menu-link {
+        display: block;
+    }
+    > ul {
+        display: none;
+    }
+    > .sub-menu-link.submenu-open + ul {
+        display: block;
+    }
+    > .sub-menu-link.submenu-open {
+        &:before {
+            content: $fa-var-angle-up;
         }
     }
 }

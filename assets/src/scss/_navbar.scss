@@ -213,7 +213,7 @@ $harker-logo-width: 215px; // 16px left/right padding
 
 .current-page-bar, .current-site-bar {
     z-index: 11;
-    background-color: rgba($lightgray, 0.9);
+    background-color: rgba($white, 0.9);
     color: $gray;
     font-size: rem-calc(14);
     line-height: rhythm(1);
@@ -363,9 +363,10 @@ $transform-nav-distance-large: $harker-logo-width;
     @media #{$large-up} {
         margin-left: 0.5rem;
     }
-    .f-dropdown a {
-        font-size: 0.875rem;
-    }
+}
+
+.current-site-bar .menu-item-more .f-dropdown a {
+    font-size: 0.875rem;
 }
 
 // mmenu (drawer menu)
