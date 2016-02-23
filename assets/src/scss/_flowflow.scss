@@ -1,105 +1,144 @@
 .widget {
     .ff-stream {
         min-width: auto;
-        max-width: rem-calc(300);
+        max-width: 300px;
         background: transparent !important;
         padding: 0;
     }
 
-    .ff-header h1 {
-        font-size: rem-calc(16);
-        line-height: rhythm(1);
-        text-transform: none;
-        margin: 0 0 rhythm(0.5) !important;
+    .ff-filter-holder {
+        margin: rhythm(1) 0;
+        padding: 0;
+        height: auto;
+
+        .ff-filter {
+            margin: 0 rem-calc(3) 0.5rem;
+
+            &.ff-type-all {
+                padding: 0 1rem;
+            }
+        }
+
+        .ff-search {
+            display: block;
+            margin: 0.5rem 0 0;
+
+            input {
+                width: 100% !important;
+            }
+        }
     }
 
-    .ff-header h2 {
-        font-size: rem-calc(12);
-        line-height: 1.25;
-        text-transform: none;
-        font-weight: normal;
-        margin: -(rhythm(0.5)) 0 rhythm(0.5) !important;
-    }
+    .ff-header {
+        h1 {
+            font-size: rem-calc(16);
+            line-height: rhythm(1);
+            text-transform: none;
+            margin: 0 0 rhythm(0.5) !important;
+        }
+
+        h2 {
+            font-size: rem-calc(12);
+            line-height: 1.25;
+            text-transform: none;
+            font-weight: normal;
+            margin: -(rhythm(0.5)) 0 rhythm(0.5) !important;
+        }
+    } 
 
     .ff-stream-wrapper {
         margin: 0;
     }
 
-    .ff-item {
-        width: 100% !important;
+    .ff-theme-classic {
+
+        .ff-item {
+            width: 100% !important;
+
+            h4 {
+                line-height: 1.2;
+                margin-bottom: rhythm(0.5);
+            }
+
+            .ff-content {
+                font-size: rem-calc(12);
+                line-height: 1.25;
+            }
+        }
+
+        .picture-item__inner {
+            border: 1px solid $default-border-color;
+            padding: 0.5rem;
+            @include box-shadow(none !important);
+        }
+
+        .ff-item .ff-item-cont .ff-img-holder {
+            margin-bottom: rhythm(0.5);
+
+            img {
+                width: auto !important;
+                height: auto !important;
+            }
+        }
+
+        .ff-item-cont .ff-content a {
+            line-height: 1.25 !important;
+        }
+
     }
 
-    .picture-item__inner {
-        border: 1px solid $default-border-color;
-        padding: 1rem;
-        @include box-shadow(none !important);
-    }
-
-    .ff-item .ff-item-cont .ff-img-holder {
-        margin-bottom: rhythm(0.5);
-
-        img {
+    .ff-theme-classic.ff-style-4 {
+        .ff-userpic, .ff-icon, .ff-icon-inner, .ff-icon-inner:after {
             width: auto !important;
-            height: auto !important;
+            @include border-radius(0); 
+        }
+
+        .ff-item-meta {
+            padding-top: 0.5rem;
+            font-size: rem-calc(10);
+
+            a {
+                font-size: inherit;
+                color: $darkergray;
+            }
+
+            .ff-icon {
+                font-size: rem-calc(12);
+                border-width: 0;
+            }
+
+            .ff-icon-inner {
+                @include fa-icon();
+                position: static;
+                background: transparent;
+                color: $darkgray;
+            }
+        }
+
+        .ff-facebook .ff-icon-inner, 
+        .ff-type-facebook {
+            &:after {
+                content: $fa-var-facebook-square;
+            }
+        }
+        .ff-twitter .ff-icon-inner, 
+        .ff-type-twitter {
+            &:after {
+                content: $fa-var-twitter-square;
+            }
+        }
+        .ff-instagram .ff-icon-inner, 
+        .ff-type-instagram {
+            &:after {
+                content: $fa-var-instagram;
+            }
         }
     }
 
-    .ff-item h4 {
-        line-height: 1.2;
-        margin-bottom: rhythm(0.5);
-    }
-
-    .ff-item .ff-content {
-        font-size: rem-calc(12);
-        line-height: 1.25;
-    }
-
-    .ff-item-cont .ff-content a {
-        line-height: 1.25 !important;
-    }
-
-    .ff-item-meta {
-        font-size: rem-calc(10);
-
-        a {
-            font-size: inherit;
-            color: $darkergray;
+    .ff-loadmore-wrapper {
+        .ff-btn {
+            line-height: 31px;
         }
     }
 
-    .ff-userpic, .ff-icon, .ff-icon-inner, .ff-icon-inner:after {
-        width: auto !important;
-        @include border-radius(0);
-    }
-
-    .ff-item-meta .ff-icon {
-        font-size: rem-calc(12);
-        border-width: 0;
-    }
-
-    .ff-item-meta .ff-icon-inner {
-        @include fa-icon();
-        position: static;
-        background: transparent;
-        color: $darkgray;
-    }
-
-    .ff-facebook .ff-icon-inner, 
-    .ff-type-facebook {
-        &:after {
-            content: $fa-var-facebook-square;
-        }
-    }
-    .ff-twitter .ff-icon-inner, 
-    .ff-type-twitter {
-        &:after {
-            content: $fa-var-twitter-square;
-        }
-    }
-    .ff-instagram .ff-icon-inner, 
-    .ff-type-instagram {
-        &:after {
-            content: $fa-var-instagram;
-        }
-    }
 }
