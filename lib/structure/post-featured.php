@@ -1,9 +1,14 @@
 <?php 
 
-add_action( 'template_redirect', 'hkr_setup_featured_post' );
+if ( feature_first_post() ) {
+    add_action( 'template_redirect', 'hkr_setup_featured_post' );
+
+    add_filter( 'genesis_attr_entry', 'hkr_attr_entry_feature' );
+    add_filter( 'archive_thumbnail_size', 'hkr_featured_post_image_size' );
+}
 
 function hkr_setup_featured_post() {
-    $page = (isset($_REQUEST['page'])) ? (int) $_REQUEST['page'] : 0; // for ajax requests
+    $page = (isset($_REQUEST['page'])) ? (int) $_REQUEST['page'] : 0; // for infinite scroll ajax requests
     
     if ( is_home() && ! is_paged() && $page === 0 ) {
         add_action( 'genesis_before_while', 'hkr_do_featured_post_loop' );
@@ -12,6 +17,9 @@ function hkr_setup_featured_post() {
 
 }
 
+/**
+ * Display the first post with a photo in the loop as the first story of the loop.
+ */
 function hkr_do_featured_post_loop() {
 
     while ( have_posts() ) : the_post();
@@ -53,10 +61,34 @@ function hkr_do_featured_post_loop() {
 
 }
 
+/**
+ * Skip the story that was displayed first
+ */
 function hkr_skip_featured_post() {
     global $post, $_hkr_displayed_ids;
 
     if ( in_array($post->ID, $_hkr_displayed_ids) ) {
         the_post(); // advance to the next post
+    }
+}
+
+function hkr_attr_entry_feature( $attributes ) { 
+    global $post;
+
+    if ( $post->is_featured ) {
+        $attributes['class'] .= ' entry-feature';
+    } 
+
+    return $attributes; 
+}
+
+function hkr_featured_post_image_size($size) {
+    global $post;
+
+    if ( $post->is_featured ) {
+        return 'archive-post';
+        // return 'feature-square';
+    } else {
+        return $size;
     }
 }

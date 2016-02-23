@@ -1,49 +1,5 @@
 <?php
 
-/* Archive Posts
--------------------------------------------------- */
-
-add_action( 'template_redirect', 'hkr_remove_post_info' );
-
-function hkr_remove_post_info() {
-    if ( ! is_single() ) {
-        add_filter( 'genesis_post_info', '__return_false' );
-    }
-}
-
-add_action( 'template_redirect', 'hkr_remove_entry_footer' );
-
-function hkr_remove_entry_footer() {
-    if ( ! is_single() ) {
-        remove_post_type_support( 'post', 'genesis-entry-meta-after-content' );
-    }
-}
-
-add_action( 'template_redirect', 'hkr_remove_front_page_blog_header');
-
-function hkr_remove_front_page_blog_header() {
-
-    if ( is_page_template( 'page_blog.php' ) && is_front_page() ) {
-        remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
-    }
-
-}
-
-add_filter( 'genesis_attr_entry', 'hkr_attr_entry_feature' );
-
-function hkr_attr_entry_feature( $attributes ) { 
-    global $post;
-
-    if ( $post->is_featured ) {
-        $attributes['class'] .= ' entry-feature';
-    } 
-
-    return $attributes; 
-}
-
-/* Featured Image
--------------------------------------------------- */
-
 remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
 add_action( 'genesis_entry_header', 'hkr_do_archive_thumbnail', 4 );
 
@@ -68,18 +24,6 @@ function hkr_do_archive_thumbnail() {
             printf( '<a href="%s" class="%s" aria-hidden="true">%s</a>', get_permalink(), $anchor_classes, $img );
     }
 
-}
-
-add_filter( 'archive_thumbnail_size', 'featured_post_image_size' );
-
-function featured_post_image_size($size) {
-    global $post;
-
-    if ( $post->is_featured ) {
-        return 'feature-square';
-    } else {
-        return $size;
-    }
 }
 
 add_action( 'template_redirect', 'hkr_do_single_thumbnail' );

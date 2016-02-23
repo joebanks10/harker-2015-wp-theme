@@ -515,7 +515,7 @@ hkr.navbar = {
 
             this.createSubmenuLinks();
             new Activate('.f-dropdown > li > .sub-menu-link', {
-                activeClassName: 'submenu-open'
+                activeClassName: 'sub-menu-link-open'
             });
 
             $(window).load( function() {

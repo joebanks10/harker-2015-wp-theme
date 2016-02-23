@@ -29,12 +29,11 @@ function hkr_theme_support() {
     ) );
 
     // Add image sizes
-    add_image_size( '6x4', 900, 600, true );
     add_image_size( 'archive-post', 600, 400 ); // use 600x360 to swap for 5x3 images
-    add_image_size( 'feature-square', 375, 375, true );
+    add_image_size( 'single-post', 768, 512 );  // use 768x461 to swap for 5x3 images
     add_image_size( 'small-square', 75, 75, true );
     add_image_size( 'medium-square', 300, 300, true );
-    add_image_size( 'single-post', 768, 512 );  // use 768x461 to swap for 5x3 images
+    add_image_size( 'large-square', 600, 600, true );
 
     // Add infinite scroll
     add_theme_support( 'infinite-scroll', array(
@@ -96,8 +95,8 @@ function hkr_theme_setup() {
     include_once(CHILD_THEME_DIR . '/lib/structure/structure.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/header.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/menu.php');
-    include_once(CHILD_THEME_DIR . '/lib/structure/loops.php');
-    include_once(CHILD_THEME_DIR . '/lib/structure/post.php');
+    include_once(CHILD_THEME_DIR . '/lib/structure/post-featured.php');
+    include_once(CHILD_THEME_DIR . '/lib/structure/featured-image.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/sidebar.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/footer.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/aesop.php');
@@ -108,5 +107,8 @@ function hkr_theme_setup() {
 
     // modules
     include_once(CHILD_THEME_DIR . '/lib/modules/infinite-scroll/infinity.php');    
+
+    // themes
+    include_once(CHILD_THEME_DIR . '/lib/themes/condensed-theme.php');
 
 } 

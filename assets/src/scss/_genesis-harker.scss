@@ -61,19 +61,6 @@
     @include clearfix();
 }
 
-/* # Defaults
----------------------------------------------------------------------------------------------------- */
-
-/* ## Typographical Elements
---------------------------------------------- */
-
-// No styles
-
-/* ## Headings
---------------------------------------------- */
-
-// No styles
-
 /* ## Objects
 --------------------------------------------- */
 
@@ -146,16 +133,6 @@ img {
     padding: 4px;
 }
 
-/* ## Forms
---------------------------------------------- */
-
-// No styles
-
-/* ## Tables
---------------------------------------------- */
-
-// No styles
-
 /* ## Screen Reader Text
 --------------------------------------------- */
 
@@ -219,6 +196,7 @@ img {
 .sidebar-primary,
 .sidebar-secondary {
     @include grid-column($columns:24, $float:false);
+    margin-bottom: rhythm(2);
 }
 
 .sidebar-secondary {
@@ -974,14 +952,13 @@ img.alignright,
     }
 }
 
-// the hacked up submenu accordion 
+// the hacked up submenu accordion!!!
 
 .menu-item-has-children {
     position: relative;
 }
 
-.current-site-menu-items > li .sub-menu-link {
-    display: none;
+.sub-menu-link {
     position: absolute;
     top: 0;
     right: 0;
@@ -993,22 +970,29 @@ img.alignright,
         @include fa-icon();
         content: $fa-var-angle-down;
     }
+    &.sub-menu-link-open:before {
+        content: $fa-var-angle-up;
+    }
+}
+.f-dropdown > .menu-item-has-children > a:not(.sub-menu-link) {
+    padding-right: rem-calc(48) + rem-calc(8);
 }
 
+// show submenu dropdown link in f-dropdown element (ellipses dropdown)
+.current-site-menu-items > li .sub-menu-link {
+    display: none;
+}
+.current-site-menu-items .f-dropdown > li > .sub-menu-link {
+    display: block;
+}
+
+// display sub-menu when sub-menu-link is clicked
 .menu-item-more .f-dropdown > li {
-    > .sub-menu-link {
-        display: block;
-    }
-    > ul {
+    > .sub-menu-link + .sub-menu {
         display: none;
     }
-    > .sub-menu-link.submenu-open + ul {
+    > .sub-menu-link-open + .sub-menu {
         display: block;
-    }
-    > .sub-menu-link.submenu-open {
-        &:before {
-            content: $fa-var-angle-up;
-        }
     }
 }
 
@@ -1043,68 +1027,14 @@ img.alignright,
 .home, .blog, .archive, .page-template-page_blog {
     @include hkr-post-listing-header();
 
-    // .content > .entry,
-    // .infinite-wrap > .entry {
-    //     @include hkr-panel();
-    // }
-
-    .entry-image {
-        margin-bottom: 0;
+    .content > .entry,
+    .infinite-wrap > .entry {
+        @include hkr-panel();
     }
 
     .entry-content {
-        display: none;
         font-size: rem-calc(12);
         line-height: 1.25em;
-    }
-}
-
-$entry-feature-image-width: 38.2%;
-
-.entry-feature {
-    @include hkr-panel();
-    padding: 0;
-
-    .entry-header,
-    .entry-content {
-        margin-left: $entry-feature-image-width;
-    }
-
-    .entry-header {
-        padding: 1rem 1rem 0;
-    }
-    .entry-title {
-        @media #{$medium-up} {
-            font-size: rem-calc(32);
-            line-height: 1.2;
-        }
-    }
-    .entry-content {
-        // display: block;
-        padding: 0 1rem;
-    }
-}
-
-.entry-image-feature-square-link {
-    display: block;
-    width: $entry-feature-image-width;
-
-    img {
-        margin-right: 1rem;
-        margin-bottom: 0;
-    }
-} 
-
-.entry-image-small-square-link {
-    ~.entry-header .entry-title {
-        @media #{$small-only} {
-            font-size: 1rem;
-        }
-    }
-
-    ~ .entry-header, ~ .entry-content {
-        margin-left: 75px;
-        padding-left: $column-gutter/2;
     }
 }
 
@@ -1191,6 +1121,19 @@ p.entry-meta {
 
 .entry-image {
     margin-bottom: rhythm(0.5);
+}
+
+.entry-image-small-square-link {
+    ~.entry-header .entry-title {
+        @media #{$small-only} {
+            font-size: 1rem;
+        }
+    }
+
+    ~ .entry-header, ~ .entry-content {
+        margin-left: 75px;
+        padding-left: $column-gutter/2;
+    }
 }
 
 .entry-image-square {

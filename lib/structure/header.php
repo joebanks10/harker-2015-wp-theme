@@ -19,6 +19,16 @@ function hkr_theme_assets() {
 
 }
 
+add_filter('body_class', 'hkr_condensed_theme_class');
+
+function hkr_condensed_theme_class($classes) {
+    if ( is_condensed_theme() ) {
+        $classes[] = 'hkr-2015-condensed-theme';
+    }
+
+    return $classes;
+}
+
 add_filter( 'genesis_site_title_wrap', 'hkr_do_home_title_wrap' );
 add_filter( 'genesis_entry_title_wrap', 'hkr_entry_title_wrap' );
 
