@@ -87,7 +87,7 @@ function hkr_do_single_post_medium_image() {
 
     ?>
     <div class="entry-image-square">
-        <a href="<?php echo $permalink; ?>" class="entry-image-square-link">
+        <a href="<?php echo $permalink; ?>" class="entry-image-square-link" rel="lightbox">
         <?php the_post_thumbnail('medium-square', array('class' => 'attachment-square entry-image single-entry-image-square')); ?>
         </a>
     </div>
