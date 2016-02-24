@@ -81,9 +81,15 @@ function hkr_do_single_thumbnail() {
 -------------------------------------------------- */
 
 function hkr_do_single_post_medium_image() {
+    global $post;
+
+    $permalink = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+
     ?>
     <div class="entry-image-square">
+        <a href="<?php echo $permalink; ?>" class="entry-image-square-link">
         <?php the_post_thumbnail('medium-square', array('class' => 'attachment-square entry-image single-entry-image-square')); ?>
+        </a>
     </div>
     <?php 
 }
