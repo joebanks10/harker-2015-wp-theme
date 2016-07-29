@@ -25,6 +25,12 @@ function hkr_condensed_theme_class($classes) {
     if ( is_condensed_theme() ) {
         $classes[] = 'hkr-2015-condensed-theme';
     }
+    if ( is_page_template( 'page_home.php' ) && is_active_sidebar( 'hkr-home-banner-widgets') ) {
+        $classes[] = 'has-home-banner-widgets';
+    }
+    if ( is_active_sidebar( 'hkr-top-banner-widgets') && ! has_single_thumbnail('banner')) {
+        $classes[] = 'has-top-banner-widgets';
+    }
 
     return $classes;
 }
@@ -142,4 +148,17 @@ function hkr_seo_site_description() {
 
     echo $output;
 
+}
+
+add_action( 'genesis_before_content_sidebar_wrap', 'hkr_do_top_banner', 25 );
+
+function hkr_do_top_banner() {
+    if (has_single_thumbnail('banner')) {
+        return; // do nothing
+    }
+
+    genesis_widget_area( 'hkr-top-banner-widgets', array( 
+        'before' => '<div class="top-widgets top-widgets-banner widget-area">', 
+        'after'  => '</div>'
+    ));
 }

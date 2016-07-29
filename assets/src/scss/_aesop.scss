@@ -23,7 +23,8 @@ $aesop-small-down: "only screen and (max-width: 480px)";
     .aesop-content,
     .entry-footer,
     .author-box,
-    .comment-respond {
+    .comment-respond,
+    .top-widgets-banner {
         width: 100%;
         max-width: $aesop-content-width;
         margin-left: auto;

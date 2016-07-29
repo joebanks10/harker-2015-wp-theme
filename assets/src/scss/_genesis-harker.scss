@@ -506,7 +506,8 @@ img.alignright,
     text-transform: none;
 }
 
-.widget-wrap {
+.sidebar-primary .widget-wrap,
+.sidebar-secondary .widget-wrap {
     > * {
         @include hkr-panel();
     }
@@ -565,6 +566,12 @@ img.alignright,
         text-align: center;
     }
 } 
+
+.top-widgets-banner {
+    margin-top: -1.5rem;
+    padding: 0 1rem 0.75rem;
+    width: 100%;
+}
 
 .home-widgets-banner {
     background: $darkergray;
@@ -1109,6 +1116,11 @@ p.entry-meta {
 .entry-tags {
     display: block;
     text-transform: uppercase;
+
+    .entry-meta & {
+        display: inline;
+        text-transform: capitalize;
+    }
 }
 
 .entry-comments-link::before {
