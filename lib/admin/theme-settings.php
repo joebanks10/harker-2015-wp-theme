@@ -7,6 +7,7 @@ function hkr_theme_ops_defaults( $defaults ) {
     $defaults['single_thumbnail_format'] = 'genesis_entry_header';
     $defaults['condensed_theme'] = 0;
     $defaults['featured_first_post'] = 0;
+    $defaults['hkr_archive_post_info'] = '';
     return $defaults;
 }
 
@@ -40,6 +41,13 @@ function hkr_theme_ops_sanitization_filters() {
         GENESIS_SETTINGS_FIELD,
         array(
             'featured_first_post'
+        ) 
+    );
+    genesis_add_option_filter( 
+        'safe_html', 
+        GENESIS_SETTINGS_FIELD,
+        array(
+            'hkr_archive_post_info'
         ) 
     );
 }
@@ -108,6 +116,11 @@ function hkr_extras_box_content() {
                 </td>
             </tr>
             <tr valign="top">
+                <th scope="row" colspan="2" style="padding: 0;">
+                    <h3>Content Archive</h3>
+                </th>
+            </tr>
+            <tr valign="top">
                 <th scope="row">
                     Featured First Post
                 </th>
@@ -116,6 +129,17 @@ function hkr_extras_box_content() {
                     <p>
                         <label for="<?php hkr_settings_field_name('featured_first_post'); ?>"><input type="checkbox" name="<?php hkr_settings_field_name('featured_first_post'); ?>" id="<?php hkr_settings_field_name('featured_first_post'); ?>" value="1"<?php checked( genesis_get_option('featured_first_post') ); ?> />
                         <?php _e( 'Feature first post?', 'harker-2015' ); ?></label>
+                    </p>
+                </td>
+            </tr>
+            <tr valign="top">
+                <th scope="row">
+                    <label for="<?php hkr_settings_field_name('hkr_archive_post_info'); ?>"><?php _e( 'Post Info', 'harker-2015' ); ?></label>
+                </th>
+                <td>
+                    <p><span class="description">Use shortcodes to print post meta info. <a href="http://my.studiopress.com/docs/shortcode-reference/" target="_blank">See shortcode reference</a></span></p>
+                    <p>
+                        <input type="text" class="regular-text" name="<?php hkr_settings_field_name('hkr_archive_post_info'); ?>" id="<?php hkr_settings_field_name('hkr_archive_post_info'); ?>" value="<?php echo esc_html(genesis_get_option('hkr_archive_post_info')); ?>" />
                     </p>
                 </td>
             </tr>

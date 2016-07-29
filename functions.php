@@ -95,6 +95,7 @@ function hkr_theme_setup() {
     include_once(CHILD_THEME_DIR . '/lib/structure/structure.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/header.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/menu.php');
+    include_once(CHILD_THEME_DIR . '/lib/structure/post.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/post-featured.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/featured-image.php');
     include_once(CHILD_THEME_DIR . '/lib/structure/sidebar.php');

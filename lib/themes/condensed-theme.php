@@ -4,7 +4,6 @@
 -------------------------------------------------- */
 
 if ( is_condensed_theme() ) {
-    add_action( 'template_redirect', 'hkr_remove_post_info' );
     add_action( 'template_redirect', 'hkr_remove_entry_footer' );
 
     remove_filter( 'archive_thumbnail_size', 'featured_post_image_size' );
