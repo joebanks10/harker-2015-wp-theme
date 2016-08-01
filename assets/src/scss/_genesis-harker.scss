@@ -1031,7 +1031,7 @@ img.alignright,
     }
 }
 
-.home, .blog, .archive, .page-template-page_blog {
+.home, .blog, .archive, .page-template-page_blog, .search {
     @include hkr-post-listing-header();
 
     .content > .entry,
