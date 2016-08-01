@@ -57,8 +57,8 @@ add_action( 'genesis_theme_settings_metaboxes', 'hkr_settings_boxes' );
 
 function hkr_settings_boxes( $_genesis_theme_settings_pagehook ) {
     remove_meta_box( 'genesis-theme-settings-header', $_genesis_theme_settings_pagehook, 'main' );
-    add_meta_box( 'hkr-single-settings', __( 'Single View', 'harker-2015' ), 'hkr_single_settings_box_content', $_genesis_theme_settings_pagehook, 'main');
-    add_meta_box( 'hkr-extra-settings', __( 'Theme Extras', 'harker-2015' ), 'hkr_extras_box_content', $_genesis_theme_settings_pagehook, 'main');
+    add_meta_box( 'hkr-extra-settings', __( 'Content Archives - Harker Options', 'harker-2015' ), 'hkr_extras_box_content', $_genesis_theme_settings_pagehook, 'main');
+    add_meta_box( 'hkr-single-settings', __( 'Single Post - Harker Options', 'harker-2015' ), 'hkr_single_settings_box_content', $_genesis_theme_settings_pagehook, 'main');
 }
 
 function hkr_single_settings_box_content() {
@@ -114,11 +114,6 @@ function hkr_extras_box_content() {
                         <?php _e( 'Use condensed theme?', 'harker-2015' ); ?></label>
                     </p>
                 </td>
-            </tr>
-            <tr valign="top">
-                <th scope="row" colspan="2" style="padding: 0;">
-                    <h3>Content Archive</h3>
-                </th>
             </tr>
             <tr valign="top">
                 <th scope="row">
