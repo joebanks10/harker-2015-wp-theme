@@ -14,6 +14,11 @@ function hkr_infinite_scroll_script() {
 
 add_filter( 'infinite_scroll_results', 'hkr_infinite_scroll_results' );
 
+/**
+ * Add max pages to AJAX response
+ * @param  array $results Results of AJAX request
+ * @return array          Filtered results
+ */
 function hkr_infinite_scroll_results($results) {
     if ( '' === get_option( The_Neverending_Home_Page::$option_name_enabled ) ) {
         return $results;
@@ -24,11 +29,7 @@ function hkr_infinite_scroll_results($results) {
         return $results;
     }
 
-    $page = (int) $_REQUEST['page'] + 1; // pages start at 0;
-    if ( $page >= $max_pages && ! $results['lastbatch'] ) {
-        $results['stop_infinite_scroll'] = true;
-        $results['html'] .= '<div id="infinite-handle"><span><button class="button">Older posts</button></span></div>';
-    }
+    $results['max_pages'] = (int) $max_pages;
 
     return $results;
 }
@@ -36,6 +37,9 @@ function hkr_infinite_scroll_results($results) {
 // admin
 add_action( 'admin_init', 'hkr_infinite_scroll_settings', 15 );
 
+/**
+ * Add admin meta boxes for options
+ */
 function hkr_infinite_scroll_settings() {
     // Add the setting field and place it in Settings > Reading
     add_settings_field( 'hkr_infinite_scroll_pages', '<span id="hkr-infinite-scroll-options">' . __( 'Infinite scroll options', 'harker-2015' ) . '</span>', 'hkr_infinite_setting_html', 'reading' );
