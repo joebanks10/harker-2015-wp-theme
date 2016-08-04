@@ -1031,17 +1031,15 @@ img.alignright,
     }
 }
 
-.home, .blog, .archive, .page-template-page_blog, .search {
-    .type-post {
-        @include hkr-post-listing-header();
-    }
+.home:not(.page), .blog, .archive, .page-template-page_blog, .search {
+    @include hkr-post-listing-header();
 
-    .content > .type-post,
-    .infinite-wrap > .type-post {
+    .content > .entry,
+    .infinite-wrap > .entry {
         @include hkr-panel();
     }
 
-    .type-post .entry-content {
+    .entry-content {
         font-size: rem-calc(12);
         line-height: 1.25em;
     }
