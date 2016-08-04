@@ -14,32 +14,34 @@
 }
 
 @mixin hkr-post-listing-header() {
-    .entry-header {
-        margin-bottom: rhythm(0.5);
-    }
-    .entry-title {
-        font-size: rem-calc(20);
-        line-height: rhythm(1);
-        text-transform: none;
-        a {
+    .type-post {
+        .entry-header {
+            margin-bottom: rhythm(0.5);
+        }
+        .entry-title {
+            font-size: rem-calc(20);
+            line-height: rhythm(1);
+            text-transform: none;
+            a {
+                text-transform: none;
+            }
+        }
+        .entry-header .entry-meta {
+            font-size: rem-calc(12);
+            line-height: 1.25em;
+            padding-top: rem-calc(5);
+            padding-bottom: rem-calc(4);
+        }
+        .entry-time {
             text-transform: none;
         }
-    }
-    .entry-header .entry-meta {
-        font-size: rem-calc(12);
-        line-height: 1.25em;
-        padding-top: rem-calc(5);
-        padding-bottom: rem-calc(4);
-    }
-    .entry-time {
-        text-transform: none;
-    }
-    .entry-title,
-    .entry-header .entry-meta {
-        margin-bottom: rhythm(0.5);
-    }
-    .entry-header .entry-title + .entry-meta {
-        margin-top: -(rhythm(0.5));
+        .entry-title,
+        .entry-header .entry-meta {
+            margin-bottom: rhythm(0.5);
+        }
+        .entry-header .entry-title + .entry-meta {
+            margin-top: -(rhythm(0.5));
+        }
     }
 }
 
