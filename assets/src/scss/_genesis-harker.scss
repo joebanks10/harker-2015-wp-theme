@@ -1154,8 +1154,12 @@ p.entry-meta {
 
 .entry-image-square {
     float: left;
-    margin-right: $column-gutter;
+    margin-right: $column-gutter/2;
     width: 38.2%;
+
+    @media #{$large-up} {
+        margin-right: $column-gutter;
+    }
 }
 
 .entry-image-content {
