@@ -1056,21 +1056,25 @@ img.alignright,
 --------------------------------------------- */
 
 .entry-title {
-    font-size: rem-calc(24);
+    font-size: rem-calc(20);
+    line-height: rhythm(1);
+    text-transform: none;
     margin-bottom: rhythm(1);
 
-    -ms-word-break: break-all;
-    word-break: break-all;
+    // -ms-word-break: break-all;
+    // word-break: break-all;
 
-    // Non standard for webkit
-    word-break: break-word;
+    // // Non standard for webkit
+    // word-break: break-word;
 
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
+    // -webkit-hyphens: auto;
+    // -moz-hyphens: auto;
+    // hyphens: auto;
 
     @media #{$medium-up} {
         font-size: $h1-font-size - $h1-font-reduction;
+        line-height: 1;
+        text-transform: uppercase;
     }
 
     @media #{$large-up} {
