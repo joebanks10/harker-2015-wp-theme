@@ -1056,7 +1056,7 @@ img.alignright,
 --------------------------------------------- */
 
 .entry-title {
-    font-size: $h1-font-size - $h1-font-reduction;
+    font-size: rem-calc(24);
     margin-bottom: rhythm(1);
 
     -ms-word-break: break-all;
@@ -1068,6 +1068,10 @@ img.alignright,
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto;
+
+    @media #{$medium-up} {
+        font-size: $h1-font-size - $h1-font-reduction;
+    }
 
     @media #{$large-up} {
         font-size: $h1-font-size;
