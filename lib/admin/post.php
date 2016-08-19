@@ -24,13 +24,13 @@ function hkr_post_single_thumbnail_fields( $content ) {
     <p>
         <label for="custom-single-thumbnail">
             <input type="checkbox" name="<?php hkr_post_field_name('_hkr_custom_single_thumbnail'); ?>" id="custom-single-thumbnail" value="1"<?php checked( $custom_single_thumbnail ); ?> />
-            <?php printf( __( 'Customize the <a href="%s" target="_blank" title="See default settings">Featured Image display settings</a> for this post.', 'harker-2015' ), menu_page_url( 'genesis', 0 ) . '#hkr-single-settings' ); ?>
+            <?php printf( __( 'Edit <a href="%s" target="_blank" title="View theme settings">display settings</a> for this post.', 'harker-2015' ), menu_page_url( 'genesis', 0 ) . '#hkr-single-settings' ); ?>
         </label>
     </p>
     <div id="hkr_single_thumbnail_settings">
         <p>
             <label for="<?php hkr_post_field_name('_hkr_single_thumbnail'); ?>"><input type="checkbox" name="<?php hkr_post_field_name('_hkr_single_thumbnail'); ?>" id="<?php hkr_post_field_name('_hkr_single_thumbnail'); ?>" value="1"<?php checked( $single_thumbnail ); ?> />
-            <?php _e( 'Display the Featured Image?', 'harker-2015' ); ?></label>
+            <?php _e( 'Display Featured Image?', 'harker-2015' ); ?></label>
         </p>
         <p>
             <label for="<?php hkr_post_field_name('_hkr_single_thumbnail_format'); ?>"><?php _e( 'Display Featured Image as:', 'harker-2015' ); ?></label>
