@@ -6,6 +6,15 @@ function hkr_post_single_thumbnail_fields( $content ) {
     $widget_id = 'featured-post-banner';
     $sidebar_id = is_active_widget( false, false, $widget_id);
 
+    $custom_single_thumbnail = genesis_get_custom_field('_hkr_custom_single_thumbnail');
+    $single_thumbnail = genesis_get_custom_field('_hkr_single_thumbnail');
+    $single_thumbnail_format = genesis_get_custom_field('_hkr_single_thumbnail_format');
+
+    if (!$custom_single_thumbnail) {
+        $single_thumbnail = genesis_get_option('single_thumbnail');
+        $single_thumbnail_format = genesis_get_option('single_thumbnail_format');
+    }
+
     ob_start();
 
     wp_nonce_field( 'hkr_post_single_thumbnail_save', 'hkr_post_single_thumbnail_nonce' );
@@ -14,13 +23,13 @@ function hkr_post_single_thumbnail_fields( $content ) {
     <hr />
     <p>
         <label for="custom-single-thumbnail">
-            <input type="checkbox" name="<?php hkr_post_field_name('_hkr_custom_single_thumbnail'); ?>" id="custom-single-thumbnail" value="1"<?php checked( genesis_get_custom_field('_hkr_custom_single_thumbnail') ); ?> />
+            <input type="checkbox" name="<?php hkr_post_field_name('_hkr_custom_single_thumbnail'); ?>" id="custom-single-thumbnail" value="1"<?php checked( $custom_single_thumbnail ); ?> />
             <?php printf( __( 'Customize the <a href="%s" target="_blank" title="See default settings">Featured Image display settings</a> for this post.', 'harker-2015' ), menu_page_url( 'genesis', 0 ) . '#hkr-single-settings' ); ?>
         </label>
     </p>
     <div id="hkr_single_thumbnail_settings">
         <p>
-            <label for="<?php hkr_post_field_name('_hkr_single_thumbnail'); ?>"><input type="checkbox" name="<?php hkr_post_field_name('_hkr_single_thumbnail'); ?>" id="<?php hkr_post_field_name('_hkr_single_thumbnail'); ?>" value="1"<?php checked( genesis_get_custom_field('_hkr_single_thumbnail') ); ?> />
+            <label for="<?php hkr_post_field_name('_hkr_single_thumbnail'); ?>"><input type="checkbox" name="<?php hkr_post_field_name('_hkr_single_thumbnail'); ?>" id="<?php hkr_post_field_name('_hkr_single_thumbnail'); ?>" value="1"<?php checked( $single_thumbnail ); ?> />
             <?php _e( 'Display the Featured Image?', 'harker-2015' ); ?></label>
         </p>
         <p>
@@ -34,7 +43,7 @@ function hkr_post_single_thumbnail_fields( $content ) {
                     'hero' => 'Hero'
                 );
                 foreach ( $formats as $format => $description )
-                    echo '<option value="' . $format . '"' . selected( genesis_get_custom_field('_hkr_single_thumbnail_format'), $format, FALSE ) . '>' . $description . '</option>' . "\n";
+                    echo '<option value="' . $format . '"' . selected( $single_thumbnail_format, $format, FALSE ) . '>' . $description . '</option>' . "\n";
                 ?>
             </select>
         </p>
