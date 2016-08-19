@@ -3,18 +3,14 @@
 add_filter( 'admin_post_thumbnail_html', 'hkr_post_single_thumbnail_fields' );
 
 function hkr_post_single_thumbnail_fields( $content ) {
+    $widget_id = 'featured-post-banner';
+    $sidebar_id = is_active_widget( false, false, $widget_id);
+
     ob_start();
 
     wp_nonce_field( 'hkr_post_single_thumbnail_save', 'hkr_post_single_thumbnail_nonce' );
 
     ?>
-    <hr />
-    <p>
-        <label for="home-banner-image">
-            <input type="checkbox" name="<?php hkr_post_field_name('_hkr_hide_home_banner_image'); ?>" id="home-banner-image" value="1"<?php checked( genesis_get_custom_field('_hkr_hide_home_banner_image') ); ?> />
-            <?php _e( 'Do not display in home page banner.' ); ?>
-        </label>
-    </p>
     <hr />
     <p>
         <label for="custom-single-thumbnail">
@@ -61,7 +57,15 @@ function hkr_post_single_thumbnail_fields( $content ) {
             });
         });
     </script>
-    <?php
+<?php if ($sidebar_id && $sidebar_id == 'hkr-home-banner-widgets'): ?>
+    <hr />
+    <p>
+        <label for="home-banner-image">
+            <input type="checkbox" name="<?php hkr_post_field_name('_hkr_hide_home_banner_image'); ?>" id="home-banner-image" value="1"<?php checked( genesis_get_custom_field('_hkr_hide_home_banner_image') ); ?> />
+            <?php _e( 'Do not display in home page banner.' ); ?>
+        </label>
+    </p>
+<?php endif;
 
     $output = ob_get_contents();
     ob_end_clean();
