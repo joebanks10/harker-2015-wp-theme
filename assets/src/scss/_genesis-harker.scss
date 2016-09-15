@@ -18,21 +18,13 @@
         margin-bottom: rhythm(0.5);
     }
     .entry-title {
-        font-size: rem-calc(20);
-        line-height: rhythm(1);
-        text-transform: none;
-        a {
-            text-transform: none;
-        }
+        font-size: rem-calc(20); 
     }
     .entry-header .entry-meta {
         font-size: rem-calc(12);
         line-height: 1.25em;
         padding-top: rem-calc(5);
         padding-bottom: rem-calc(4);
-    }
-    .entry-time {
-        text-transform: none;
     }
     .entry-title,
     .entry-header .entry-meta {
@@ -670,7 +662,6 @@ img.alignright,
             font-size: rem-calc(12);
             font-weight: normal;
             color: $darkgray;
-            line-height: 1.25em;
             margin-bottom: 0.625em;
         }
     }
@@ -738,7 +729,6 @@ img.alignright,
         &, a {
             font-weight: normal;
             color: $white;
-            text-transform: none;
         }
     }
     .entry-meta, .entry-time {
@@ -748,9 +738,6 @@ img.alignright,
     }
     .entry-header .entry-title + .entry-meta {
         margin-top: 0;
-    }
-    .entry-time {
-        text-transform: none;
     }
     .entry-meta {
         margin-bottom: 0;
@@ -765,7 +752,6 @@ img.alignright,
         }
         .entry-title {
             font-size: rem-calc(48);
-            line-height: 1.1667em;
             font-family: $font-family-black;
         }
 
@@ -1057,24 +1043,11 @@ img.alignright,
 
 .entry-title {
     font-size: rem-calc(20);
-    line-height: rhythm(1);
-    text-transform: none;
+    line-height: 1.2em;
     margin-bottom: rhythm(1);
-
-    // -ms-word-break: break-all;
-    // word-break: break-all;
-
-    // // Non standard for webkit
-    // word-break: break-word;
-
-    // -webkit-hyphens: auto;
-    // -moz-hyphens: auto;
-    // hyphens: auto;
 
     @media #{$medium-up} {
         font-size: $h1-font-size - $h1-font-reduction;
-        line-height: 1;
-        text-transform: uppercase;
     }
 
     @media #{$large-up} {
@@ -1083,7 +1056,6 @@ img.alignright,
 
     a {
         font-weight: $header-font-weight;
-        text-transform: uppercase;
     }
 
 }
@@ -1099,10 +1071,6 @@ p.entry-meta {
     margin-bottom: rhythm(1);
     line-height: rhythm(1);
     font-size: rem-calc(14);
-}
-
-.entry-time {
-    text-transform: uppercase;
 }
 
 .entry-header .entry-title + .entry-meta {
