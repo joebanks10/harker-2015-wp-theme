@@ -35,6 +35,7 @@ function hkr_theme_support() {
     add_image_size( 'medium-square', 300, 300, true );
     add_image_size( 'large-square', 600, 600, true );
     add_image_size( '6x4', 600, 400, true);
+    add_image_size( '6x4-email', 290, 193, true); // to be used in email templates
 
     // Add infinite scroll
     add_theme_support( 'infinite-scroll', array(
