@@ -3,7 +3,7 @@
 add_filter( 'genesis_pre_load_favicon', 'hkr_favicon_url' );
 
 function hkr_favicon_url( $url ) {
-    return CHILD_THEME_DIR_URL . '/assets/dist/img/favicon.ico';
+    return CHILD_THEME_DIR_URL . '/assets/img/favicon.ico';
 }
 
 add_action( 'wp_enqueue_scripts', 'hkr_theme_assets' );
