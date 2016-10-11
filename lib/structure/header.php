@@ -1,6 +1,6 @@
 <?php
 
-add_filter( 'genesis_favicon_url', 'hkr_favicon_url' );
+add_filter( 'genesis_pre_load_favicon', 'hkr_favicon_url' );
 
 function hkr_favicon_url( $url ) {
     return CHILD_THEME_DIR_URL . '/assets/dist/img/favicon.ico';
