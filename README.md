@@ -12,9 +12,9 @@ Theme for Harker's public-facing WordPress websites. Built off the Genesis Theme
 
 ## Getting Started
 
-* Run `npm install` to install dev dependencies for project
-* Run `bower install` to install plugins and libraries
-* Run `grunt compile` to compile files to dist folder. Run `grunt watch` to watch for changes in src folder.
+1. Run `npm install` to install dev dependencies for project
+2. Run `bower install` to install plugins and libraries
+3. Run `grunt compile` to compile files to dist folder. Run `grunt watch` to watch for changes in src folder.
 
 ### Fixing mixin naming conflict between Foundation and Compass
 
