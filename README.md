@@ -1,3 +1,7 @@
+# Harker WordPress Theme 2015
+
+Theme for Harker's public-facing WordPress websites. Built off the Genesis Theme Framework. Sample site: [http://news.harker.org](http://news.harker.org)
+
 ## Requirements
 
     * Ruby 1.9+
