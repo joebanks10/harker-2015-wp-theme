@@ -16,6 +16,12 @@ Theme for Harker's public-facing WordPress websites. Built off the Genesis Theme
     * Run `bower install` to install plugins and libraries
     * Run `grunt compile` to compile files to dist folder. Run `grunt watch` to watch for changes in src folder.
 
+### Fixing mixin naming conflict between Foundation and Compass
+
+The transition mixin isn't namespaced in Foundation, so it will conflict with Compass's version of the transition mixin when you compile. To fix, go to `bower_components/foundation/scss/foundation/components/_global.scss` and rename the transition mixin to something else (e.g. _transition). You'll need to also update the include statement in the single-transition mixin. 
+
+Unfortunately, this edit will be overwritten on updates, but it's a temporary solution. Zurb is aware of the conflict.
+
 ## WordPress Plugins used with Theme
 
     * [Aesop Story Engine](https://wordpress.org/plugins/aesop-story-engine/): Longform story UI components
