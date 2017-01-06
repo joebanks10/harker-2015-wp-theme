@@ -4,17 +4,17 @@ Theme for Harker's public-facing WordPress websites. Built off the Genesis Theme
 
 ## Requirements
 
-    * Ruby 1.9+
-    * [Node.js](http://nodejs.org)
-    * [compass](http://compass-style.org/): `gem install compass`
-    * [bower](http://bower.io): `npm install bower -g`
-    * [grunt](http://gruntjs.com/): `npm install -g grunt-cli`
+* Ruby 1.9+
+* [Node.js](http://nodejs.org)
+* [compass](http://compass-style.org/): `gem install compass`
+* [bower](http://bower.io): `npm install bower -g`
+* [grunt](http://gruntjs.com/): `npm install -g grunt-cli`
 
 ## Getting Started
 
-    * Run `npm install` to install dev dependencies for project
-    * Run `bower install` to install plugins and libraries
-    * Run `grunt compile` to compile files to dist folder. Run `grunt watch` to watch for changes in src folder.
+* Run `npm install` to install dev dependencies for project
+* Run `bower install` to install plugins and libraries
+* Run `grunt compile` to compile files to dist folder. Run `grunt watch` to watch for changes in src folder.
 
 ### Fixing mixin naming conflict between Foundation and Compass
 
