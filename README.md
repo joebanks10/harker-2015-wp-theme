@@ -1,20 +1,22 @@
 # Harker WordPress Theme 2015
 
-Theme for Harker's public-facing WordPress websites. Built off the Genesis Theme Framework. Sample site: [http://news.harker.org](http://news.harker.org)
+Genesis child theme for Harker's public-facing WordPress websites. Built off the Genesis Theme Framework. Sample site: [http://news.harker.org](http://news.harker.org)
 
-## Requirements
+## Dependencies
 
 * Ruby 1.9+
 * [Node.js](http://nodejs.org)
 * [compass](http://compass-style.org/): `gem install compass`
 * [bower](http://bower.io): `npm install bower -g`
 * [grunt](http://gruntjs.com/): `npm install -g grunt-cli`
+* [Genesis Theme Framework](http://my.studiopress.com/themes/genesis/)
 
 ## Getting Started
 
-1. Run `npm install` to install dev dependencies for project
-2. Run `bower install` to install plugins and libraries
-3. Run `grunt compile` to compile files to dist folder. Run `grunt watch` to watch for changes in src folder.
+1. Add the Genesis theme framework and this child theme folder to your theme folder.
+2. In the child theme, run `npm install` to install dev dependencies for project
+3. Run `bower install` to install plugins and libraries
+4. Run `grunt compile` to compile files to dist folder. Run `grunt watch` to watch for changes in src folder.
 
 ### Fixing mixin naming conflict between Foundation and Compass
 
